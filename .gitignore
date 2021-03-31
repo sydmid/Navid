@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+/dist/
+
+# Environments
+/.idea/
+*/.vscode/
+*/.venv/
+
+# Poetry
+poetry.lock
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Project generated files
+*.csv
+*.sqlite
+.vscode/settings.json
