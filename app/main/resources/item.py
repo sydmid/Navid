@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
-from flask_jwt import jwt_required
-from app.main.models.item import ItemModel
+from flask_jwt_extended import jwt_required
+from ..models.item import ItemModel
 
 
 class Item(Resource):
@@ -62,4 +62,6 @@ class Item(Resource):
 
 class ItemList(Resource):
     def get(self):
-        return {'items': list(map(lambda x: x.json(), ItemModel.query.all()))}
+        # return {'items': list(map(lambda x: x.json(), ItemModel.query.all()))}
+        # return  {'items': [x.json() for x in ItemModel.query.all()]}
+        return {'items': [x.json() for x in ItemModel.find_all()]}

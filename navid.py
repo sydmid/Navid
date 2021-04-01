@@ -10,6 +10,6 @@ from app.tset_client import controlled_download
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 
 if __name__ == '__main__':
-    pass
+    # pass
     # controlled_download()
-    # app.run(port=5000, debug=True)
+    app.run(port=5000, debug=True)
