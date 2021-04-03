@@ -30,7 +30,6 @@ class PreAlphaConfig(Config):
     # Dont need it in flask 4
     # JWT_BLACKLIST_TOKEN_CHECKS = ['access', ' refresh']
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
-    # SERVER_NAME =
 
 
 config = {

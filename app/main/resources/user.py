@@ -56,22 +56,25 @@ class UserRegister(Resource):
         return {"message": "User created successfully."}, 201
 
 
+def _token_creator(user):
+    if user.id == 1:
+        access_token = create_access_token(identity=user.id, additional_claims={'isAdmin': True}, fresh=True)
+        refresh_token = create_refresh_token(identity=user.id)
+    else:
+        access_token = create_access_token(identity=user.id, additional_claims={'isAdmin': False}, fresh=True)
+        refresh_token = create_refresh_token(identity=user.id)
+    return {'access_token': access_token,
+            'refresh_token': refresh_token
+            }, 200
+
+
 class UserLogin(Resource):
     @classmethod
     def post(cls):
-        # get the data from the parser
         data = _user_parser.parse_args()
-        # find the user in data base
         user = UserModel.find_by_username(data['username'])
-        # check the password
         if user and safe_str_cmp(user.password, data['password']):
-            # create access token
-            access_token = create_access_token(identity=user.id, fresh=True)
-            # create refresh token
-            refresh_token = create_refresh_token(identity=user.id)
-            return {'access_token': access_token,
-                    'refresh_token': refresh_token
-                    }, 200
+            return _token_creator(user)
         return {'message': 'Invalid credentials'}, 401
 
 
@@ -90,4 +93,10 @@ class TokenRefresh(Resource):
         user_id = get_jwt_identity()
         new_token = create_access_token(identity=user_id, fresh=False)
         return {'access_token': new_token}, 200
+
+
+class BlockedTokens(Resource):
+    @jwt_required()
+    def get(self):
+        pass
 
