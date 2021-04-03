@@ -1,7 +1,7 @@
 import json
 from typing import Set, Dict
 
-from app.tset_client import config
+from . import config
 
 ticker_name_to_index_mapping = None
 

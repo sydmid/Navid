@@ -3,12 +3,14 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_bootstrap import Bootstrap
 
+
 from config import config
-from .db import db
 from .resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from .resources.item import Item, ItemList
 from .resources.store import Store, StoreList
 from .models.token import BlockedTokenModel
+from .db import db
+
 bootstrap = Bootstrap()
 
 
@@ -38,7 +40,7 @@ def create_app(config_name):
         return {'isAdmin': False}
 
     @jwt.expired_token_loader
-    def expired_token_callback():
+    def expired_token_callback(jwt_header, jwt_payload):
         return jsonify({
             'description': 'The token has expired',
             'error': 'token_expired'
@@ -46,7 +48,7 @@ def create_app(config_name):
 
     # when the token they send us in the Authorization Header is an Actual JWT (I.E its some random number)
     @jwt.invalid_token_loader
-    def expired_token_callback():
+    def invalid_token_callback(error):
         return jsonify({
             'description': "I'm sorry Signature verification failed",
             'error': 'invalid_token'
@@ -62,7 +64,7 @@ def create_app(config_name):
 
     # when they send us a non-fresh token but our endpoint requires fresh token (l.E our item post)
     @jwt.needs_fresh_token_loader
-    def token_not_fresh_callback():
+    def token_not_fresh_callback(jwt_header, jwt_payload):
         return jsonify({
             'description': 'The token is not fresh',
             'error': 'fresh_token_required'

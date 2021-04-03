@@ -7,19 +7,19 @@ from .symbols_data import all_symbols
 from .ticker import Ticker
 
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-Dates_path = os.path.normpath(os.path.join(basedir, 'download/Dates.txt'))
-Logs_path = os.path.normpath(os.path.join(basedir, 'download/Logs.txt'))
+_tset_client_dir = os.path.abspath(os.path.dirname(__file__))
+_downloaded_date_path = os.path.normpath(os.path.join(_tset_client_dir, 'download/Dates.txt'))
+_logs_path = os.path.normpath(os.path.join(_tset_client_dir, 'download/Logs.txt'))
 
-Download_path_1 = os.path.normpath(os.path.join(basedir, 'download/general_records'))
-Download_path_2 = os.path.normpath(os.path.join(basedir, 'download/client_records'))
-Download_path_test = os.path.normpath(os.path.join(basedir, 'download/test'))
+Download_path_1 = os.path.normpath(os.path.join(_tset_client_dir, 'download/general_records'))
+Download_path_2 = os.path.normpath(os.path.join(_tset_client_dir, 'download/client_records'))
+Download_path_test = os.path.normpath(os.path.join(_tset_client_dir, 'download/test'))
 
 
-def controlled_download():
+def csv_updater():
     print("Starting Controlled Download")
     biggest_date = datetime.date.min
-    if os.path.exists(Dates_path):
+    if os.path.exists(_downloaded_date_path):
         try:
             stocks_to_lookup = download(["فولاد", "آپ", "بورس", "البرز", "حکشتی", "ونیکی", "فرابورس", "تاپیکو", "وبملت",
                                         "بجهرم"], include_jdate=True)
@@ -29,7 +29,7 @@ def controlled_download():
                     biggest_date = dates[len(dates) - 1]
             print(f"The Biggest is : {biggest_date}")
             try:
-                with open(Dates_path, "r") as f:
+                with open(_downloaded_date_path, "r") as f:
                     current_date_value = f.readline()
                     date_time_obj = datetime.datetime.strptime(current_date_value, '%Y-%m-%d %H:%M:%S')
                     print(f"current date value is: {current_date_value}")
@@ -39,24 +39,24 @@ def controlled_download():
                         download(symbols="all", write_to_csv=True, base_path=Download_path_test)
                     else:
                         print("Data is Up to Date. There's Nothing More to Do :)")
-                        with open(Logs_path, "a") as f:
+                        with open(_logs_path, "a") as f:
                             f.write(f"Data is Up to Date Attempt {datetime.date.today()}\n")
                         return
             except:
-                controlled_download()
-            with open(Dates_path, "w+") as f:
+                csv_updater()
+            with open(_downloaded_date_path, "w+") as f:
                 f.write(str(biggest_date))
             # Implementing Some Log Mechanism
-            with open(Logs_path, "a") as f:
+            with open(_logs_path, "a") as f:
                 f.write(f"Successful Attempt {datetime.date.today()}")
 
         except:
             print("Couldnt Lookup retrying...")
             # Add some Timer or Rule
-            controlled_download()
+            csv_updater()
     else:
-        f = open(Dates_path, "w+")
+        f = open(_downloaded_date_path, "w+")
         f.close()
         print("There was no Date.txt. Now There is one ;)")
-        controlled_download()
+        csv_updater()
 

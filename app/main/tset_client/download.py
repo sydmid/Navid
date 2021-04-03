@@ -7,9 +7,9 @@ import pandas as pd
 from requests import HTTPError
 import jdatetime
 
-from app.tset_client import config, symbols_data, translations, tse_settings
-from app.tset_client.utils import requests_retry_session
-from app.tset_client.tse_settings import TSE_CLIENT_TYPE_DATA_URL
+from . import config, symbols_data, translations, tse_settings
+from .utils import requests_retry_session
+from .tse_settings import TSE_CLIENT_TYPE_DATA_URL
 
 
 def download(

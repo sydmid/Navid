@@ -3,7 +3,7 @@
     client types records specifically (as a 'Pandas DataFrame' object),
     and easily save them in .csv format.
 """
-from app.tset_client import download_client_types_records
+from .. import download_client_types_records
 
 if __name__ == '__main__':
     # Download all tickers clients types at once.

@@ -6,7 +6,7 @@ from typing import Optional
 
 import bs4
 import pandas as pd
-from app.tset_client import (
+from . import (
     config,
     download,
     symbols_data,
@@ -14,8 +14,8 @@ from app.tset_client import (
     tse_settings,
     utils,
 )
-from app.tset_client.download import download_ticker_client_types_record
-from app.tset_client.tse_settings import TSE_CLIENT_TYPE_DATA_URL
+from .download import download_ticker_client_types_record
+from .tse_settings import TSE_CLIENT_TYPE_DATA_URL
 
 RealtimeTickerInfo = collections.namedtuple(
     'RealtimeTickerInfo', [
