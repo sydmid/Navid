@@ -5,10 +5,10 @@ from flask_bootstrap import Bootstrap
 
 from config import config
 from .db import db
-from .resources.user import UserRegister, User, UserLogin, TokenRefresh
+from .resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from .resources.item import Item, ItemList
 from .resources.store import Store, StoreList
-
+from .models.token import BlockedTokenModel
 bootstrap = Bootstrap()
 
 
@@ -29,6 +29,7 @@ def create_app(config_name):
     api.add_resource(User, '/user/<int:user_id>')
     api.add_resource(UserLogin, '/login')
     api.add_resource(TokenRefresh, '/refresh')
+    api.add_resource(UserLogout, '/logout')
 
     @jwt.additional_claims_loader
     def add_claims_to_jwt(identity):
@@ -45,9 +46,9 @@ def create_app(config_name):
 
     # when the token they send us in the Authorization Header is an Actual JWT (I.E its some random number)
     @jwt.invalid_token_loader
-    def expired_token_callback(error):
+    def expired_token_callback():
         return jsonify({
-            'description': 'Signature verification failed',
+            'description': "I'm sorry Signature verification failed",
             'error': 'invalid_token'
         }), 401
 
@@ -69,11 +70,17 @@ def create_app(config_name):
 
     # when the sign out and we don't want them to be able to use their last valid token anymore
     @jwt.revoked_token_loader
-    def revoked_token_callback():
-        return jsonify({
-            'description': 'The token has been revoked',
-            'error': 'token_revoked'
-        }), 401
+    def revoked_token_callback(jwt_header, jwt_payload):
+        return jsonify(msg=f"I'm sorry {jwt_payload['sub']} I can't let you do that"), 401
+    # in decrypted data u can access any data stored in a token
+    # this can be the identity (comes from flask_jwt
+    # _extended internals) and also the date token has been created and ...
+
+    @jwt.token_in_blocklist_loader
+    def is_token_in_blocklist(jwt_header, jwt_payload):
+        jti = jwt_payload["jti"]
+        token = BlockedTokenModel.find_by_jti(jti)
+        return token is not None
 
     @app.before_first_request
     def create_tables():

@@ -1,5 +1,5 @@
 import os
-
+from datetime import timedelta
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -23,6 +23,14 @@ class PreAlphaConfig(Config):
     PROPAGATE_EXCEPTIONS = True
     # We choose it to be different than app.secret_key (Optional)
     JWT_SECRET_KEY = 'jose2'
+    # Black list is disabled by default
+    # Dont need it in flask 4
+    # JWT_BLACKLIST_ENABLED = True
+    # Enable The Black List for both access and refresh token
+    # Dont need it in flask 4
+    # JWT_BLACKLIST_TOKEN_CHECKS = ['access', ' refresh']
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
+    # SERVER_NAME =
 
 
 config = {
