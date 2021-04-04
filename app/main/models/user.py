@@ -1,6 +1,7 @@
 from .. import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 class UserModel(db.Model):
     __tablename__ = 'users'
 
@@ -12,17 +13,16 @@ class UserModel(db.Model):
     def password(self):
         raise AttributeError('password is not a readable attribute')
 
-    # @password.setter
-    def _password_setter(self, password):
+    @password.setter
+    def password(self, password):
         self.password_hash = generate_password_hash(password)
 
-
     def verify_password(self, password):
-        return check_password_hash(self.password_hash,password)
+        return check_password_hash(self.password_hash, password)
 
     def __init__(self, username, password):
         self.username = username
-        self._password_setter(password)
+        self.password = password
 
     def json(self):
         return {'id': self.id,
