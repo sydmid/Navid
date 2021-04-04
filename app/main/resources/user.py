@@ -1,6 +1,5 @@
-from flask import jsonify
 from flask_restful import Resource, reqparse
-from werkzeug.security import safe_str_cmp
+# from werkzeug.security import safe_str_cmp
 from flask_jwt_extended import (
                                 create_access_token,
                                 create_refresh_token,
@@ -73,7 +72,7 @@ class UserLogin(Resource):
     def post(cls):
         data = _user_parser.parse_args()
         user = UserModel.find_by_username(data['username'])
-        if user and safe_str_cmp(user.password, data['password']):
+        if user.verify_password(data['password']):
             return _token_creator(user)
         return {'message': 'Invalid credentials'}, 401
 
@@ -99,4 +98,3 @@ class BlockedTokens(Resource):
     @jwt_required()
     def get(self):
         pass
-

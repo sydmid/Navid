@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import jsonify
 from .resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from .resources.item import Item, ItemList
 from .resources.store import Store, StoreList
@@ -45,7 +45,7 @@ def jwt_claim_handler(jwt):
     # when the sign out and we don't want them to be able to use their last valid token anymore
     @jwt.revoked_token_loader
     def revoked_token_callback(jwt_header, jwt_payload):
-        return jsonify(message=f"I'm sorry {jwt_payload['sub']} I can't let you do that"), 401
+        return jsonify(message=f"I'm sorry user with id:{jwt_payload['sub']} Your token is revoked plz Login again"), 401
 
     # in decrypted data u can access any data stored in a token
     # this can be the identity (comes from flask_jwt
