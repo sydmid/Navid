@@ -80,7 +80,7 @@ class UserLogin(Resource):
 
 class UserLogout(Resource):
     @jwt_required()
-    def get(self):
+    def delete(self):
         jti = get_jwt()['jti']
         token = BlockedTokenModel(jti)
         token.save_to_db()

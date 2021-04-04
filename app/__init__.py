@@ -2,15 +2,16 @@ from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_bootstrap import Bootstrap
-
+# from flask_sqlalchemy import SQLAlchemy
 
 from config import config
 from .main.resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from .main.resources.item import Item, ItemList
 from .main.resources.store import Store, StoreList
-from .main.models.token import BlockedTokenModel
-from .main.db import db
+# from .main.models.token import BlockedTokenModel
+from .main import db
 
+# db = SQLAlchemy()
 bootstrap = Bootstrap()
 
 
@@ -78,6 +79,7 @@ def create_app(config_name):
     # this can be the identity (comes from flask_jwt
     # _extended internals) and also the date token has been created and ...
 
+    from .main.models.token import BlockedTokenModel
     @jwt.token_in_blocklist_loader
     def is_token_in_blocklist(jwt_header, jwt_payload):
         jti = jwt_payload["jti"]
