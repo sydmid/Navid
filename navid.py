@@ -1,5 +1,5 @@
 import os
-from app.main import create_app
+from app import create_app
 from app.main.tset_client import csv_updater
 
 if __name__ == '__main__':
