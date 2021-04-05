@@ -23,3 +23,5 @@ dmypy.json
 *.csv
 *.sqlite
 .vscode/settings.json
+Logs.txt
+Dates.txt
