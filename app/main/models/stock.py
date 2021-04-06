@@ -4,12 +4,11 @@ from .. import db
 class StockModel(db.Model):
     __tablename__ = 'stocks'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
+    name = db.Column(db.String(80), primary_key=True)
     group = db.Column(db.String(80))
-    details = db.relationship('StockDetails', lazy='dynamic')
-    group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
-    stock = db.relationship('GroupModel')
+    # records = db.relationship('Record', lazy='dynamic')
+    # group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
+    # stock = db.relationship('GroupModel')
 
     def __init__(self, name):
         self.name = name

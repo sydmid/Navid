@@ -7,7 +7,7 @@ class GroupModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     group = db.Column(db.String(80))
-    stocks = db.relationship('StockModel', lazy='dynamic')
+    # stocks = db.relationship('StockModel', lazy='dynamic')
 
     def __init__(self, name):
         self.name = name

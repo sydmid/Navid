@@ -1,11 +1,10 @@
 from .. import db
 
 
-class StockDetails(db.Model):
-    __tablename__ = 'stock-table'
-    # date,open,high,low,adjClose,value,volume,count,close
+class Record(db.Model):
+    __tablename__ = 'records'
+
     date = db.Column(db.Date(), primary_key=True)
-    name = db.Column(db.String(80))
     open = db.Column(db.Float(precision=1))
     high = db.Column(db.Float(precision=1))
     low = db.Column(db.Float(precision=1))
@@ -14,16 +13,25 @@ class StockDetails(db.Model):
     volume = db.Column(db.Float(precision=1))
     count = db.Column(db.Float(precision=1))
     close = db.Column(db.Float(precision=1))
-    stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
-    stock = db.relationship('StockModel')
+    name = db.Column(db.String(80))
+    # name = db.Column(db.String(80), db.ForeignKey('stocks.name'))
+    # stock = db.relationship('StockModel')
 
-    def __init__(self, name, price, store_id):
-        self.name = name
-        self.price = price
-        self.store_id = store_id
+    def __init__(self, **kwargs):
+        self.date = kwargs['date']
+        self.open = kwargs['open']
+        self.high = kwargs['high']
+        self.low = kwargs['low']
+        self.adjClose = kwargs['adjClose']
+        self.value = kwargs['value']
+        self.volume = kwargs['volume']
+        self.count = kwargs['count']
+        self.close = kwargs['close']
+        self.name = kwargs['name']
 
     def json(self):
-        return {'id': self.id, 'name': self.name, 'price': self.price, 'store_id': self.store_id}
+        pass
+        # return {'id': self.id, 'name': self.name, 'price': self.price, 'store_id': self.store_id}
 
     @classmethod
     def find_by_name(cls, name):
