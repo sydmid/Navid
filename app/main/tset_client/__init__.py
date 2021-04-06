@@ -16,7 +16,7 @@ Download_path_2 = os.path.normpath(os.path.join(_tset_client_dir, 'download/clie
 Download_path_test = os.path.normpath(os.path.join(_tset_client_dir, 'download/test'))
 
 
-class CsvUpdater:
+class Downloader:
     biggest_date = datetime.date.min
 
     def __init__(self):
@@ -26,15 +26,18 @@ class CsvUpdater:
         self.tries += 1
         print(self.tries)
 
-    def update(self):
-        if self.tries < TRY_COUNT:
-            self.tries += 1
-            self._csv_update()
+    def update(self, mode="test_download"):
+        if mode == "csv_download":
+            if self.tries < TRY_COUNT:
+                self.tries += 1
+                self._csv_download()
+            else:
+                self.tries = 0
+                return "can't do it, the maximum tries has exceeded it's limit"
         else:
-            self.tries = 0
-            return "can't do it, the maximum tries has exceeded it's limit"
+            return self._test_download()
 
-    def _csv_update(self):
+    def _csv_download(self):
         print(f"update process has started, Number of tries so far:{self.tries}")
         if os.path.exists(_downloaded_date_path):
             try:
@@ -76,4 +79,11 @@ class CsvUpdater:
             f.close()
             print("There was no Date.txt. Now There is one ;)")
             self.update()
+
+    def _test_download(self):
+        print(f"test process has started number of tries so far:{self.tries}")
+        try:
+            return download(symbols="فولاد", base_path=Download_path_test)
+        except:
+            print("Couldn't Lookup retrying...")
 
