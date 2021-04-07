@@ -13,7 +13,7 @@ class Record(db.Model):
     volume = db.Column(db.Float(precision=1))
     count = db.Column(db.Float(precision=1))
     close = db.Column(db.Float(precision=1))
-    name = db.Column(db.String(80))
+    # name = db.Column(db.String(80))
     # name = db.Column(db.String(80), db.ForeignKey('stocks.name'))
     # stock = db.relationship('StockModel')
 
@@ -27,19 +27,8 @@ class Record(db.Model):
         self.volume = kwargs['volume']
         self.count = kwargs['count']
         self.close = kwargs['close']
-        self.name = kwargs['name']
+        # self.name = kwargs['name']
 
-    def json(self):
-        pass
-        # return {'id': self.id, 'name': self.name, 'price': self.price, 'store_id': self.store_id}
-
-    @classmethod
-    def find_by_name(cls, name):
-        return cls.query.filter_by(name=name).first()
-
-    @classmethod
-    def find_all(cls):
-        return cls.query.all()
 
     def save_to_db(self):
         db.session.add(self)

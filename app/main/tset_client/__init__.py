@@ -83,7 +83,7 @@ class Downloader:
     def _test_download(self):
         print(f"test process has started number of tries so far:{self.tries}")
         try:
-            return download(symbols="فولاد", base_path=Download_path_test)
+            return download(symbols=["فولاد", "آپ", "بورس"], base_path=Download_path_test)
         except:
             print("Couldn't Lookup retrying...")
 
