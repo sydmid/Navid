@@ -6,8 +6,6 @@ import pandas as pd
 
 Base = declarative_base()
 engine = create_engine('sqlite:///test.db')
-
-
 metadata = MetaData()
 downloader = Downloader()
 downloaded = downloader.update()

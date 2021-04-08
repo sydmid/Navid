@@ -2,7 +2,7 @@ from .. import db
 
 
 class Record(db.Model):
-    __tablename__ = 'records'
+    # __tablename__ = 'stocks'
 
     date = db.Column(db.Date(), primary_key=True)
     open = db.Column(db.Float(precision=1))
@@ -27,8 +27,8 @@ class Record(db.Model):
         self.volume = kwargs['volume']
         self.count = kwargs['count']
         self.close = kwargs['close']
+        self.__tablename__ = kwargs['__tablename__']
         # self.name = kwargs['name']
-
 
     def save_to_db(self):
         db.session.add(self)

@@ -2,7 +2,6 @@ from .. import db
 
 
 class StockModel(db.Model):
-    __tablename__ = 'stocks'
 
     name = db.Column(db.String(80), primary_key=True)
     group = db.Column(db.String(80))
