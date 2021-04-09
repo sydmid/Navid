@@ -17,13 +17,14 @@ class Stock(Resource):
         for key, value in downloaded.items():
             table = inplace_tables[f"{key}"]
             tables = []
-            stock = {'date': '',
+            stock = {'name': '', 'date': '',
                      'open': '', 'high': '',
                      'low': '', 'adjClose': '',
                      'value': '', 'volume': '',
                      'count': '', 'close': ''}
             df = pd.DataFrame(value)
             for row in df.itertuples():
+                stock['name'] = key
                 stock['date'] = row[0]
                 stock['open'] = row[1]
                 stock['high'] = row[2]
