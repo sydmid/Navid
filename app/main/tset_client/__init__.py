@@ -31,7 +31,7 @@ class Downloader:
                 downloaded = await self._csv_downloader(await self._latest_date_fetcher())
             except:
                 await self._retry_handler()
-        elif self.options['mode'] == 'only_names' or self.options['mode'] == 'init_db':
+        elif self.options['mode'] == 'only_names':
             try:
                 downloaded = download(symbols="all")
             except:
@@ -75,3 +75,6 @@ class Downloader:
                 biggest_data = dates[len(dates) - 1]
         return biggest_data
 
+    def initialize_existing_db(self):
+        downloaded = download(symbols="all")
+        return downloaded

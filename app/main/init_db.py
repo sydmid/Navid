@@ -8,7 +8,7 @@ import asyncio
 Base = declarative_base()
 engine = create_engine('sqlite:///test.db')
 metadata = MetaData()
-downloader = Downloader()
+downloader = Downloader(mode='only_names')
 
 
 async def init_db():
@@ -29,3 +29,17 @@ async def init_db():
     Base.metadata.create_all(engine)
 
 asyncio.run(init_db())
+
+newStock = type("Record", (Base,), {
+            '__tablename__': f"",
+            'date': Column(DateTime, primary_key=True),
+            'open': Column(Float),
+            'high': Column(Float),
+            'low': Column(Float),
+            'adjClose': Column(Float),
+            'value': Column(Float),
+            'volume': Column(Float),
+            'count': Column(Float),
+            'close': Column(Float),
+        })
+

@@ -13,7 +13,7 @@ class Stock(Resource):
         Base.prepare(db.engine, reflect=True)
         inplace_tables = Base.classes
         downloader = Downloader()
-        downloaded = downloader.update()
+        downloaded = downloader.initialize_existing_db()
         for key, value in downloaded.items():
             table = inplace_tables[f"{key}"]
             tables = []
