@@ -15,27 +15,31 @@ class Stock(Resource):
         downloader = Downloader()
         downloaded = downloader.initialize_existing_db()
         for key, value in downloaded.items():
-            table = inplace_tables[f"{key}"]
+            stock_class = inplace_tables['stocks']
+            stock_dict = {'name': key, 'group': ''}
+            record_class = inplace_tables[f"{key}"]
             tables = []
-            stock = {'name': '', 'date': '',
-                     'open': '', 'high': '',
-                     'low': '', 'adjClose': '',
-                     'value': '', 'volume': '',
-                     'count': '', 'close': ''}
+            record_dict = {'name': '', 'date': '',
+                           'open': '', 'high': '',
+                           'low': '', 'adjClose': '',
+                           'value': '', 'volume': '',
+                           'count': '', 'close': ''}
             df = pd.DataFrame(value)
             for row in df.itertuples():
-                stock['name'] = key
-                stock['date'] = row[0]
-                stock['open'] = row[1]
-                stock['high'] = row[2]
-                stock['low'] = row[3]
-                stock['adjClose'] = row[4]
-                stock['value'] = row[5]
-                stock['volume'] = row[6]
-                stock['count'] = row[7]
-                stock['close'] = row[8]
-                record = table(**stock)
+                record_dict['name'] = key
+                record_dict['date'] = row[0]
+                record_dict['open'] = row[1]
+                record_dict['high'] = row[2]
+                record_dict['low'] = row[3]
+                record_dict['adjClose'] = row[4]
+                record_dict['value'] = row[5]
+                record_dict['volume'] = row[6]
+                record_dict['count'] = row[7]
+                record_dict['close'] = row[8]
+                record = record_class(**record_dict)
                 tables.append(record)
+            stock = stock_class(**stock_dict)
+            tables.append(stock)
             db.session.add_all(tables)
             db.session.commit()
 

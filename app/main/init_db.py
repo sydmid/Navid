@@ -30,15 +30,7 @@ async def init_db():
     stocks_table = type("Stock", (Base,), {
         '__tablename__': "stocks",
         'name': Column(String(15), primary_key=True),
-        'group': Column(String(15)),
-        'open': Column(Float),
-        'high': Column(Float),
-        'low': Column(Float),
-        'adjClose': Column(Float),
-        'value': Column(Float),
-        'volume': Column(Float),
-        'count': Column(Float),
-        'close': Column(Float),
+        'group': Column(String(15))
     })
     Base.metadata.create_all(engine)
 
