@@ -4,6 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 import pandas as pd
 import asyncio
 from .tset_client import Downloader
+from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 engine = create_engine('sqlite:///test.db')
@@ -30,7 +31,8 @@ async def init_db():
     stocks_table = type("Stock", (Base,), {
         '__tablename__': "stocks",
         'name': Column(String(15), primary_key=True),
-        'group': Column(String(15))
+        'group': Column(String(15)),
+        'records': relationship("Record")
     })
     Base.metadata.create_all(engine)
 

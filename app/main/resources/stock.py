@@ -2,21 +2,17 @@ import pandas as pd
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required, get_jwt, get_jwt_identity
 from sqlalchemy.ext.automap import automap_base
-from..models.stock import StockModel
+
 from ..tset_client import Downloader
 from app.main import db
 
-Base = automap_base()
+Tables_object = None
 
 
 class DBinit(Resource):
-    def get(self, name):
-        item = StockModel.find_by_name(name)
-        if item:
-            return item.json()
-        return {'message': 'Item not found'}, 404
-
+    @jwt_required()
     def post(self):
+        Base = automap_base()
         Base.prepare(db.engine, reflect=True)
         inplace_tables = Base.classes
         downloader = Downloader(mode="test")
@@ -50,10 +46,19 @@ class DBinit(Resource):
             db.session.add_all(tables)
             db.session.commit()
 
-
 class Stock(Resource):
+    @jwt_required()
     def get(self, name):
-        stock = StockModel.find_by_name(name)
-        if stock:
-            return stock.json()
-        return {'message': 'Store not found'}, 404
+        global Tables_object
+        if not Tables_object:
+            base = automap_base()
+            base.prepare(db.engine, reflect=True)
+            Tables_object = base.classes
+            print('creating a table object')
+        try:
+            desired_stock = Tables_object[name]
+        except:
+            return {'message': 'Stock not found'}, 404
+        records = db.session.query(desired_stock).all()
+        return {'message': [str(x.date) for x in records]}
+
