@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 Base = declarative_base()
 engine = create_engine('sqlite:///test.db')
 metadata = MetaData()
-downloader = Downloader(mode='test')
+downloader = Downloader(mode='production')
 
 
 async def init_db():

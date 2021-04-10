@@ -5,7 +5,7 @@ from flask_bootstrap import Bootstrap
 
 from config import config
 from .main import db
-from .main.utills import jwt_claim_handler, restful_api_resource_handler
+from .main.utils import jwt_claim_handler, restful_api_resource_handler
 
 bootstrap = Bootstrap()
 

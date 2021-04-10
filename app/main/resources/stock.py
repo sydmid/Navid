@@ -10,12 +10,11 @@ Tables_object = None
 
 
 class DBinit(Resource):
-    @jwt_required()
     def post(self):
         Base = automap_base()
         Base.prepare(db.engine, reflect=True)
         inplace_tables = Base.classes
-        downloader = Downloader(mode="test")
+        downloader = Downloader()
         downloaded = downloader.initialize_existing_db()
         for key, value in downloaded.items():
             stock_class = inplace_tables['stocks']

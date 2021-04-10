@@ -81,5 +81,5 @@ class Downloader:
         return biggest_data
 
     def initialize_existing_db(self):
-        downloaded = download(symbols=["خودرو", "فولاد"])
+        downloaded = download(symbols="all")
         return downloaded
