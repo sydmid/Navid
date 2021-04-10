@@ -8,7 +8,14 @@ from app.main import db
 
 Base = automap_base()
 
-class Stock(Resource):
+
+class DBinit(Resource):
+    def get(self, name):
+        item = StockModel.find_by_name(name)
+        if item:
+            return item.json()
+        return {'message': 'Item not found'}, 404
+
     def post(self):
         Base.prepare(db.engine, reflect=True)
         inplace_tables = Base.classes
@@ -43,3 +50,10 @@ class Stock(Resource):
             db.session.add_all(tables)
             db.session.commit()
 
+
+class Stock(Resource):
+    def get(self, name):
+        stock = StockModel.find_by_name(name)
+        if stock:
+            return stock.json()
+        return {'message': 'Store not found'}, 404

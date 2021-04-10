@@ -2,7 +2,7 @@ from flask import jsonify
 from .resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from .resources.item import Item, ItemList
 from .resources.store import Store, StoreList
-from .resources.stock import Stock
+from .resources.stock import DBinit, Stock
 
 
 def jwt_claim_handler(jwt):
@@ -71,5 +71,6 @@ def restful_api_resource_handler(api):
     api.add_resource(UserLogin, '/login')
     api.add_resource(TokenRefresh, '/refresh')
     api.add_resource(UserLogout, '/logout')
-    api.add_resource(Stock, '/stock')
+    api.add_resource(DBinit, '/stock')
+    api.add_resource(Stock, '/stock/<string:name>')
 

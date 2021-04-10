@@ -2,17 +2,17 @@ from .. import db
 
 
 class StockModel(db.Model):
-
+    __tablename__ = 'stocks'
     name = db.Column(db.String(20), primary_key=True)
     group = db.Column(db.String(20))
 
     def __init__(self, name):
         self.name = name
 
-    # def json(self):
-    #     return {'id': self.id,
-    #             'name': self.name,
-    #             'items': [item.json() for item in self.items.all()]}
+    def json(self):
+        return {
+                'name': self.name,
+        }
 
     @classmethod
     def find_by_name(cls, name):
