@@ -72,9 +72,13 @@ class UserLogin(Resource):
     def post(cls):
         data = _user_parser.parse_args()
         user = UserModel.find_by_username(data['username'])
-        if user.verify_password(data['password']):
-            return _token_creator(user)
-        return {'message': 'Invalid credentials'}, 401
+        if user:
+            if user.verify_password(data['password']):
+                return _token_creator(user)
+            else:
+                return {'message': 'Not a valid Password'}, 401
+        else:
+            return {'message': 'Not a valid Username'}, 401
 
 
 class UserLogout(Resource):
