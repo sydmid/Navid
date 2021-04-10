@@ -3,12 +3,12 @@ from sqlalchemy import (MetaData, Table, Column, Integer, Float, Numeric, String
 from sqlalchemy.ext.declarative import declarative_base
 import pandas as pd
 import asyncio
-from tset_client import Downloader
+from .tset_client import Downloader
 
 Base = declarative_base()
 engine = create_engine('sqlite:///test.db')
 metadata = MetaData()
-downloader = Downloader(mode='only_names')
+downloader = Downloader(mode='test')
 
 
 async def init_db():
@@ -34,5 +34,4 @@ async def init_db():
     })
     Base.metadata.create_all(engine)
 
-asyncio.run(init_db())
 

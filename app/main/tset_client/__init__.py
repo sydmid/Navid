@@ -20,7 +20,7 @@ class Downloader:
     options = {}
     try_count = 0
 
-    def __init__(self, max_tries=10, mode='save_csv'):
+    def __init__(self, max_tries=10, mode='test'):
         self.options['max_tries'] = max_tries
         self.options['mode'] = mode
 
@@ -31,9 +31,14 @@ class Downloader:
                 downloaded = await self._csv_downloader(await self._latest_date_fetcher())
             except:
                 await self._retry_handler()
-        elif self.options['mode'] == 'only_names':
+        elif self.options['mode'] == 'production':
             try:
                 downloaded = download(symbols="all")
+            except:
+                await self._retry_handler()
+        elif self.options['mode'] == 'test':
+            try:
+                downloaded = download(symbols=["خودرو", "فولاد"])
             except:
                 await self._retry_handler()
         # TODO implement a log system with date for each activity
@@ -56,7 +61,7 @@ class Downloader:
 
         if not current_saved_date_value or date_time_obj < biggest_date:
             print("Starting to Download All")
-            downloaded = download(symbols="فولاد", write_to_csv=True, base_path=Download_path_1)
+            downloaded = download(symbols="all", write_to_csv=True, base_path=Download_path_1)
         else:
             print("Data is Up to Date. There's Nothing More to Do :)")
             with open(_logs_path, "a") as logfile:

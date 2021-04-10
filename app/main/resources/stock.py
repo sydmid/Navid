@@ -19,7 +19,7 @@ class DBinit(Resource):
     def post(self):
         Base.prepare(db.engine, reflect=True)
         inplace_tables = Base.classes
-        downloader = Downloader()
+        downloader = Downloader(mode="test")
         downloaded = downloader.initialize_existing_db()
         for key, value in downloaded.items():
             stock_class = inplace_tables['stocks']
