@@ -1,6 +1,7 @@
-from .. import db
 from datetime import datetime, timezone
+from typing import List, Dict, Union
 
+from .. import db
 
 class BlockedTokenModel(db.Model):
     __tablename__ = 'blocked-tokens'
@@ -9,23 +10,23 @@ class BlockedTokenModel(db.Model):
     jti = db.Column(db.String(36), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
 
-    def __init__(self, jti):
+    def __init__(self, jti: int):
         self.jti = jti
         self.created_at = datetime.now(timezone.utc)
 
     @classmethod
-    def find_by_jti(cls, jti):
+    def find_by_jti(cls, jti: int) -> 'BlockedTokenModel':
         return cls.query.filter_by(jti=jti).scalar()
 
     @classmethod
-    def find_all(cls):
+    def find_all(cls) -> List['BlockedTokenModel']:
         return cls.query.all()
 
-    def save_to_db(self):
+    def save_to_db(self) -> None:
         db.session.add(self)
         db.session.commit()
 
-    def delete_from_db(self):
+    def delete_from_db(self) -> None:
         db.session.delete(self)
         db.session.commit()
 

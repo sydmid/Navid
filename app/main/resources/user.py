@@ -25,14 +25,14 @@ _user_parser.add_argument('password',
 
 class User(Resource):
     @classmethod
-    def get(cls, user_id):
+    def get(cls, user_id: int):
         user = UserModel.find_by_id(user_id)
         if not user:
             return {'message': "Couldn't find the user"}, 404
         return user.json()
 
     @classmethod
-    def delete(cls, user_id):
+    def delete(cls, user_id: int):
         user = UserModel.find_by_id(user_id)
         if not user:
             return {'message': "Couldn't find the user"}, 404

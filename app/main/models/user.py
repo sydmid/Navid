@@ -1,6 +1,8 @@
 from .. import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from typing import Dict, Union
 
+UserJSON = Dict[str, Union[int, str]]
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -20,27 +22,27 @@ class UserModel(db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def __init__(self, username, password):
+    def __init__(self, username: str, password: str):
         self.username = username
         self.password = password
 
-    def json(self):
+    def json(self) -> Dict:
         return {'id': self.id,
                 'username': self.username
                 }
 
-    def save_to_db(self):
+    def save_to_db(self) -> None:
         db.session.add(self)
         db.session.commit()
 
-    def delete_from_db(self):
+    def delete_from_db(self) -> None:
         db.session.delete(self)
         db.session.commit()
 
     @classmethod
-    def find_by_username(cls, username):
+    def find_by_username(cls, username: str) -> "UserModel":
         return cls.query.filter_by(username=username).first()
 
     @classmethod
-    def find_by_id(cls, _id):
+    def find_by_id(cls, _id: int) -> "UserModel":
         return cls.query.filter_by(id=_id).first()

@@ -9,14 +9,14 @@ loadedTables = None
 
 class Stock(Resource):
     # @jwt_required()
-    def get(self, name):
-        global Tables_object
-        if not Tables_object:
+    def get(self, name: str):
+        global loadedTables
+        if not loadedTables:
             base = automap_base()
             base.prepare(db.engine, reflect=True)
             loadedTables = base.classes
         try:
-            requestedStock = Tables_object[name]
+            requestedStock = loadedTables[name]
         except:
             return {'message': 'Stock not found'}, 404
         records = db.session.query(requestedStock).all()
