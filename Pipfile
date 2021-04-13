@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+beautifulsoup4 = "==4.9.3"
+flask = "==1.1.2"
+flask-bootstrap = "==3.3.7.1"
+flask-jwt-extended = "==4.1.0"
+flask-sqlalchemy = "==2.5.1"
+jdatetime = "==3.6.2"
+poetry = "==1.1.5"
+requests = "==2.25.1"
+werkzeug = "==1.0.1"
+pandas = "~=1.2.3"
+sqlalchemy = "~=1.4.2"
+asyncio = "~=3.4.3"
+urllib3 = "~=1.26.4"
+Flask-RESTful = "==0.3.8"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
