@@ -18,8 +18,14 @@ sqlalchemy = "~=1.4.2"
 asyncio = "~=3.4.3"
 urllib3 = "~=1.26.4"
 Flask-RESTful = "==0.3.8"
+marshmallow = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

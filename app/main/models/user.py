@@ -1,8 +1,9 @@
 from .. import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from typing import Dict, Union
 
-UserJSON = Dict[str, Union[int, str]]
+# no longer needed because of marshmallow (we don't want anything from typing lib)
+# UserJSON = Dict[str, Union[int, str]]
+
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -25,11 +26,6 @@ class UserModel(db.Model):
     def __init__(self, username: str, password: str):
         self.username = username
         self.password = password
-
-    def json(self) -> Dict:
-        return {'id': self.id,
-                'username': self.username
-                }
 
     def save_to_db(self) -> None:
         db.session.add(self)
