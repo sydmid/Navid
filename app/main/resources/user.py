@@ -10,16 +10,18 @@ from flask_jwt_extended import (
 from ..models.user import UserModel
 from ..models.token import BlockedTokenModel
 
+BLANK_ERROR = "'{}' cannot be blank"
+
 _user_parser = reqparse.RequestParser()
 _user_parser.add_argument('username',
                           type=str,
                           required=True,
-                          help="This field cannot be blank."
+                          help=BLANK_ERROR.format('username')
                           )
 _user_parser.add_argument('password',
                           type=str,
                           required=True,
-                          help="This field cannot be blank."
+                          help=BLANK_ERROR.format('password')
                           )
 
 
@@ -82,23 +84,27 @@ class UserLogin(Resource):
 
 
 class UserLogout(Resource):
+    @classmethod
     @jwt_required()
-    def delete(self):
+    def post(cls):
         jti = get_jwt()['jti']
+        user_id = get_jwt_identity()
         token = BlockedTokenModel(jti)
         token.save_to_db()
-        return {"message": "User has successfully Logged out."}, 200
+        return {"message": f"User {user_id} has successfully Logged out."}, 200
 
 
 class TokenRefresh(Resource):
+    @classmethod
     @jwt_required(refresh=True)
-    def post(self):
+    def post(cls):
         user_id = get_jwt_identity()
         new_token = create_access_token(identity=user_id, fresh=False)
         return {'access_token': new_token}, 200
 
 
 class BlockedTokens(Resource):
+    @classmethod
     @jwt_required()
-    def get(self):
+    def get(cls):
         pass
