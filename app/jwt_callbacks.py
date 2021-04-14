@@ -1,9 +1,5 @@
 from flask import jsonify
 
-from .resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
-from .resources.stock import Stock
-from .resources.misc import DBinit
-
 
 def jwt_claim_handler(jwt):
     @jwt.additional_claims_loader
@@ -60,13 +56,4 @@ def jwt_claim_handler(jwt):
         token = BlockedTokenModel.find_by_jti(jti)
         return token is not None
 
-
-def restful_api_resource_handler(api):
-    api.add_resource(UserRegister, '/register')
-    api.add_resource(User, '/user/<int:user_id>')
-    api.add_resource(UserLogin, '/login')
-    api.add_resource(TokenRefresh, '/refresh')
-    api.add_resource(UserLogout, '/logout')
-    api.add_resource(DBinit, '/dbinit')
-    api.add_resource(Stock, '/stock/<string:name>')
 

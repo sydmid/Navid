@@ -5,7 +5,6 @@ from .download import download
 from .download import download_client_types_records
 from .symbols_data import all_symbols
 from .ticker import Ticker
-# from .config import TRY_COUNT
 
 _tset_client_dir = os.path.abspath(os.path.dirname(__file__))
 _downloaded_date_path = os.path.normpath(os.path.join(_tset_client_dir, 'download/Dates.txt'))
@@ -25,21 +24,25 @@ class Downloader:
         self.options['mode'] = mode
 
     async def download(self):
-        downloaded = {}
+        print('download has started')
+        downloaded = dict()
         if self.options['mode'] == 'save_csv':
             try:
                 downloaded = await self._csv_downloader(await self._latest_date_fetcher())
-            except:
+            except Exception as err:
+                print('some thing went wrong with downloading from tsetmc', str(err))
                 await self._retry_handler()
         elif self.options['mode'] == 'production':
             try:
-                downloaded = download(symbols="all")
-            except:
+                downloaded = download(symbols="all", include_jdate=True)
+            except Exception as err:
+                print('some thing went wrong with downloading from tsetmc', str(err))
                 await self._retry_handler()
         elif self.options['mode'] == 'test':
             try:
-                downloaded = download(symbols=["خودرو", "فولاد"])
-            except:
+                downloaded = download(symbols=["خودرو", "فولاد"], include_jdate=True)
+            except Exception as err:
+                print('some thing went wrong with downloading from tsetmc', str(err))
                 await self._retry_handler()
         # TODO implement a log system with date for each activity
         return downloaded
@@ -50,6 +53,7 @@ class Downloader:
             return False
         await self.download()
 
+    # Only First Group of data
     async def _csv_downloader(self, biggest_date):
         downloaded = ''
         if not os.path.exists(_downloaded_date_path):
@@ -81,5 +85,13 @@ class Downloader:
         return biggest_data
 
     def initialize_existing_db(self):
-        downloaded = download(symbols="all")
-        return downloaded
+        download_list = list()
+        downloaded = dict()
+        downloaded_clients = dict()
+        try:
+            downloaded = download(symbols="all", include_jdate=True)
+            downloaded_clients = download_client_types_records(symbols="all", include_jdate=True)
+            download_list.extend([downloaded, downloaded_clients])
+            return download_list
+        except Exception as err:
+            print('some thing went wrong with downloading from tsetmc', str(err))

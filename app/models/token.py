@@ -1,7 +1,8 @@
 from datetime import datetime, timezone
-from typing import List, Dict, Union
+from typing import List
 
-from .. import db
+from app import db
+
 
 class BlockedTokenModel(db.Model):
     __tablename__ = 'blocked-tokens'

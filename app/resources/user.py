@@ -1,6 +1,5 @@
 from flask import request
 from flask_restful import Resource
-# from werkzeug.security import safe_str_cmp
 from flask_jwt_extended import (
                                 create_access_token,
                                 create_refresh_token,
@@ -9,9 +8,9 @@ from flask_jwt_extended import (
                                 get_jwt
                                 )
 from marshmallow import ValidationError
-from ..models.user import UserModel
-from ..schemas.user import UserSchema
-from ..models.token import BlockedTokenModel
+from app.models.user import UserModel
+from app.schemas.user import UserSchema
+from app.models.token import BlockedTokenModel
 
 # BLANK_ERROR = "'{}' cannot be blank"
 

@@ -3,12 +3,11 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required
 from sqlalchemy.ext.automap import automap_base
 
-from ..tset_client import Downloader
-from app.main import db
+from app.tset_client import Downloader
+from app.db import db
 
 
-
-class DBinit(Resource):
+class DatabaseInit(Resource):
     @jwt_required()
     def post(self):
         Base = automap_base()

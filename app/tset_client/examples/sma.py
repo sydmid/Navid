@@ -1,4 +1,4 @@
-from ... import tset_client as tse
+from app import tset_client as tse
 
 ticker = tse.Ticker("وبملت")
 history = ticker.history

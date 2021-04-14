@@ -4,8 +4,9 @@ from flask_jwt_extended import JWTManager
 from flask_bootstrap import Bootstrap
 
 from config import config
-from .main import db
-from .main.utils import jwt_claim_handler, restful_api_resource_handler
+from app.db import db
+from app.jwt_callbacks import jwt_claim_handler
+from app.resource_handling import restful_api_resource_handler
 
 bootstrap = Bootstrap()
 
@@ -23,8 +24,8 @@ def create_app(config_name):
     jwt = JWTManager(app)
     jwt_claim_handler(jwt)
 
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    # from .main import main as main_blueprint
+    # app.register_blueprint(main_blueprint)
 
     @app.before_first_request
     def global_table_object_creator():

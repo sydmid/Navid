@@ -4,7 +4,7 @@ downloadable.
 This process takes a long time so it's not part of the unit test
 """
 
-from app.main.tset_client import download, download_client_types_records
+from app.tset_client import download, download_client_types_records
 
 if __name__ == "__main__":
     download(symbols="all")

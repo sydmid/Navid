@@ -19,10 +19,11 @@ poetry.lock
 .dmypy.json
 dmypy.json
 
-# Project generated files
+# Project generated files and folders
 *.csv
 *.sqlite
 *.db
 .vscode/settings.json
 Logs.txt
 Dates.txt
+/client_types_data
