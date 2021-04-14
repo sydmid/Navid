@@ -7,13 +7,14 @@ from sqlalchemy.orm import relationship
 Base = declarative_base()
 engine = create_engine('sqlite:///test.db')
 metadata = MetaData()
-downloader = Downloader(mode='test')
+downloader = Downloader(mode='production')
 
 
 async def create_tset_tables():
     downloaded = await downloader.download()
+    classes = {}
     for key in downloaded.keys():
-        records_table = type("Record", (Base,), {
+        classes[key] = type("Record", (Base,), {
             '__tablename__': f"{key}",
             'name': Column(String(15), ForeignKey('stocks.name')),
             'group': Column(String),
@@ -46,7 +47,7 @@ async def create_tset_tables():
             'jdate': Column(String),
 
         })
-    stocks_table = type("Stock", (Base,), {
+    classes['stocks'] = type("Stock", (Base,), {
         '__tablename__': "stocks",
         'name': Column(String(15), primary_key=True),
         'group': Column(String(15)),

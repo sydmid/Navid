@@ -97,6 +97,8 @@ def download_client_types_records(
         for future in futures.as_completed(future_to_symbol):
             symbol = future_to_symbol[future]
             df: pd.DataFrame = future.result()
+            # better not to get reversed
+            # df = df.iloc[::-1]
             _adjust_data_frame(df, include_jdate)
             df_list[symbol] = df
             if write_to_csv:

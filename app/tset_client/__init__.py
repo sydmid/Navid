@@ -85,13 +85,10 @@ class Downloader:
         return biggest_data
 
     def initialize_existing_db(self):
-        download_list = list()
-        downloaded = dict()
-        downloaded_clients = dict()
+        output_dict = dict()
         try:
-            downloaded = download(symbols="all", include_jdate=True)
-            downloaded_clients = download_client_types_records(symbols="all", include_jdate=True)
-            download_list.extend([downloaded, downloaded_clients])
-            return download_list
+            output_dict['download-general'] = download(symbols='all', include_jdate=True)
+            output_dict['download-clients'] = download_client_types_records(symbols='all', include_jdate=True)
+            return output_dict
         except Exception as err:
             print('some thing went wrong with downloading from tsetmc', str(err))
