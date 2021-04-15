@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_bootstrap import Bootstrap
+from dotenv import load_dotenv
 
 from config import config
 from app.db import db
@@ -13,6 +14,7 @@ bootstrap = Bootstrap()
 
 def create_app(config_name):
     app = Flask(__name__)
+    load_dotenv(".env")
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
     db.init_app(app)

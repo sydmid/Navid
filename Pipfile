@@ -21,6 +21,7 @@ Flask-RESTful = "==0.3.8"
 marshmallow = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

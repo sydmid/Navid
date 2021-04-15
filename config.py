@@ -24,7 +24,8 @@ class PreAlphaConfig(Config):
     # flask extensions like flask_jwt can raise their own exception and app will know their specific error
     PROPAGATE_EXCEPTIONS = True
     # We choose it to be different than app.secret_key (Optional)
-    JWT_SECRET_KEY = 'jose2'
+    JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or \
+        'mysecret1'
     # Black list is disabled by default
     # Dont need it in flask 4
     # JWT_BLACKLIST_ENABLED = True
