@@ -9,7 +9,7 @@ from app.db import db
 
 
 class DatabaseInit(Resource):
-    @jwt_required()
+    # @jwt_required()
     def post(self):
         Base = automap_base()
         Base.prepare(db.engine, reflect=True)
@@ -17,6 +17,10 @@ class DatabaseInit(Resource):
 
         all_stocks = {}
         all_stock_rows = {}
+        # for stock name duplicate handling
+        counted_stocks_1 = {}
+        counted_stocks_2 = {}
+
 
         downloader = Downloader()
         downloaded = downloader.initialize_existing_db()
@@ -24,6 +28,11 @@ class DatabaseInit(Resource):
         for download_category, download_results in downloaded.items():
             if download_category == 'download-general':
                 for stockname, dataframe in download_results.items():
+                    try:
+                        if counted_stocks_1[f"{str(stockname).replace('ك', 'ک').replace('ي', 'ی').strip()}"]:
+                            stockname = stockname + " دو"
+                    except:
+                        stockname = str(stockname).replace('ك', 'ک').replace('ي', 'ی').strip()
                     all_stocks[stockname] = []
                     df = pd.DataFrame(dataframe)
                     rowcounter = 0
@@ -43,6 +52,11 @@ class DatabaseInit(Resource):
                     all_stock_rows[stockname] = rowcounter
             elif download_category == 'download-clients':
                 for stockname, dataframe in download_results.items():
+                    try:
+                        if counted_stocks_2[f"{str(stockname).replace('ك', 'ک').replace('ي', 'ی').strip()}"]:
+                            stockname = stockname + " دو"
+                    except:
+                        stockname = str(stockname).replace('ك', 'ک').replace('ي', 'ی').strip()
                     df = pd.DataFrame(dataframe)
                     rowcounter = all_stock_rows[stockname] - 1
                     for row in df.itertuples():

@@ -14,8 +14,13 @@ async def create_tset_tables():
     downloaded = await downloader.download()
     classes = {}
     for key in downloaded.keys():
-        classes[key] = type("Record", (Base,), {
-            '__tablename__': f"{key}",
+        try:
+            if classes[f"{str(key).replace('ك', 'ک').replace('ي', 'ی').strip()}"]:
+                key = key + " دو"
+        except:
+            print('noDuplicateFound')
+        classes[f"{str(key).replace('ك', 'ک').replace('ي', 'ی').strip()}"] = type("Record", (Base,), {
+            '__tablename__': f"{str(key).replace('ك', 'ک').replace('ي', 'ی').strip()}",
             'name': Column(String(15), ForeignKey('stocks.name')),
             'group': Column(String),
             'date': Column(Date, primary_key=True),
