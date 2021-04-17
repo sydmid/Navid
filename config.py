@@ -1,7 +1,11 @@
 import os
 from datetime import timedelta
+from sqlalchemy.ext.automap import automap_base
+from app.db import db
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+loadedTables = {}
 
 class Config:
     toBeContinued = True
@@ -35,9 +39,21 @@ class PreAlphaConfig(Config):
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
 
 
+def _load_tables():
+    base = automap_base()
+    base.prepare(db.engine, reflect=True)
+    global loadedTables
+    for key, value in base.classes.items():
+        loadedTables[key] = value
+
 config = {
     'development': PreAlphaConfig,
     'testing': PreAlphaConfig,
     'production': PreAlphaConfig,
-    'default': PreAlphaConfig
+    'default': PreAlphaConfig,
+    'loadTables': _load_tables,
 }
+
+
+
+

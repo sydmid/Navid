@@ -33,5 +33,9 @@ def create_app(config_name):
     def global_table_object_creator():
          db.create_all()
 
+    @app.before_first_request
+    def load_tables():
+        done = config['loadTables']()
+
     return app
 
