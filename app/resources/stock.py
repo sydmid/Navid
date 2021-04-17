@@ -1,30 +1,24 @@
 from flask_restful import Resource
-from datetime import datetime
 
-from app import db
-from config import loadedTables
+from app.stock_data import _1_year_stocks, _2_year_stocks, _3_year_stocks, _5_year_stocks, _10_year_stocks
 
 
 class Stock(Resource):
-    loadedTables = loadedTables
     @classmethod
     # @jwt_required()
-    def get(cls, name: str, from_date: str, to_date: str, step: int):
-        global loadedTables
-        from_date = datetime.strptime(from_date, "%Y-%m-%d").date()
-        to_date = datetime.strptime(to_date, "%Y-%m-%d").date()
-
+    def get(cls, name: str, year_ago: int, mode: str):
+        # from_date = datetime.strptime(from_date, "%Y-%m-%d").date()
+        yearago = {1: _1_year_stocks,
+                   2: _2_year_stocks,
+                   3: _3_year_stocks,
+                   5: _5_year_stocks,
+                   10: _10_year_stocks}
         try:
-            requested_stock = loadedTables[name]
+            requested_stock = yearago[year_ago][name]
         except:
             return {'message': 'Stock not found'}, 404
-        records = db.session.query(requested_stock).filter\
-                                  (requested_stock.date >= from_date,
-                                   requested_stock.date <= to_date)
-        returnobj = []
-        for i in range(0, records.count(), step):
-            returnobj.append(records[i])
+
         return [str([record.date,
                      record.open,
                      record.close,
-                     record.value]) for record in returnobj]
+                     record.value]) for record in requested_stock]

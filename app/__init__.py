@@ -5,6 +5,7 @@ from flask_bootstrap import Bootstrap
 from dotenv import load_dotenv
 
 from config import config
+from app.stock_data import ready
 from app.db import db
 from app.jwt_callbacks import jwt_claim_handler
 from app.resource_handling import restful_api_resource_handler
@@ -35,7 +36,11 @@ def create_app(config_name):
 
     @app.before_first_request
     def load_tables():
-        done = config['loadTables']()
+        config['loadTables']()
+
+    @app.before_first_request
+    def load_ready_date_stock_objects():
+        ready()
 
     return app
 

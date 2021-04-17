@@ -10,4 +10,4 @@ def restful_api_resource_handler(api):
     api.add_resource(TokenRefresh, '/refresh')
     api.add_resource(UserLogout, '/logout')
     api.add_resource(DatabaseInit, '/dbinit')
-    api.add_resource(Stock, '/stock/<string:name>/<from_date>/<to_date>/<int:step>')
+    api.add_resource(Stock, '/stock/<string:name>/<int:year_ago>/<string:mode>')
