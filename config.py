@@ -4,7 +4,7 @@ from sqlalchemy.ext.automap import automap_base
 from datetime import datetime, timedelta
 
 from app.db import db
-from app.modes import mode1, mode2
+from app.modes import general_data, clients_data
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -16,8 +16,8 @@ _3_year_stocks = {}
 _5_year_stocks = {}
 _10_year_stocks = {}
 
-query_modes_object = {'mode1': mode1,
-                      'mode2': mode2}
+query_modes_object = {'general_data': general_data,
+                      'clients_data': clients_data}
 
 
 class Config:
