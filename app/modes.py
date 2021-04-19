@@ -39,3 +39,19 @@ def clients_data(requested_stock):
              'jdate': x.jdate}
         )
     return outputlist
+
+def test_data(requested_stock):
+    outputlist = []
+    for x in requested_stock:
+        outputlist.append(
+            [str(x.date),
+             x.open,
+             x.high,
+             x.low,
+             x.adjClose,
+             x.value,
+             x.volume,
+             x.count,
+             x.close]
+        )
+    return outputlist
