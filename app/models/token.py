@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from typing import List
 
-from app import db
+from app.db import db
 
 
 class BlockedTokenModel(db.Model):
