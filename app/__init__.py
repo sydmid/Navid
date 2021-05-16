@@ -8,25 +8,32 @@ from app.views import main
 from app.db import db
 from app.jwt_callbacks import jwt_claim_handler
 
+from app.models.stocks import *
+
+jwt = JWTManager()
+migrate = Migrate()
+
 
 def create_app(config_name):
     app = Flask(__name__)
 
     load_dotenv(".env")
 
+    migrate.init_app(app, db)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
     db.init_app(app)
 
+
     app.register_blueprint(main)
 
-    jwt = JWTManager(app)
+    jwt.init_app(app)
     jwt_claim_handler(jwt)
 
     @app.before_first_request
     def global_table_object_creator():
-         db.create_all()
+        db.create_all()
 
     @app.before_first_request
     def global_loaded_tables_creator():
@@ -35,6 +42,7 @@ def create_app(config_name):
     @app.before_first_request
     def global_stocks_timespan_data_creator():
         config['loadTimespans']()
+
 
     return app
 

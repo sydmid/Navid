@@ -31,7 +31,7 @@ class Config:
 
 class PreAlphaConfig(Config):
     DEBUG = True
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'jose'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'javad'
     DOWNLOAD_DIR = os.path.join(basedir, 'download')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'test.db') + '?check_same_thread=False'
@@ -113,7 +113,3 @@ config = {
     'loadTables': _load_tables,
     'loadTimespans': _load_timespans
 }
-
-
-
-

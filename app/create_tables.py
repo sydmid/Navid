@@ -21,8 +21,8 @@ async def create_tset_tables():
             print('noDuplicateFound')
         classes[f"{str(key).replace('ك', 'ک').replace('ي', 'ی').strip()}"] = type("Record", (Base,), {
             '__tablename__': f"{str(key).replace('ك', 'ک').replace('ي', 'ی').strip()}",
-            'name': Column(String(15), ForeignKey('stocks.name')),
-            'group': Column(String),
+            'name': Column(String(15)),
+            'group': Column(String(30)),
             'date': Column(Date, primary_key=True),
             'open': Column(Float),
             'high': Column(Float),
@@ -52,12 +52,12 @@ async def create_tset_tables():
             'jdate': Column(String),
 
         })
-    classes['stocks'] = type("Stock", (Base,), {
-        '__tablename__': "stocks",
-        'name': Column(String(15), primary_key=True),
-        'group': Column(String(15)),
-        'records': relationship("Record")
-    })
+    # classes['stocks'] = type("Stock", (Base,), {
+    #     '__tablename__': "stocks",
+    #     'name': Column(String(15), primary_key=True),
+    #     'group': Column(String(15)),
+    #     'records': relationship("Record")
+    # })
     Base.metadata.create_all(engine)
 
 

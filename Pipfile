@@ -23,6 +23,7 @@ marshmallow = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 python-dotenv = "*"
+sqlacodegen = "*"
 
 [dev-packages]
 
