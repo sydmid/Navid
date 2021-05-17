@@ -7,9 +7,9 @@ import pandas as pd
 from requests import HTTPError
 import jdatetime
 
-from . import config, symbols_data, translations, tse_settings
-from .utils import requests_retry_session
-from .tse_settings import TSE_CLIENT_TYPE_DATA_URL
+from app.tset_client import config, symbols_data, translations, tse_settings
+from app.tset_client.utils import requests_retry_session
+from app.tset_client.tse_settings import TSE_CLIENT_TYPE_DATA_URL
 
 
 def download(
@@ -25,11 +25,15 @@ def download(
     df_list = {}
     future_to_symbol = {}
     with futures.ThreadPoolExecutor(max_workers=10) as executor:
+        session = requests_retry_session()
         for symbol in symbols:
-            ticker_index = symbols_data.get_ticker_index(symbol)
-            _handle_ticker_index(symbol, ticker_index)
+            if symbol.isnumeric():
+                ticker_index = symbol
+            else:
+                ticker_index = symbols_data.get_ticker_index(symbol)
+                _handle_ticker_index(symbol, ticker_index)
             future = executor.submit(
-                download_ticker_daily_record, ticker_index
+                download_ticker_daily_record, ticker_index, session
             )
             future_to_symbol[future] = symbol
         for future in futures.as_completed(future_to_symbol):
@@ -37,7 +41,7 @@ def download(
             df: pd.DataFrame = future.result()
             df = df.iloc[::-1]
             df = df.rename(columns=translations.HISTORY_FIELD_MAPPINGS)
-            df = df.drop(columns=["<PER>", "<OPEN>", "<TICKER>"])
+            df = df.drop(columns=["<PER>", "<TICKER>"])
             _adjust_data_frame(df, include_jdate)
             df_list[symbol] = df
             if write_to_csv:
@@ -45,7 +49,8 @@ def download(
                 df.to_csv(f'{base_path}/{symbol}.csv')
 
     if len(df_list) != len(symbols):
-        raise Exception
+        print("Warning, download did not complete, re-run the code")
+    session.close()
     return df_list
 
 
@@ -56,17 +61,15 @@ def _adjust_data_frame(df, include_jdate):
         df.jdate = df.date.apply(
             lambda gregorian:
             jdatetime.date.fromgregorian(date=gregorian))
-    df.set_index("date", inplace=True)
 
 
-def download_ticker_daily_record(ticker_index: str):
+def download_ticker_daily_record(ticker_index: str, session):
     url = tse_settings.TSE_TICKER_EXPORT_DATA_ADDRESS.format(ticker_index)
-    with requests_retry_session() as session:
-        response = session.get(url, timeout=10)
+    response = session.get(url, timeout=10)
     try:
         response.raise_for_status()
     except HTTPError:
-        return download_ticker_daily_record(ticker_index)
+        return download_ticker_daily_record(ticker_index, session)
 
     data = StringIO(response.text)
     return pd.read_csv(data)
@@ -97,16 +100,11 @@ def download_client_types_records(
         for future in futures.as_completed(future_to_symbol):
             symbol = future_to_symbol[future]
             df: pd.DataFrame = future.result()
-            # better not to get reversed
-            # df = df.iloc[::-1]
             _adjust_data_frame(df, include_jdate)
             df_list[symbol] = df
             if write_to_csv:
                 Path(base_path).mkdir(parents=True, exist_ok=True)
                 df.to_csv(f'{base_path}/{symbol}.csv')
-
-    if len(df_list) != len(symbols):
-        raise Exception
     return df_list
 
 

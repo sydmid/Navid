@@ -3,6 +3,7 @@ import datetime
 
 from .download import download
 from .download import download_client_types_records
+
 from .symbols_data import all_symbols
 from .ticker import Ticker
 
@@ -16,8 +17,11 @@ Download_path_test = os.path.normpath(os.path.join(_tset_client_dir, 'download/t
 
 
 class Downloader:
-    options = {}
     try_count = 0
+    options = {
+        "max_tries": None,
+        "mode": None
+    }
 
     def __init__(self, max_tries=10, mode='test'):
         self.options['max_tries'] = max_tries
@@ -27,28 +31,32 @@ class Downloader:
         print('download has started')
         downloaded = dict()
         if self.options['mode'] == 'save_csv':
+            print('mode = save_csv')
             try:
                 downloaded = await self._csv_downloader(await self._latest_date_fetcher())
             except Exception as err:
                 print('some thing went wrong with downloading from tsetmc', str(err))
                 await self._retry_handler()
         elif self.options['mode'] == 'production':
+            print('mode = production')
             try:
                 downloaded = download(symbols="all", include_jdate=True)
             except Exception as err:
                 print('some thing went wrong with downloading from tsetmc', str(err))
                 await self._retry_handler()
         elif self.options['mode'] == 'test':
+            print('mode = test')
             try:
                 downloaded = download(symbols=["خودرو", "فولاد"], include_jdate=True)
             except Exception as err:
                 print('some thing went wrong with downloading from tsetmc', str(err))
                 await self._retry_handler()
-        # TODO implement a log system with date for each activity
+
         return downloaded
 
     async def _retry_handler(self):
         self.try_count += 1
+        print(f"number of retries: {self.try_count} so far")
         if not self.try_count < self.options['max_tries']:
             return False
         await self.download()
@@ -57,7 +65,8 @@ class Downloader:
     async def _csv_downloader(self, biggest_date):
         downloaded = ''
         if not os.path.exists(_downloaded_date_path):
-            open(_downloaded_date_path, "w+")
+            new_date_file = open(_downloaded_date_path, "w+")
+            new_date_file.close()
         with open(_downloaded_date_path, "r") as f:
             current_saved_date_value = f.readline()
             date_time_obj = datetime.datetime.strptime(current_saved_date_value, '%Y-%m-%d %H:%M:%S')
@@ -73,7 +82,6 @@ class Downloader:
         return downloaded
 
     async def _latest_date_fetcher(self):
-        # implement log system
         biggest_data = datetime.date.min
         stocks_to_lookup = download(
             ["فولاد", "آپ", "بورس", "البرز", "حکشتی", "ونیکی", "فرابورس", "تاپیکو", "وبملت",
@@ -85,10 +93,10 @@ class Downloader:
         return biggest_data
 
     def initialize_existing_db(self):
-        output_dict = dict()
+        downloaded = dict()
         try:
-            output_dict['download-general'] = download(symbols='all', include_jdate=True)
-            output_dict['download-clients'] = download_client_types_records(symbols='all', include_jdate=True)
-            return output_dict
+            downloaded['download-general'] = download(symbols="all", include_jdate=True)
+            downloaded['download-clients'] = download_client_types_records(symbols="all", include_jdate=True)
+            return downloaded
         except Exception as err:
             print('some thing went wrong with downloading from tsetmc', str(err))

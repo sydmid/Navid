@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8e1883997057
+Revision ID: 7c8b00f5c322
 Revises: 
-Create Date: 2021-05-16 19:19:11.686811
+Create Date: 2021-05-17 20:39:38.403152
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8e1883997057'
+revision = '7c8b00f5c322'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,22 +22,51 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('jti', sa.String(length=36), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('stocks',
-    sa.Column('name', sa.String(length=15), nullable=False),
-    sa.Column('group', sa.String(length=15), nullable=True),
-    sa.PrimaryKeyConstraint('name')
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_blocked-tokens'))
     )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=80), nullable=True),
     sa.Column('password_hash', sa.String(length=128), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_users')),
+    sa.UniqueConstraint('username'),
+    sa.UniqueConstraint('username', name=op.f('uq_users_username'))
+    )
+    op.create_table('آ س پ',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آ س پ'))
     )
     op.create_table('آبادا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -65,12 +94,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آبادا'))
     )
     op.create_table('آبین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -98,45 +126,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('آبین دو',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آبین'))
     )
     op.create_table('آتیمس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -164,12 +158,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آتیمس'))
     )
     op.create_table('آرمان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -197,12 +190,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آرمان'))
     )
     op.create_table('آرمانی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -230,12 +222,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آرمانی'))
     )
     op.create_table('آریا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -263,12 +254,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آریا'))
     )
     op.create_table('آریان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -296,78 +286,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('آریان دو',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('آس پ',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آریان'))
     )
     op.create_table('آساس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -395,12 +318,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آساس'))
     )
     op.create_table('آسام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -428,12 +350,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آسام'))
     )
     op.create_table('آسامید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -461,12 +382,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آسامید'))
     )
     op.create_table('آسیا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -494,12 +414,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آسیا'))
     )
     op.create_table('آوا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -527,12 +446,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آوا'))
     )
     op.create_table('آپ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -560,12 +478,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آپ'))
     )
     op.create_table('آکورد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -593,12 +510,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آکورد'))
     )
     op.create_table('آگاس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -626,12 +542,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آگاس'))
+    )
+    op.create_table('آینده',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_آینده'))
     )
     op.create_table('اتکام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -659,12 +606,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اتکام'))
     )
     op.create_table('اتکای',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -692,12 +638,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اتکای'))
     )
     op.create_table('اخابر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -725,12 +670,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اخابر'))
     )
     op.create_table('ارزش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -758,12 +702,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ارزش'))
     )
     op.create_table('ارفع',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -791,12 +734,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ارفع'))
     )
     op.create_table('ارفعح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -824,12 +766,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ارفعح'))
     )
     op.create_table('ارمغان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -857,12 +798,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ارمغان'))
     )
     op.create_table('اطلس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -890,12 +830,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اطلس'))
     )
     op.create_table('اعتلا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -923,12 +862,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اعتلا'))
     )
     op.create_table('اعتلاح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -956,12 +894,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اعتلاح'))
     )
     op.create_table('اعتماد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -989,12 +926,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اعتماد'))
     )
     op.create_table('افرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1022,12 +958,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_افرا'))
     )
     op.create_table('افران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1055,12 +990,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_افران'))
     )
     op.create_table('افق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1088,12 +1022,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_افق'))
     )
     op.create_table('افق ملت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1121,12 +1054,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_افق ملت'))
     )
     op.create_table('البرز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1154,12 +1086,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_البرز'))
     )
     op.create_table('الماس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1187,12 +1118,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_الماس'))
     )
     op.create_table('امید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1220,12 +1150,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_امید'))
     )
     op.create_table('امین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1253,12 +1182,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_امین'))
     )
     op.create_table('امین یکم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1286,12 +1214,107 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_امین یکم'))
+    )
+    op.create_table('انرژی1',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_انرژی1'))
+    )
+    op.create_table('انرژی2',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_انرژی2'))
+    )
+    op.create_table('انرژی3',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_انرژی3'))
     )
     op.create_table('اوان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1319,12 +1342,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اوان'))
     )
     op.create_table('اوصتا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1352,12 +1374,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اوصتا'))
     )
     op.create_table('اپرداز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1385,12 +1406,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اپرداز'))
     )
     op.create_table('اکالا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1418,12 +1438,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_اکالا'))
     )
     op.create_table('بالاس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1451,12 +1470,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بالاس'))
     )
     op.create_table('بالبر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1484,12 +1502,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بالبر'))
     )
     op.create_table('بایکا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1517,12 +1534,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بایکا'))
     )
     op.create_table('بترانس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1550,12 +1566,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بترانس'))
     )
     op.create_table('بتک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1583,12 +1598,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بتک'))
     )
     op.create_table('بجهرم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1616,12 +1630,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بجهرم'))
     )
     op.create_table('بخاور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1649,12 +1662,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بخاور'))
     )
     op.create_table('بذر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1682,12 +1694,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بذر'))
     )
     op.create_table('برکت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1715,12 +1726,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_برکت'))
     )
     op.create_table('بزاگرس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1748,12 +1758,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بزاگرس'))
     )
     op.create_table('بزاگرسح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1781,12 +1790,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بزاگرسح'))
     )
     op.create_table('بساما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1814,12 +1822,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بساما'))
     )
     op.create_table('بسویچ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1847,12 +1854,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بسویچ'))
     )
     op.create_table('بشهاب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1880,12 +1886,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بشهاب'))
     )
     op.create_table('بفجر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1913,12 +1918,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بفجر'))
     )
     op.create_table('بموتو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1946,12 +1950,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بموتو'))
     )
     op.create_table('بمپنا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -1979,12 +1982,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بمپنا'))
     )
     op.create_table('بمیلا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2012,12 +2014,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بمیلا'))
     )
     op.create_table('بنو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2045,12 +2046,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بنو'))
     )
     op.create_table('بنیرو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2078,12 +2078,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بنیرو'))
     )
     op.create_table('بهپاک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2111,12 +2110,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بهپاک'))
     )
     op.create_table('بورس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2144,12 +2142,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بورس'))
+    )
+    op.create_table('بوعلی',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بوعلی'))
     )
     op.create_table('بپاس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2177,12 +2206,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بپاس'))
     )
     op.create_table('بپیوند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2210,12 +2238,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بپیوند'))
     )
     op.create_table('بکاب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2243,12 +2270,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بکاب'))
     )
     op.create_table('بکام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2276,12 +2302,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بکام'))
+    )
+    op.create_table('بکهنوج',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بکهنوج'))
     )
     op.create_table('بگیلان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2309,12 +2366,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_بگیلان'))
     )
     op.create_table('تابا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2342,12 +2398,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تابا'))
     )
     op.create_table('تاصیکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2375,12 +2430,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تاصیکو'))
     )
     op.create_table('تاپکیش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2408,12 +2462,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تاپکیش'))
     )
     op.create_table('تاپکیشح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2441,12 +2494,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تاپکیشح'))
     )
     op.create_table('تاپیکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2474,45 +2526,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('تاپیکو دو',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تاپیکو'))
     )
     op.create_table('تایرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2540,12 +2558,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تایرا'))
     )
     op.create_table('تبرک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2573,12 +2590,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تبرک'))
     )
     op.create_table('تشتاد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2606,12 +2622,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تشتاد'))
     )
     op.create_table('تشتادح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2639,12 +2654,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تشتادح'))
     )
     op.create_table('تصمیم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2672,12 +2686,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تصمیم'))
+    )
+    op.create_table('تفیرو',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تفیرو'))
+    )
+    op.create_table('تلیسه',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تلیسه'))
     )
     op.create_table('تماوند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2705,12 +2782,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تماوند'))
     )
     op.create_table('تملت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2738,12 +2814,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تملت'))
     )
     op.create_table('تنوین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2771,12 +2846,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تنوین'))
     )
     op.create_table('توریل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2804,12 +2878,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_توریل'))
     )
     op.create_table('تپمپی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2837,12 +2910,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تپمپی'))
     )
     op.create_table('تپولا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2870,12 +2942,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تپولا'))
+    )
+    op.create_table('تپکو',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تپکو'))
+    )
+    op.create_table('تکالا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تکالا'))
     )
     op.create_table('تکشا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2903,12 +3038,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تکشا'))
     )
     op.create_table('تکمبا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2936,12 +3070,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تکمبا'))
     )
     op.create_table('تکنار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -2969,12 +3102,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تکنار'))
     )
     op.create_table('تکنو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3002,12 +3134,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تکنو'))
     )
     op.create_table('تیپیکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3035,12 +3166,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_تیپیکو'))
     )
     op.create_table('ثاباد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3068,12 +3198,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثاباد'))
     )
     op.create_table('ثاخت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3101,12 +3230,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثاخت'))
     )
     op.create_table('ثاصفا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3134,12 +3262,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثاصفا'))
     )
     op.create_table('ثالوند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3167,12 +3294,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثالوند'))
     )
     op.create_table('ثامان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3200,12 +3326,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثامان'))
     )
     op.create_table('ثامید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3233,12 +3358,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثامید'))
     )
     op.create_table('ثاژن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3266,12 +3390,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثاژن'))
     )
     op.create_table('ثباغ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3299,12 +3422,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثباغ'))
     )
     op.create_table('ثبهساز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3332,12 +3454,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثبهساز'))
     )
     op.create_table('ثتران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3365,12 +3486,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثتران'))
     )
     op.create_table('ثترانح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3398,12 +3518,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثترانح'))
     )
     op.create_table('ثتوسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3431,12 +3550,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثتوسا'))
     )
     op.create_table('ثجوان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3464,12 +3582,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثجوان'))
     )
     op.create_table('ثروتم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3497,12 +3614,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثروتم'))
     )
     op.create_table('ثرود',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3530,12 +3646,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثرود'))
     )
     op.create_table('ثزاگرس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3563,12 +3678,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثزاگرس'))
     )
     op.create_table('ثشاهد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3596,12 +3710,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثشاهد'))
     )
     op.create_table('ثشرق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3629,12 +3742,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثشرق'))
     )
     op.create_table('ثعتما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3662,12 +3774,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثعتما'))
     )
     op.create_table('ثعمرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3695,12 +3806,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثعمرا'))
     )
     op.create_table('ثغرب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3728,12 +3838,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثغرب'))
     )
     op.create_table('ثفارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3761,12 +3870,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثفارس'))
     )
     op.create_table('ثقزوی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3794,12 +3902,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثقزوی'))
     )
     op.create_table('ثمسکن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3827,12 +3934,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثمسکن'))
     )
     op.create_table('ثنام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3860,12 +3966,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثنام'))
     )
     op.create_table('ثنظام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3893,12 +3998,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثنظام'))
     )
     op.create_table('ثنور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3926,12 +4030,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثنور'))
     )
     op.create_table('ثنورح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3959,12 +4062,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثنورح'))
     )
     op.create_table('ثنوسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -3992,12 +4094,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثنوسا'))
     )
     op.create_table('ثپردیس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4025,12 +4126,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثپردیس'))
     )
     op.create_table('ثپردیسح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4058,12 +4158,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ثپردیسح'))
     )
     op.create_table('جم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4091,12 +4190,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_جم'))
     )
     op.create_table('جم پیلن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4124,12 +4222,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_جم پیلن'))
     )
     op.create_table('جهرم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4157,12 +4254,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_جهرم'))
     )
     op.create_table('حآسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4190,12 +4286,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حآسا'))
     )
     op.create_table('حاریا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4223,12 +4318,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حاریا'))
     )
     op.create_table('حبندر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4256,12 +4350,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حبندر'))
     )
     op.create_table('حتاید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4289,12 +4382,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حتاید'))
     )
     op.create_table('حتوکا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4322,12 +4414,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حتوکا'))
     )
     op.create_table('حخزر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4355,12 +4446,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حخزر'))
     )
     op.create_table('حرهشا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4388,12 +4478,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حرهشا'))
     )
     op.create_table('حریل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4421,12 +4510,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حریل'))
     )
     op.create_table('حسیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4454,12 +4542,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حسیر'))
     )
     op.create_table('حسینا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4487,12 +4574,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حسینا'))
     )
     op.create_table('حفارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4520,12 +4606,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حفارس'))
     )
     op.create_table('حفاری',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4553,12 +4638,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حفاری'))
     )
     op.create_table('حپارسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4586,12 +4670,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حپارسا'))
     )
     op.create_table('حپترو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4619,12 +4702,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حپترو'))
     )
     op.create_table('حکشتی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4652,45 +4734,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('حکشتی دو',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_حکشتی'))
     )
     op.create_table('خاذین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4718,12 +4766,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خاذین'))
     )
     op.create_table('خاهن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4751,12 +4798,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خاهن'))
     )
     op.create_table('خاور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4784,12 +4830,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خاور'))
     )
     op.create_table('خبهمن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4817,12 +4862,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خبهمن'))
     )
     op.create_table('ختراک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4850,12 +4894,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ختراک'))
     )
     op.create_table('ختور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4883,12 +4926,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ختور'))
     )
     op.create_table('ختورح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4916,12 +4958,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ختورح'))
     )
     op.create_table('ختوقا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4949,12 +4990,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ختوقا'))
     )
     op.create_table('خدیزل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -4982,12 +5022,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خدیزل'))
     )
     op.create_table('خراسان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5015,12 +5054,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خراسان'))
     )
     op.create_table('خریخت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5048,12 +5086,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خریخت'))
     )
     op.create_table('خرینگ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5081,12 +5118,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خرینگ'))
+    )
+    op.create_table('خزامیا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خزامیا'))
     )
     op.create_table('خزر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5114,12 +5182,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خزر'))
     )
     op.create_table('خساپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5147,12 +5214,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خساپا'))
     )
     op.create_table('خشرق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5180,12 +5246,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خشرق'))
     )
     op.create_table('خصدرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5213,12 +5278,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خصدرا'))
     )
     op.create_table('خعمرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5246,12 +5310,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خعمرا'))
+    )
+    op.create_table('خفناور',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خفناور'))
     )
     op.create_table('خفنر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5279,12 +5374,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خفنر'))
     )
     op.create_table('خفولا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5312,12 +5406,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خفولا'))
     )
     op.create_table('خلنت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5345,12 +5438,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خلنت'))
     )
     op.create_table('خلیبل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5378,12 +5470,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خلیبل'))
     )
     op.create_table('خمحرکه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5411,12 +5502,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خمحرکه'))
     )
     op.create_table('خمحور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5444,12 +5534,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خمحور'))
     )
     op.create_table('خمهر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5477,12 +5566,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خمهر'))
     )
     op.create_table('خموتور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5510,12 +5598,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خموتور'))
     )
     op.create_table('خنصیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5543,12 +5630,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خنصیر'))
     )
     op.create_table('خودرو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5576,12 +5662,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خودرو'))
+    )
+    op.create_table('خودکفا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خودکفا'))
     )
     op.create_table('خوساز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5609,12 +5726,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خوساز'))
     )
     op.create_table('خپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5642,12 +5758,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خپارس'))
     )
     op.create_table('خپویش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5675,12 +5790,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خپویش'))
     )
     op.create_table('خچرخش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5708,12 +5822,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خچرخش'))
     )
     op.create_table('خکار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5741,12 +5854,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خکار'))
     )
     op.create_table('خکاوه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5774,12 +5886,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خکاوه'))
     )
     op.create_table('خکرمان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5807,12 +5918,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خکرمان'))
     )
     op.create_table('خکمک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5840,12 +5950,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خکمک'))
     )
     op.create_table('خگستر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5873,12 +5982,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_خگستر'))
     )
     op.create_table('دابور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5906,12 +6014,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دابور'))
     )
     op.create_table('دارا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5939,12 +6046,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دارا'))
     )
     op.create_table('دارا یکم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -5972,12 +6078,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دارا یکم'))
     )
     op.create_table('داراب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6005,12 +6110,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_داراب'))
     )
     op.create_table('دارو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6038,12 +6142,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دارو'))
     )
     op.create_table('داریک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6071,12 +6174,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_داریک'))
     )
     op.create_table('داسوه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6104,12 +6206,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_داسوه'))
     )
     op.create_table('دالبر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6137,12 +6238,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دالبر'))
     )
     op.create_table('دامین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6170,12 +6270,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دامین'))
     )
     op.create_table('دانا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6203,12 +6302,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دانا'))
     )
     op.create_table('داوه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6236,12 +6334,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_داوه'))
     )
     op.create_table('دبالک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6269,12 +6366,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دبالک'))
     )
     op.create_table('دتماد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6302,12 +6398,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دتماد'))
     )
     op.create_table('دتمادح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6335,12 +6430,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دتمادح'))
     )
     op.create_table('دتهران\u200c',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6368,12 +6462,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دتهران\u200c'))
     )
     op.create_table('دتوزیع',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6401,12 +6494,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دتوزیع'))
     )
     op.create_table('دتولید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6434,12 +6526,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دتولید'))
     )
     op.create_table('دجابر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6467,12 +6558,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دجابر'))
+    )
+    op.create_table('دحاوی',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دحاوی'))
     )
     op.create_table('ددام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6500,12 +6622,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ددام'))
     )
     op.create_table('درازک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6533,12 +6654,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_درازک'))
     )
     op.create_table('درهآور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6566,12 +6686,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_درهآور'))
     )
     op.create_table('دروز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6599,12 +6718,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دروز'))
     )
     op.create_table('دزهراوی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6632,12 +6750,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دزهراوی'))
     )
     op.create_table('دسانکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6665,12 +6782,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دسانکو'))
     )
     op.create_table('دسبحا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6698,12 +6814,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دسبحا'))
     )
     op.create_table('دسبحاح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6731,12 +6846,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دسبحاح'))
     )
     op.create_table('دسبحان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6764,12 +6878,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دسبحان'))
     )
     op.create_table('دسبحانح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6797,12 +6910,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دسبحانح'))
     )
     op.create_table('دسینا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6830,12 +6942,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دسینا'))
     )
     op.create_table('دشیری',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6863,12 +6974,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دشیری'))
     )
     op.create_table('دشیمی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6896,12 +7006,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دشیمی'))
     )
     op.create_table('دعبید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6929,12 +7038,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دعبید'))
     )
     op.create_table('دفارا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6962,12 +7070,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دفارا'))
     )
     op.create_table('دفرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -6995,12 +7102,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دفرا'))
     )
     op.create_table('دقاضی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7028,12 +7134,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دقاضی'))
     )
     op.create_table('دلر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7061,12 +7166,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دلر'))
     )
     op.create_table('دلقما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7094,12 +7198,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دلقما'))
     )
     op.create_table('دماوند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7127,12 +7230,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دماوند'))
     )
     op.create_table('دمعیار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7160,12 +7262,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دمعیار'))
+    )
+    op.create_table('دهدشت',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دهدشت'))
     )
     op.create_table('دپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7193,12 +7326,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دپارس'))
     )
     op.create_table('دکوثر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7226,12 +7358,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دکوثر'))
     )
     op.create_table('دکپسول',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7259,12 +7390,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دکپسول'))
     )
     op.create_table('دکیمی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7292,12 +7422,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دکیمی'))
     )
     op.create_table('دی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7325,12 +7454,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دی'))
     )
     op.create_table('دی دو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7358,12 +7486,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دی دو'))
     )
     op.create_table('دیران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7391,12 +7518,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دیران'))
     )
     op.create_table('دیرانح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7424,12 +7550,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_دیرانح'))
     )
     op.create_table('ذوب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7457,12 +7582,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ذوب'))
     )
     op.create_table('رافزا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7490,12 +7614,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رافزا'))
     )
     op.create_table('رانفور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7523,12 +7646,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رانفور'))
     )
     op.create_table('رتاپ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7556,12 +7678,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رتاپ'))
     )
     op.create_table('رتکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7589,12 +7710,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رتکو'))
     )
     op.create_table('رمپنا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7622,12 +7742,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رمپنا'))
     )
     op.create_table('رنیک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7655,12 +7774,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رنیک'))
     )
     op.create_table('رویش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7688,12 +7806,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رویش'))
     )
     op.create_table('رکیش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7721,12 +7838,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_رکیش'))
     )
     op.create_table('ریشمک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7754,12 +7870,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ریشمک'))
     )
     op.create_table('زاگرس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7787,12 +7902,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زاگرس'))
     )
     op.create_table('زبینا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7820,12 +7934,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زبینا'))
     )
     op.create_table('زدشت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7853,12 +7966,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زدشت'))
     )
     op.create_table('زشریف',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7886,12 +7998,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زشریف'))
     )
     op.create_table('زشگزا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7919,12 +8030,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زشگزا'))
     )
     op.create_table('زفکا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7952,12 +8062,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زفکا'))
     )
     op.create_table('زقیام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -7985,12 +8094,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زقیام'))
     )
     op.create_table('زقیامح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8018,12 +8126,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زقیامح'))
     )
     op.create_table('زماهان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8051,12 +8158,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زماهان'))
     )
     op.create_table('زملارد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8084,12 +8190,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زملارد'))
     )
     op.create_table('زمگسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8117,12 +8222,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زمگسا'))
     )
     op.create_table('زنجان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8150,12 +8254,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زنجان'))
     )
     op.create_table('زنگان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8183,12 +8286,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زنگان'))
     )
     op.create_table('زپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8216,12 +8318,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زپارس'))
     )
     op.create_table('زکشت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8249,12 +8350,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زکشت'))
     )
     op.create_table('زکوثر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8282,12 +8382,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زکوثر'))
     )
     op.create_table('زگلدشت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8315,12 +8414,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_زگلدشت'))
+    )
+    op.create_table('ساذری',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ساذری'))
     )
     op.create_table('ساراب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8348,12 +8478,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ساراب'))
     )
     op.create_table('ساربیل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8381,12 +8510,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ساربیل'))
     )
     op.create_table('ساروج',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8414,12 +8542,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ساروج'))
     )
     op.create_table('ساروم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8447,12 +8574,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ساروم'))
     )
     op.create_table('سامان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8480,12 +8606,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سامان'))
     )
     op.create_table('ساوه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8513,12 +8638,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ساوه'))
     )
     op.create_table('سایرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8546,12 +8670,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سایرا'))
     )
     op.create_table('ساینا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8579,12 +8702,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ساینا'))
     )
     op.create_table('سباقر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8612,12 +8734,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سباقر'))
     )
     op.create_table('سبجنو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8645,12 +8766,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سبجنو'))
+    )
+    op.create_table('سبزوا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سبزوا'))
     )
     op.create_table('سبهان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8678,12 +8830,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سبهان'))
+    )
+    op.create_table('ستران',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ستران'))
     )
     op.create_table('سجام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8711,12 +8894,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سجام'))
     )
     op.create_table('سخاش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8744,12 +8926,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سخاش'))
     )
     op.create_table('سخزر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8777,12 +8958,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سخزر'))
     )
     op.create_table('سخند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8810,12 +8990,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سخند'))
     )
     op.create_table('سخواف',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8843,12 +9022,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سخواف'))
     )
     op.create_table('سخوز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8876,12 +9054,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سخوز'))
     )
     op.create_table('سدبیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8909,12 +9086,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سدبیر'))
     )
     op.create_table('سدشت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8942,12 +9118,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سدشت'))
     )
     op.create_table('سدور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -8975,12 +9150,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سدور'))
     )
     op.create_table('سرو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9008,12 +9182,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سرو'))
     )
     op.create_table('سرود',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9041,12 +9214,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سرود'))
     )
     op.create_table('سرچشمه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9074,12 +9246,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سرچشمه'))
     )
     op.create_table('سشرق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9107,12 +9278,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سشرق'))
     )
     op.create_table('سشمال',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9140,12 +9310,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سشمال'))
     )
     op.create_table('سصفها',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9173,12 +9342,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سصفها'))
     )
     op.create_table('سصوفی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9206,12 +9374,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سصوفی'))
     )
     op.create_table('سغرب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9239,12 +9406,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سغرب'))
     )
     op.create_table('سفار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9272,12 +9438,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سفار'))
     )
     op.create_table('سفارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9305,12 +9470,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سفارس'))
     )
     op.create_table('سفارود',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9338,12 +9502,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سفارود'))
     )
     op.create_table('سفاسی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9371,12 +9534,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سفاسی'))
     )
     op.create_table('سفانو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9404,12 +9566,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سفانو'))
     )
     op.create_table('سقاین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9437,12 +9598,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سقاین'))
     )
     op.create_table('سلار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9470,12 +9630,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سلار'))
     )
     op.create_table('سمازن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9503,12 +9662,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سمازن'))
+    )
+    op.create_table('سمایه',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سمایه'))
     )
     op.create_table('سمتاز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9536,12 +9726,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سمتاز'))
     )
     op.create_table('سمگا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9569,12 +9758,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سمگا'))
     )
     op.create_table('سنوین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9602,12 +9790,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سنوین'))
     )
     op.create_table('سنیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9635,12 +9822,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سنیر'))
     )
     op.create_table('سهرمز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9668,12 +9854,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سهرمز'))
     )
     op.create_table('سهگمت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9701,12 +9886,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سهگمت'))
     )
     op.create_table('سپ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9734,12 +9918,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سپ'))
     )
     op.create_table('سپاس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9767,12 +9950,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سپاس'))
     )
     op.create_table('سپاها',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9800,12 +9982,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سپاها'))
     )
     op.create_table('سپرمی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9833,12 +10014,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سپرمی'))
+    )
+    op.create_table('سپیدار',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سپیدار'))
     )
     op.create_table('سکارون',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9866,12 +10078,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سکارون'))
     )
     op.create_table('سکرد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9899,12 +10110,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سکرد'))
     )
     op.create_table('سکرما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9932,12 +10142,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سکرما'))
     )
     op.create_table('سیتا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9965,12 +10174,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سیتا'))
     )
     op.create_table('سیدکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -9998,12 +10206,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سیدکو'))
     )
     op.create_table('سیستم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10031,12 +10238,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سیستم'))
     )
     op.create_table('سیلام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10064,12 +10270,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سیلام'))
     )
     op.create_table('سیمرغ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10097,12 +10302,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_سیمرغ'))
     )
     op.create_table('شاراک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10130,12 +10334,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شاراک'))
     )
     op.create_table('شاروم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10163,12 +10366,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شاروم'))
     )
     op.create_table('شاملا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10196,12 +10398,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شاملا'))
     )
     op.create_table('شاملاح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10229,12 +10430,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شاملاح'))
     )
     op.create_table('شاوان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10262,12 +10462,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شاوان'))
     )
     op.create_table('شبریز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10295,12 +10494,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شبریز'))
     )
     op.create_table('شبصیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10328,12 +10526,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شبصیر'))
     )
     op.create_table('شبندر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10361,12 +10558,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شبندر'))
     )
     op.create_table('شبهرن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10394,12 +10590,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شبهرن'))
     )
     op.create_table('شتران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10427,12 +10622,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شتران'))
     )
     op.create_table('شتهران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10460,12 +10654,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شتهران'))
     )
     op.create_table('شتولی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10493,12 +10686,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شتولی'))
     )
     op.create_table('شتوکا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10526,12 +10718,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شتوکا'))
     )
     op.create_table('شجم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10559,12 +10750,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شجم'))
     )
     op.create_table('شخارک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10592,12 +10782,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شخارک'))
     )
     op.create_table('شدوص',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10625,12 +10814,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شدوص'))
     )
     op.create_table('شراز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10658,12 +10846,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شراز'))
     )
     op.create_table('شرانل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10691,12 +10878,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شرانل'))
     )
     op.create_table('شرنگی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10724,12 +10910,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شرنگی'))
     )
     op.create_table('شزنگ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10757,12 +10942,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شزنگ'))
+    )
+    op.create_table('شساخت',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شساخت'))
+    )
+    op.create_table('شستا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شستا'))
     )
     op.create_table('شسم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10790,12 +11038,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شسم'))
     )
     op.create_table('شسپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10823,12 +11070,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شسپا'))
+    )
+    op.create_table('شسینا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شسینا'))
     )
     op.create_table('شصدف',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10856,12 +11134,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شصدف'))
     )
     op.create_table('شصدفح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10889,12 +11166,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شصدفح'))
     )
     op.create_table('شصفها',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10922,12 +11198,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شصفها'))
     )
     op.create_table('شغدیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10955,12 +11230,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شغدیر'))
     )
     op.create_table('شفا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -10988,12 +11262,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شفا'))
     )
     op.create_table('شفارا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11021,12 +11294,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شفارا'))
     )
     op.create_table('شفارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11054,12 +11326,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شفارس'))
     )
     op.create_table('شفن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11087,12 +11358,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شفن'))
     )
     op.create_table('شلرد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11120,12 +11390,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شلرد'))
     )
     op.create_table('شلعاب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11153,12 +11422,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شلعاب'))
     )
     op.create_table('شلعابح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11186,12 +11454,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شلعابح'))
     )
     op.create_table('شمواد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11219,12 +11486,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شمواد'))
     )
     op.create_table('شنفت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11252,12 +11518,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شنفت'))
     )
     op.create_table('شوینده',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11285,12 +11550,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شوینده'))
     )
     op.create_table('شپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11318,12 +11582,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپارس'))
     )
     op.create_table('شپارسح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11351,12 +11614,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپارسح'))
     )
     op.create_table('شپاس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11384,12 +11646,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپاس'))
     )
     op.create_table('شپاکسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11417,12 +11678,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپاکسا'))
     )
     op.create_table('شپترو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11450,12 +11710,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپترو'))
     )
     op.create_table('شپدیس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11483,12 +11742,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپدیس'))
     )
     op.create_table('شپلی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11516,12 +11774,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپلی'))
     )
     op.create_table('شپنا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11549,12 +11806,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شپنا'))
     )
     op.create_table('شکبیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11582,12 +11838,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شکبیر'))
     )
     op.create_table('شکربن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11615,12 +11870,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شکربن'))
     )
     op.create_table('شکف',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11648,12 +11902,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شکف'))
     )
     op.create_table('شکلر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11681,12 +11934,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شکلر'))
+    )
+    op.create_table('شگامرن',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شگامرن'))
     )
     op.create_table('شگل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11714,12 +11998,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شگل'))
     )
     op.create_table('شگویا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11747,12 +12030,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شگویا'))
     )
     op.create_table('شیراز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11780,12 +12062,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شیراز'))
     )
     op.create_table('شیران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11813,12 +12094,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_شیران'))
     )
     op.create_table('صایند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11846,12 +12126,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_صایند'))
     )
     op.create_table('صبا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11879,12 +12158,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_صبا'))
     )
     op.create_table('صباح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11912,12 +12190,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_صباح'))
     )
     op.create_table('صنوین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11945,12 +12222,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_صنوین'))
+    )
+    op.create_table('غاذر',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غاذر'))
     )
     op.create_table('غالبر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -11978,12 +12286,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غالبر'))
     )
     op.create_table('غبشهر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12011,12 +12318,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غبشهر'))
     )
     op.create_table('غبهار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12044,12 +12350,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غبهار'))
     )
     op.create_table('غبهنوش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12077,12 +12382,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غبهنوش'))
     )
     op.create_table('غدام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12110,12 +12414,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غدام'))
     )
     op.create_table('غدشت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12143,12 +12446,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غدشت'))
+    )
+    op.create_table('غدیس',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غدیس'))
     )
     op.create_table('غزر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12176,12 +12510,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غزر'))
     )
     op.create_table('غسالم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12209,12 +12542,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غسالم'))
     )
     op.create_table('غشاذر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12242,12 +12574,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غشاذر'))
+    )
+    op.create_table('غشان',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غشان'))
     )
     op.create_table('غشصفا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12275,12 +12638,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غشصفا'))
     )
     op.create_table('غشهد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12308,12 +12670,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غشهد'))
     )
     op.create_table('غشهداب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12341,12 +12702,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غشهداب'))
     )
     op.create_table('غشوکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12374,12 +12734,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غشوکو'))
+    )
+    op.create_table('غصینو',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غصینو'))
     )
     op.create_table('غفارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12407,12 +12798,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غفارس'))
     )
     op.create_table('غمارگ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12440,12 +12830,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غمارگ'))
     )
     op.create_table('غمهرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12473,12 +12862,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غمهرا'))
     )
     op.create_table('غمینو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12506,12 +12894,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غمینو'))
     )
     op.create_table('غنوش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12539,12 +12926,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غنوش'))
     )
     op.create_table('غنیلی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12572,12 +12958,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غنیلی'))
     )
     op.create_table('غویتا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12605,12 +12990,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غویتا'))
     )
     op.create_table('غپآذر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12638,12 +13022,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غپآذر'))
     )
     op.create_table('غپاک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12671,12 +13054,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غپاک'))
     )
     op.create_table('غپونه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12704,12 +13086,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غپونه'))
     )
     op.create_table('غپینو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12737,12 +13118,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غپینو'))
     )
     op.create_table('غچین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12770,12 +13150,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غچین'))
     )
     op.create_table('غگرجی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12803,12 +13182,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غگرجی'))
     )
     op.create_table('غگز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12836,12 +13214,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غگز'))
     )
     op.create_table('غگل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12869,12 +13246,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غگل'))
     )
     op.create_table('غگلستا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12902,12 +13278,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غگلستا'))
     )
     op.create_table('غگلپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12935,12 +13310,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غگلپا'))
     )
     op.create_table('غگیلا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -12968,12 +13342,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غگیلا'))
     )
     op.create_table('غیوان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13001,12 +13374,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_غیوان'))
+    )
+    op.create_table('فاذر',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فاذر'))
     )
     op.create_table('فاراک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13034,12 +13438,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فاراک'))
     )
     op.create_table('فارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13067,12 +13470,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فارس'))
+    )
+    op.create_table('فاسمین',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فاسمین'))
     )
     op.create_table('فافزا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13100,12 +13534,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فافزا'))
     )
     op.create_table('فالوم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13133,12 +13566,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فالوم'))
     )
     op.create_table('فاما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13166,12 +13598,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فاما'))
     )
     op.create_table('فایرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13199,12 +13630,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فایرا'))
     )
     op.create_table('فباهنر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13232,12 +13662,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فباهنر'))
+    )
+    op.create_table('فبستم',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فبستم'))
     )
     op.create_table('فبیرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13265,12 +13726,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فبیرا'))
     )
     op.create_table('فجام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13298,12 +13758,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فجام'))
     )
     op.create_table('فجر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13331,12 +13790,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فجر'))
     )
     op.create_table('فجوش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13364,12 +13822,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فجوش'))
     )
     op.create_table('فخاس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13397,12 +13854,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فخاس'))
     )
     op.create_table('فخوز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13430,12 +13886,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فخوز'))
     )
     op.create_table('فرآور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13463,12 +13918,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فرآور'))
     )
     op.create_table('فرابورس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13496,12 +13950,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فرابورس'))
     )
     op.create_table('فروس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13529,12 +13982,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فروس'))
     )
     op.create_table('فروی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13562,12 +14014,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فروی'))
     )
     op.create_table('فزرین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13595,12 +14046,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فزرین'))
     )
     op.create_table('فسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13628,12 +14078,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فسا'))
     )
     op.create_table('فسازان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13661,12 +14110,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فسازان'))
     )
     op.create_table('فسدید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13694,12 +14142,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فسدید'))
     )
     op.create_table('فسرب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13727,12 +14174,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فسرب'))
     )
     op.create_table('فسپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13760,12 +14206,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فسپا'))
     )
     op.create_table('فلات',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13793,12 +14238,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فلات'))
+    )
+    op.create_table('فلامی',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فلامی'))
     )
     op.create_table('فلوله',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13826,12 +14302,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فلوله'))
     )
     op.create_table('فماک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13859,12 +14334,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فماک'))
     )
     op.create_table('فمراد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13892,12 +14366,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فمراد'))
     )
     op.create_table('فملی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13925,12 +14398,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فملی'))
     )
     op.create_table('فن آوا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13958,12 +14430,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فن آوا'))
     )
     op.create_table('فنابا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -13991,12 +14462,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فنابا'))
     )
     op.create_table('فنرژی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14024,12 +14494,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فنرژی'))
     )
     op.create_table('فنفت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14057,12 +14526,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فنفت'))
     )
     op.create_table('فنوال',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14090,12 +14558,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فنوال'))
     )
     op.create_table('فنورد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14123,12 +14590,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فنورد'))
     )
     op.create_table('فولاد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14156,12 +14622,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فولاد'))
     )
     op.create_table('فولاژ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14189,12 +14654,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فولاژ'))
     )
     op.create_table('فولای',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14222,12 +14686,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فولای'))
     )
     op.create_table('فوکا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14255,12 +14718,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فوکا'))
     )
     op.create_table('فپنتا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14288,12 +14750,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فپنتا'))
     )
     op.create_table('فیروزا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14321,12 +14782,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فیروزا'))
     )
     op.create_table('فیروزه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14354,12 +14814,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_فیروزه'))
     )
     op.create_table('قاروم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14387,12 +14846,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قاروم'))
     )
     op.create_table('قاسم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14420,12 +14878,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قاسم'))
     )
     op.create_table('قثابت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14453,12 +14910,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قثابت'))
+    )
+    op.create_table('قجام',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قجام'))
     )
     op.create_table('قرن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14486,12 +14974,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قرن'))
     )
     op.create_table('قزوین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14519,12 +15006,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قزوین'))
     )
     op.create_table('قشرین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14552,12 +15038,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قشرین'))
     )
     op.create_table('قشهد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14585,12 +15070,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قشهد'))
     )
     op.create_table('قشکر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14618,12 +15102,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قشکر'))
     )
     op.create_table('قشیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14651,12 +15134,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قشیر'))
     )
     op.create_table('قصفها',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14684,12 +15166,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قصفها'))
     )
     op.create_table('قلرست',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14717,12 +15198,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قلرست'))
     )
     op.create_table('قمرو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14750,12 +15230,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قمرو'))
+    )
+    op.create_table('قنقش',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قنقش'))
     )
     op.create_table('قنیشا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14783,12 +15294,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قنیشا'))
     )
     op.create_table('قهکمت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14816,12 +15326,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قهکمت'))
     )
     op.create_table('قپیرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14849,12 +15358,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قپیرا'))
     )
     op.create_table('قچار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14882,12 +15390,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_قچار'))
     )
     op.create_table('لابسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14915,12 +15422,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لابسا'))
     )
     op.create_table('لازما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14948,12 +15454,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لازما'))
     )
     op.create_table('لبوتان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -14981,12 +15486,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لبوتان'))
     )
     op.create_table('لخانه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15014,12 +15518,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لخانه'))
     )
     op.create_table('لخزر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15047,12 +15550,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لخزر'))
     )
     op.create_table('لسرما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15080,12 +15582,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لسرما'))
     )
     op.create_table('لوتوس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15113,12 +15614,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لوتوس'))
     )
     op.create_table('لپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15146,12 +15646,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لپارس'))
     )
     op.create_table('لپیام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15179,12 +15678,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لپیام'))
     )
     op.create_table('لکما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15212,12 +15710,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_لکما'))
     )
     op.create_table('ما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15245,12 +15742,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ما'))
     )
     op.create_table('مادیرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15278,12 +15774,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_مادیرا'))
     )
     op.create_table('مارون',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15311,12 +15806,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_مارون'))
     )
     op.create_table('مبین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15344,12 +15838,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_مبین'))
     )
     op.create_table('مداران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15377,12 +15870,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_مداران'))
     )
     op.create_table('مدیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15410,12 +15902,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_مدیر'))
     )
     op.create_table('مرقام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15443,12 +15934,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_مرقام'))
+    )
+    op.create_table('معیار',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_معیار'))
     )
     op.create_table('مفاخر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15476,12 +15998,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_مفاخر'))
     )
     op.create_table('ملت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15509,12 +16030,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ملت'))
+    )
+    op.create_table('ممسنی',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ممسنی'))
     )
     op.create_table('میدکو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15542,12 +16094,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_میدکو'))
     )
     op.create_table('میهن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15575,12 +16126,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_میهن'))
+    )
+    op.create_table('نبورس',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نبورس'))
     )
     op.create_table('نتوس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15608,12 +16190,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نتوس'))
     )
     op.create_table('نطرین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15641,12 +16222,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نطرین'))
     )
     op.create_table('نمرینو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15674,12 +16254,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نمرینو'))
     )
     op.create_table('نوآور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15707,12 +16286,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نوآور'))
     )
     op.create_table('نوری',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15740,12 +16318,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نوری'))
     )
     op.create_table('نوین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15773,12 +16350,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نوین'))
+    )
+    op.create_table('نکالا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نکالا'))
     )
     op.create_table('نگین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15806,12 +16414,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نگین'))
     )
     op.create_table('نیرو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15839,12 +16446,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_نیرو'))
+    )
+    op.create_table('های وب',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_های وب'))
     )
     op.create_table('هجرت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15872,12 +16510,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_هجرت'))
     )
     op.create_table('هرمز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15905,12 +16542,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_هرمز'))
     )
     op.create_table('همراه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15938,12 +16574,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_همراه'))
     )
     op.create_table('وآتوس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -15971,12 +16606,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وآتوس'))
     )
     op.create_table('وآذر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16004,12 +16638,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وآذر'))
     )
     op.create_table('وآرین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16037,12 +16670,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وآرین'))
     )
     op.create_table('وآفری',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16070,12 +16702,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وآفری'))
     )
     op.create_table('وآوا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16103,12 +16734,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وآوا'))
     )
     op.create_table('وآیند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16136,12 +16766,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وآیند'))
     )
     op.create_table('واتی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16169,12 +16798,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_واتی'))
     )
     op.create_table('واحصا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16202,12 +16830,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_واحصا'))
     )
     op.create_table('واحیا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16235,12 +16862,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_واحیا'))
     )
     op.create_table('وارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16268,12 +16894,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وارس'))
     )
     op.create_table('واعتبار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16301,12 +16926,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_واعتبار'))
     )
     op.create_table('والبر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16334,12 +16958,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_والبر'))
     )
     op.create_table('وامید',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16367,12 +16990,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وامید'))
     )
     op.create_table('وایرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16400,12 +17022,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وایرا'))
     )
     op.create_table('وایران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16433,12 +17054,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وایران'))
     )
     op.create_table('وبانک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16466,12 +17086,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبانک'))
     )
     op.create_table('وبرق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16499,12 +17118,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبرق'))
     )
     op.create_table('وبشهر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16532,12 +17150,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبشهر'))
     )
     op.create_table('وبصادر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16565,12 +17182,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبصادر'))
     )
     op.create_table('وبملت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16598,12 +17214,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبملت'))
     )
     op.create_table('وبهمن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16631,12 +17246,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبهمن'))
     )
     op.create_table('وبوعلی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16664,12 +17278,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبوعلی'))
     )
     op.create_table('وبیمه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16697,12 +17310,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبیمه'))
     )
     op.create_table('وبیمهح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16730,12 +17342,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وبیمهح'))
     )
     op.create_table('وتجارت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16763,12 +17374,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتجارت'))
     )
     op.create_table('وتعاون',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16796,12 +17406,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتعاون'))
     )
     op.create_table('وتوس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16829,12 +17438,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتوس'))
     )
     op.create_table('وتوسم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16862,12 +17470,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتوسم'))
     )
     op.create_table('وتوشه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16895,12 +17502,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتوشه'))
     )
     op.create_table('وتوصا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16928,12 +17534,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتوصا'))
     )
     op.create_table('وتوکا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16961,12 +17566,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتوکا'))
     )
     op.create_table('وتوکاح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -16994,12 +17598,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وتوکاح'))
     )
     op.create_table('وثخوز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17027,12 +17630,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وثخوز'))
     )
     op.create_table('وثنو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17060,12 +17662,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وثنو'))
     )
     op.create_table('وثوق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17093,12 +17694,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وثوق'))
     )
     op.create_table('وجامی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17126,12 +17726,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وجامی'))
     )
     op.create_table('وحافظ',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17159,12 +17758,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وحافظ'))
     )
     op.create_table('وحکمت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17192,12 +17790,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وحکمت'))
     )
     op.create_table('وخارزم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17225,12 +17822,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وخارزم'))
     )
     op.create_table('وخاور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17258,12 +17854,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وخاور'))
     )
     op.create_table('ودی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17291,45 +17886,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('ودی دو',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ودی'))
     )
     op.create_table('ورازی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17357,12 +17918,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ورازی'))
     )
     op.create_table('ورنا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17390,12 +17950,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ورنا'))
     )
     op.create_table('وزمین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17423,12 +17982,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وزمین'))
     )
     op.create_table('وساخت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17456,12 +18014,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وساخت'))
     )
     op.create_table('وساربیل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17489,12 +18046,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وساربیل'))
+    )
+    op.create_table('وساشرقی',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وساشرقی'))
+    )
+    op.create_table('وساغربی',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وساغربی'))
     )
     op.create_table('وسالت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17522,12 +18142,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسالت'))
     )
     op.create_table('وساپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17555,12 +18174,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وساپا'))
     )
     op.create_table('وسبحان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17588,12 +18206,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسبحان'))
     )
     op.create_table('وسبوشهر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17621,12 +18238,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسبوشهر'))
     )
     op.create_table('وسخراج',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17654,12 +18270,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسخراج'))
     )
     op.create_table('وسخراش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17687,12 +18302,107 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسخراش'))
+    )
+    op.create_table('وسخوز',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسخوز'))
+    )
+    op.create_table('وسدید',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسدید'))
+    )
+    op.create_table('وسرضوی',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسرضوی'))
     )
     op.create_table('وسرمد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17720,12 +18430,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسرمد'))
     )
     op.create_table('وسزنجان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17753,12 +18462,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسزنجان'))
+    )
+    op.create_table('وسصفا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسصفا'))
+    )
+    op.create_table('وسفارس',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسفارس'))
     )
     op.create_table('وسقم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17786,12 +18558,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسقم'))
+    )
+    op.create_table('وسلرستا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسلرستا'))
+    )
+    op.create_table('وسمازن',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسمازن'))
     )
     op.create_table('وسمرکز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17819,12 +18654,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسمرکز'))
     )
     op.create_table('وسنا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17852,12 +18686,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسنا'))
     )
     op.create_table('وسناح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17885,12 +18718,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسناح'))
+    )
+    op.create_table('وسهمدا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسهمدا'))
     )
     op.create_table('وسپه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17918,12 +18782,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسپه'))
     )
     op.create_table('وسپهر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17951,12 +18814,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسپهر'))
     )
     op.create_table('وسکاب',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -17984,12 +18846,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسکاب'))
+    )
+    op.create_table('وسکرد',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسکرد'))
     )
     op.create_table('وسکرشا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18017,12 +18910,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسکرشا'))
+    )
+    op.create_table('وسکرمان',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسکرمان'))
+    )
+    op.create_table('وسکهبو',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسکهبو'))
     )
     op.create_table('وسگلستا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18050,12 +19006,107 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسگلستا'))
+    )
+    op.create_table('وسگیلا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسگیلا'))
+    )
+    op.create_table('وسیزد',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسیزد'))
+    )
+    op.create_table('وسیستا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسیستا'))
     )
     op.create_table('وسیلام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18083,12 +19134,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسیلام'))
     )
     op.create_table('وسین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18116,12 +19166,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسین'))
     )
     op.create_table('وسینا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18149,12 +19198,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وسینا'))
     )
     op.create_table('وشمال',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18182,12 +19230,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وشمال'))
     )
     op.create_table('وشهر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18215,12 +19262,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وشهر'))
+    )
+    op.create_table('وصنا',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وصنا'))
     )
     op.create_table('وصندوق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18248,12 +19326,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وصندوق'))
     )
     op.create_table('وصنعت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18281,12 +19358,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وصنعت'))
     )
     op.create_table('وغدیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18314,12 +19390,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وغدیر'))
     )
     op.create_table('ولانا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18347,12 +19422,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولانا'))
     )
     op.create_table('ولبهمن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18380,12 +19454,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولبهمن'))
     )
     op.create_table('ولتجار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18413,12 +19486,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولتجار'))
     )
     op.create_table('ولراز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18446,12 +19518,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولراز'))
     )
     op.create_table('ولساپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18479,12 +19550,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولساپا'))
     )
     op.create_table('ولشرق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18512,12 +19582,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولشرق'))
     )
     op.create_table('ولصنم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18545,12 +19614,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولصنم'))
     )
     op.create_table('ولغدر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18578,12 +19646,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولغدر'))
     )
     op.create_table('ولملت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18611,12 +19678,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولملت'))
     )
     op.create_table('ولپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18644,12 +19710,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولپارس'))
     )
     op.create_table('ولیز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18677,12 +19742,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ولیز'))
     )
     op.create_table('ومشان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18710,12 +19774,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ومشان'))
+    )
+    op.create_table('ومعادن',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ومعادن'))
     )
     op.create_table('ومعلم',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18743,12 +19838,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ومعلم'))
     )
     op.create_table('وملت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18776,12 +19870,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وملت'))
     )
     op.create_table('وملل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18809,12 +19902,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وملل'))
     )
     op.create_table('وملی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18842,12 +19934,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وملی'))
     )
     op.create_table('ومهان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18875,12 +19966,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ومهان'))
     )
     op.create_table('ونفت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18908,12 +19998,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ونفت'))
     )
     op.create_table('ونوین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18941,12 +20030,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ونوین'))
     )
     op.create_table('ونچر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -18974,12 +20062,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ونچر'))
     )
     op.create_table('ونیرو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19007,12 +20094,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ونیرو'))
     )
     op.create_table('ونیروح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19040,12 +20126,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ونیروح'))
     )
     op.create_table('ونیکی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19073,45 +20158,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('ونیکی دو',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_ونیکی'))
     )
     op.create_table('وهنر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19139,12 +20190,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وهنر'))
     )
     op.create_table('وهور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19172,12 +20222,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وهور'))
     )
     op.create_table('وپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19205,12 +20254,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وپارس'))
     )
     op.create_table('وپاسار',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19238,12 +20286,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وپاسار'))
     )
     op.create_table('وپترو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19271,12 +20318,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وپترو'))
     )
     op.create_table('وپخش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19304,12 +20350,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وپخش'))
     )
     op.create_table('وپسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19337,12 +20382,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وپسا'))
     )
     op.create_table('وپست',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19370,12 +20414,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وپست'))
     )
     op.create_table('وپویا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19403,12 +20446,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وپویا'))
     )
     op.create_table('وکادو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19436,12 +20478,75 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وکادو'))
+    )
+    op.create_table('وکار',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وکار'))
+    )
+    op.create_table('وکبهمن',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وکبهمن'))
     )
     op.create_table('وگردش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19469,12 +20574,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وگردش'))
     )
     op.create_table('وگستر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19502,12 +20606,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_وگستر'))
     )
     op.create_table('پارتا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19535,12 +20638,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پارتا'))
     )
     op.create_table('پارتین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19568,12 +20670,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پارتین'))
     )
     op.create_table('پارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19601,12 +20702,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پارس'))
     )
     op.create_table('پارسان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19634,12 +20734,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پارسان'))
     )
     op.create_table('پارسیان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19667,12 +20766,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پارسیان'))
     )
     op.create_table('پارسیانح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19700,12 +20798,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پارسیانح'))
     )
     op.create_table('پارند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19733,12 +20830,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پارند'))
     )
     op.create_table('پاسا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19766,12 +20862,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پاسا'))
     )
     op.create_table('پاکشو',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19799,12 +20894,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پاکشو'))
     )
     op.create_table('پتایر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19832,12 +20926,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پتایر'))
     )
     op.create_table('پترول',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19865,12 +20958,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پترول'))
     )
     op.create_table('پترولح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19898,12 +20990,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پترولح'))
     )
     op.create_table('پخش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19931,12 +21022,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پخش'))
     )
     op.create_table('پدرخش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19964,12 +21054,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پدرخش'))
     )
     op.create_table('پرداخت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -19997,12 +21086,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پرداخت'))
     )
     op.create_table('پردیس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20030,12 +21118,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پردیس'))
     )
     op.create_table('پسهند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20063,12 +21150,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پسهند'))
     )
     op.create_table('پشاهن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20096,12 +21182,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پشاهن'))
     )
     op.create_table('پلاست',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20129,12 +21214,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پلاست'))
     )
     op.create_table('پلاسک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20162,12 +21246,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پلاسک'))
     )
     op.create_table('پلوله',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20195,12 +21278,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پلوله'))
     )
     op.create_table('پکرمان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20228,12 +21310,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پکرمان'))
     )
     op.create_table('پکویر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20261,12 +21342,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پکویر'))
     )
     op.create_table('پکویرح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20294,12 +21374,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پکویرح'))
     )
     op.create_table('پیزد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20327,12 +21406,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_پیزد'))
     )
     op.create_table('چافست',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20360,12 +21438,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_چافست'))
+    )
+    op.create_table('چخزر',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_چخزر'))
     )
     op.create_table('چدن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20393,12 +21502,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_چدن'))
     )
     op.create_table('چفیبر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20426,12 +21534,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_چفیبر'))
     )
     op.create_table('چکارن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20459,12 +21566,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_چکارن'))
     )
     op.create_table('چکاوه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20492,12 +21598,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_چکاوه'))
     )
     op.create_table('چکاپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20525,12 +21630,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_چکاپا'))
     )
     op.create_table('کابگن',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20558,12 +21662,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کابگن'))
+    )
+    op.create_table('کاذر',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کاذر'))
     )
     op.create_table('کاردان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20591,12 +21726,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کاردان'))
     )
     op.create_table('کاریس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20624,12 +21758,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کاریس'))
+    )
+    op.create_table('کازرو',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کازرو'))
     )
     op.create_table('کاسپین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20657,45 +21822,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
-    )
-    op.create_table('کاسپینح',
-    sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('open', sa.Float(), nullable=True),
-    sa.Column('high', sa.Float(), nullable=True),
-    sa.Column('low', sa.Float(), nullable=True),
-    sa.Column('adjClose', sa.Float(), nullable=True),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('volume', sa.Integer(), nullable=True),
-    sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('close', sa.Float(), nullable=True),
-    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
-    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
-    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
-    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
-    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
-    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
-    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
-    sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کاسپین'))
     )
     op.create_table('کالا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20723,12 +21854,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کالا'))
     )
     op.create_table('کاما',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20756,12 +21886,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کاما'))
     )
     op.create_table('کاوه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20789,12 +21918,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کاوه'))
     )
     op.create_table('کایتا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20822,12 +21950,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کایتا'))
     )
-    op.create_table('کایتاح',
+    op.create_table('کباده',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20855,12 +21982,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کباده'))
     )
     op.create_table('کبافق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20888,12 +22014,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کبافق'))
     )
     op.create_table('کبورس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20921,12 +22046,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کبورس'))
     )
     op.create_table('کترام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20954,12 +22078,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کترام'))
     )
     op.create_table('کتوکا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -20987,12 +22110,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کتوکا'))
+    )
+    op.create_table('کحافظ',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کحافظ'))
     )
     op.create_table('کخاک',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21020,12 +22174,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کخاک'))
     )
     op.create_table('کخاکح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21053,12 +22206,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کخاکح'))
+    )
+    op.create_table('کدما',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کدما'))
     )
     op.create_table('کرازی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21086,12 +22270,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کرازی'))
     )
     op.create_table('کرماشا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21119,12 +22302,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کرماشا'))
     )
     op.create_table('کرمان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21152,12 +22334,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کرمان'))
     )
     op.create_table('کروی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21185,12 +22366,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کروی'))
+    )
+    op.create_table('کزغال',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کزغال'))
     )
     op.create_table('کساوه',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21218,12 +22430,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کساوه'))
     )
     op.create_table('کساپا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21251,12 +22462,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کساپا'))
     )
     op.create_table('کسرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21284,12 +22494,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کسرا'))
+    )
+    op.create_table('کسرام',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کسرام'))
     )
     op.create_table('کسعدی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21317,12 +22558,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کسعدی'))
     )
     op.create_table('کشرق',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21350,12 +22590,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کشرق'))
     )
     op.create_table('کصدف',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21383,12 +22622,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کصدف'))
     )
     op.create_table('کطبس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21416,12 +22654,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کطبس'))
     )
     op.create_table('کفرآور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21449,12 +22686,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کفرآور'))
     )
     op.create_table('کفرا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21482,12 +22718,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کفرا'))
+    )
+    op.create_table('کفپارس',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کفپارس'))
     )
     op.create_table('کقزوی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21515,12 +22782,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کقزوی'))
     )
     op.create_table('کلر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21548,12 +22814,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کلر'))
     )
     op.create_table('کلوند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21581,12 +22846,43 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کلوند'))
+    )
+    op.create_table('کماسه',
+    sa.Column('name', sa.String(length=15), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('open', sa.Float(), nullable=True),
+    sa.Column('high', sa.Float(), nullable=True),
+    sa.Column('low', sa.Float(), nullable=True),
+    sa.Column('adjClose', sa.Float(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=True),
+    sa.Column('volume', sa.Integer(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('close', sa.Float(), nullable=True),
+    sa.Column('individual_buy_count', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_count', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_value', sa.Integer(), nullable=True),
+    sa.Column('individual_sell_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_count', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_vol', sa.Integer(), nullable=True),
+    sa.Column('corporate_buy_value', sa.Integer(), nullable=True),
+    sa.Column('corporate_sell_value', sa.Integer(), nullable=True),
+    sa.Column('individual_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_buy_mean_price', sa.Float(), nullable=True),
+    sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
+    sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
+    sa.Column('jdate', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کماسه'))
     )
     op.create_table('کمرجان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21614,12 +22910,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کمرجان'))
     )
     op.create_table('کمند',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21647,12 +22942,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کمند'))
     )
     op.create_table('کمنگنز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21680,12 +22974,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کمنگنز'))
     )
     op.create_table('کمینا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21713,12 +23006,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کمینا'))
     )
     op.create_table('کنور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21746,12 +23038,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کنور'))
     )
     op.create_table('کهرام',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21779,12 +23070,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کهرام'))
     )
     op.create_table('کهمدا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21812,12 +23102,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کهمدا'))
     )
     op.create_table('کوثر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21845,12 +23134,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کوثر'))
     )
     op.create_table('کورز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21878,12 +23166,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کورز'))
     )
     op.create_table('کویر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21911,12 +23198,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کویر'))
     )
     op.create_table('کپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21944,12 +23230,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کپارس'))
     )
     op.create_table('کپرور',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -21977,12 +23262,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کپرور'))
     )
     op.create_table('کپشیر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22010,12 +23294,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کپشیر'))
     )
     op.create_table('کپشیرح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22043,12 +23326,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کپشیرح'))
     )
     op.create_table('کچاد',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22076,12 +23358,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کچاد'))
     )
     op.create_table('کگاز',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22109,12 +23390,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کگاز'))
     )
     op.create_table('کگازح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22142,12 +23422,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کگازح'))
     )
     op.create_table('کگل',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22175,12 +23454,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کگل'))
     )
     op.create_table('کگلح',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22208,12 +23486,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کگلح'))
     )
     op.create_table('کگهر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22241,12 +23518,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کگهر'))
     )
     op.create_table('کی بی سی',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22274,12 +23550,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کی بی سی'))
     )
     op.create_table('کیا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22307,12 +23582,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کیا'))
     )
     op.create_table('کیان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22340,12 +23614,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کیان'))
     )
     op.create_table('کیسون',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22373,12 +23646,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کیسون'))
     )
     op.create_table('کیمیا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22406,12 +23678,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_کیمیا'))
     )
     op.create_table('گدنا',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22439,12 +23710,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_گدنا'))
     )
     op.create_table('گشان',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22472,12 +23742,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_گشان'))
     )
     op.create_table('گنجین',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22505,12 +23774,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_گنجین'))
     )
     op.create_table('گوهران',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22538,12 +23806,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_گوهران'))
     )
     op.create_table('گپارس',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22571,12 +23838,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_گپارس'))
     )
     op.create_table('گکوثر',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22604,12 +23870,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_گکوثر'))
     )
     op.create_table('گکیش',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22637,12 +23902,11 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_گکیش'))
     )
     op.create_table('یاقوت',
     sa.Column('name', sa.String(length=15), nullable=True),
-    sa.Column('group', sa.String(), nullable=True),
+    sa.Column('group', sa.String(length=30), nullable=True),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('open', sa.Float(), nullable=True),
     sa.Column('high', sa.Float(), nullable=True),
@@ -22670,8 +23934,7 @@ def upgrade():
     sa.Column('corporate_sell_mean_price', sa.Float(), nullable=True),
     sa.Column('individual_ownership_change', sa.Integer(), nullable=True),
     sa.Column('jdate', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['name'], ['stocks.name'], ),
-    sa.PrimaryKeyConstraint('date')
+    sa.PrimaryKeyConstraint('date', name=op.f('pk_یاقوت'))
     )
     # ### end Alembic commands ###
 
@@ -22711,43 +23974,51 @@ def downgrade():
     op.drop_table('کمنگنز')
     op.drop_table('کمند')
     op.drop_table('کمرجان')
+    op.drop_table('کماسه')
     op.drop_table('کلوند')
     op.drop_table('کلر')
     op.drop_table('کقزوی')
+    op.drop_table('کفپارس')
     op.drop_table('کفرا')
     op.drop_table('کفرآور')
     op.drop_table('کطبس')
     op.drop_table('کصدف')
     op.drop_table('کشرق')
     op.drop_table('کسعدی')
+    op.drop_table('کسرام')
     op.drop_table('کسرا')
     op.drop_table('کساپا')
     op.drop_table('کساوه')
+    op.drop_table('کزغال')
     op.drop_table('کروی')
     op.drop_table('کرمان')
     op.drop_table('کرماشا')
     op.drop_table('کرازی')
+    op.drop_table('کدما')
     op.drop_table('کخاکح')
     op.drop_table('کخاک')
+    op.drop_table('کحافظ')
     op.drop_table('کتوکا')
     op.drop_table('کترام')
     op.drop_table('کبورس')
     op.drop_table('کبافق')
-    op.drop_table('کایتاح')
+    op.drop_table('کباده')
     op.drop_table('کایتا')
     op.drop_table('کاوه')
     op.drop_table('کاما')
     op.drop_table('کالا')
-    op.drop_table('کاسپینح')
     op.drop_table('کاسپین')
+    op.drop_table('کازرو')
     op.drop_table('کاریس')
     op.drop_table('کاردان')
+    op.drop_table('کاذر')
     op.drop_table('کابگن')
     op.drop_table('چکاپا')
     op.drop_table('چکاوه')
     op.drop_table('چکارن')
     op.drop_table('چفیبر')
     op.drop_table('چدن')
+    op.drop_table('چخزر')
     op.drop_table('چافست')
     op.drop_table('پیزد')
     op.drop_table('پکویرح')
@@ -22776,6 +24047,8 @@ def downgrade():
     op.drop_table('پارتا')
     op.drop_table('وگستر')
     op.drop_table('وگردش')
+    op.drop_table('وکبهمن')
+    op.drop_table('وکار')
     op.drop_table('وکادو')
     op.drop_table('وپویا')
     op.drop_table('وپست')
@@ -22786,7 +24059,6 @@ def downgrade():
     op.drop_table('وپارس')
     op.drop_table('وهور')
     op.drop_table('وهنر')
-    op.drop_table('ونیکی دو')
     op.drop_table('ونیکی')
     op.drop_table('ونیروح')
     op.drop_table('ونیرو')
@@ -22798,6 +24070,7 @@ def downgrade():
     op.drop_table('وملل')
     op.drop_table('وملت')
     op.drop_table('ومعلم')
+    op.drop_table('ومعادن')
     op.drop_table('ومشان')
     op.drop_table('ولیز')
     op.drop_table('ولپارس')
@@ -22813,34 +24086,50 @@ def downgrade():
     op.drop_table('وغدیر')
     op.drop_table('وصنعت')
     op.drop_table('وصندوق')
+    op.drop_table('وصنا')
     op.drop_table('وشهر')
     op.drop_table('وشمال')
     op.drop_table('وسینا')
     op.drop_table('وسین')
     op.drop_table('وسیلام')
+    op.drop_table('وسیستا')
+    op.drop_table('وسیزد')
+    op.drop_table('وسگیلا')
     op.drop_table('وسگلستا')
+    op.drop_table('وسکهبو')
+    op.drop_table('وسکرمان')
     op.drop_table('وسکرشا')
+    op.drop_table('وسکرد')
     op.drop_table('وسکاب')
     op.drop_table('وسپهر')
     op.drop_table('وسپه')
+    op.drop_table('وسهمدا')
     op.drop_table('وسناح')
     op.drop_table('وسنا')
     op.drop_table('وسمرکز')
+    op.drop_table('وسمازن')
+    op.drop_table('وسلرستا')
     op.drop_table('وسقم')
+    op.drop_table('وسفارس')
+    op.drop_table('وسصفا')
     op.drop_table('وسزنجان')
     op.drop_table('وسرمد')
+    op.drop_table('وسرضوی')
+    op.drop_table('وسدید')
+    op.drop_table('وسخوز')
     op.drop_table('وسخراش')
     op.drop_table('وسخراج')
     op.drop_table('وسبوشهر')
     op.drop_table('وسبحان')
     op.drop_table('وساپا')
     op.drop_table('وسالت')
+    op.drop_table('وساغربی')
+    op.drop_table('وساشرقی')
     op.drop_table('وساربیل')
     op.drop_table('وساخت')
     op.drop_table('وزمین')
     op.drop_table('ورنا')
     op.drop_table('ورازی')
-    op.drop_table('ودی دو')
     op.drop_table('ودی')
     op.drop_table('وخاور')
     op.drop_table('وخارزم')
@@ -22885,18 +24174,23 @@ def downgrade():
     op.drop_table('همراه')
     op.drop_table('هرمز')
     op.drop_table('هجرت')
+    op.drop_table('های وب')
     op.drop_table('نیرو')
     op.drop_table('نگین')
+    op.drop_table('نکالا')
     op.drop_table('نوین')
     op.drop_table('نوری')
     op.drop_table('نوآور')
     op.drop_table('نمرینو')
     op.drop_table('نطرین')
     op.drop_table('نتوس')
+    op.drop_table('نبورس')
     op.drop_table('میهن')
     op.drop_table('میدکو')
+    op.drop_table('ممسنی')
     op.drop_table('ملت')
     op.drop_table('مفاخر')
+    op.drop_table('معیار')
     op.drop_table('مرقام')
     op.drop_table('مدیر')
     op.drop_table('مداران')
@@ -22918,6 +24212,7 @@ def downgrade():
     op.drop_table('قپیرا')
     op.drop_table('قهکمت')
     op.drop_table('قنیشا')
+    op.drop_table('قنقش')
     op.drop_table('قمرو')
     op.drop_table('قلرست')
     op.drop_table('قصفها')
@@ -22927,6 +24222,7 @@ def downgrade():
     op.drop_table('قشرین')
     op.drop_table('قزوین')
     op.drop_table('قرن')
+    op.drop_table('قجام')
     op.drop_table('قثابت')
     op.drop_table('قاسم')
     op.drop_table('قاروم')
@@ -22947,6 +24243,7 @@ def downgrade():
     op.drop_table('فمراد')
     op.drop_table('فماک')
     op.drop_table('فلوله')
+    op.drop_table('فلامی')
     op.drop_table('فلات')
     op.drop_table('فسپا')
     op.drop_table('فسرب')
@@ -22964,13 +24261,16 @@ def downgrade():
     op.drop_table('فجر')
     op.drop_table('فجام')
     op.drop_table('فبیرا')
+    op.drop_table('فبستم')
     op.drop_table('فباهنر')
     op.drop_table('فایرا')
     op.drop_table('فاما')
     op.drop_table('فالوم')
     op.drop_table('فافزا')
+    op.drop_table('فاسمین')
     op.drop_table('فارس')
     op.drop_table('فاراک')
+    op.drop_table('فاذر')
     op.drop_table('غیوان')
     op.drop_table('غگیلا')
     op.drop_table('غگلپا')
@@ -22990,19 +24290,23 @@ def downgrade():
     op.drop_table('غمهرا')
     op.drop_table('غمارگ')
     op.drop_table('غفارس')
+    op.drop_table('غصینو')
     op.drop_table('غشوکو')
     op.drop_table('غشهداب')
     op.drop_table('غشهد')
     op.drop_table('غشصفا')
+    op.drop_table('غشان')
     op.drop_table('غشاذر')
     op.drop_table('غسالم')
     op.drop_table('غزر')
+    op.drop_table('غدیس')
     op.drop_table('غدشت')
     op.drop_table('غدام')
     op.drop_table('غبهنوش')
     op.drop_table('غبهار')
     op.drop_table('غبشهر')
     op.drop_table('غالبر')
+    op.drop_table('غاذر')
     op.drop_table('صنوین')
     op.drop_table('صباح')
     op.drop_table('صبا')
@@ -23011,6 +24315,7 @@ def downgrade():
     op.drop_table('شیراز')
     op.drop_table('شگویا')
     op.drop_table('شگل')
+    op.drop_table('شگامرن')
     op.drop_table('شکلر')
     op.drop_table('شکف')
     op.drop_table('شکربن')
@@ -23037,8 +24342,11 @@ def downgrade():
     op.drop_table('شصفها')
     op.drop_table('شصدفح')
     op.drop_table('شصدف')
+    op.drop_table('شسینا')
     op.drop_table('شسپا')
     op.drop_table('شسم')
+    op.drop_table('شستا')
+    op.drop_table('شساخت')
     op.drop_table('شزنگ')
     op.drop_table('شرنگی')
     op.drop_table('شرانل')
@@ -23067,6 +24375,7 @@ def downgrade():
     op.drop_table('سکرما')
     op.drop_table('سکرد')
     op.drop_table('سکارون')
+    op.drop_table('سپیدار')
     op.drop_table('سپرمی')
     op.drop_table('سپاها')
     op.drop_table('سپاس')
@@ -23077,6 +24386,7 @@ def downgrade():
     op.drop_table('سنوین')
     op.drop_table('سمگا')
     op.drop_table('سمتاز')
+    op.drop_table('سمایه')
     op.drop_table('سمازن')
     op.drop_table('سلار')
     op.drop_table('سقاین')
@@ -23102,7 +24412,9 @@ def downgrade():
     op.drop_table('سخزر')
     op.drop_table('سخاش')
     op.drop_table('سجام')
+    op.drop_table('ستران')
     op.drop_table('سبهان')
+    op.drop_table('سبزوا')
     op.drop_table('سبجنو')
     op.drop_table('سباقر')
     op.drop_table('ساینا')
@@ -23113,6 +24425,7 @@ def downgrade():
     op.drop_table('ساروج')
     op.drop_table('ساربیل')
     op.drop_table('ساراب')
+    op.drop_table('ساذری')
     op.drop_table('زگلدشت')
     op.drop_table('زکوثر')
     op.drop_table('زکشت')
@@ -23148,6 +24461,7 @@ def downgrade():
     op.drop_table('دکپسول')
     op.drop_table('دکوثر')
     op.drop_table('دپارس')
+    op.drop_table('دهدشت')
     op.drop_table('دمعیار')
     op.drop_table('دماوند')
     op.drop_table('دلقما')
@@ -23169,6 +24483,7 @@ def downgrade():
     op.drop_table('درهآور')
     op.drop_table('درازک')
     op.drop_table('ددام')
+    op.drop_table('دحاوی')
     op.drop_table('دجابر')
     op.drop_table('دتولید')
     op.drop_table('دتوزیع')
@@ -23196,6 +24511,7 @@ def downgrade():
     op.drop_table('خپویش')
     op.drop_table('خپارس')
     op.drop_table('خوساز')
+    op.drop_table('خودکفا')
     op.drop_table('خودرو')
     op.drop_table('خنصیر')
     op.drop_table('خموتور')
@@ -23206,11 +24522,13 @@ def downgrade():
     op.drop_table('خلنت')
     op.drop_table('خفولا')
     op.drop_table('خفنر')
+    op.drop_table('خفناور')
     op.drop_table('خعمرا')
     op.drop_table('خصدرا')
     op.drop_table('خشرق')
     op.drop_table('خساپا')
     op.drop_table('خزر')
+    op.drop_table('خزامیا')
     op.drop_table('خرینگ')
     op.drop_table('خریخت')
     op.drop_table('خراسان')
@@ -23223,7 +24541,6 @@ def downgrade():
     op.drop_table('خاور')
     op.drop_table('خاهن')
     op.drop_table('خاذین')
-    op.drop_table('حکشتی دو')
     op.drop_table('حکشتی')
     op.drop_table('حپترو')
     op.drop_table('حپارسا')
@@ -23278,28 +24595,33 @@ def downgrade():
     op.drop_table('تکنار')
     op.drop_table('تکمبا')
     op.drop_table('تکشا')
+    op.drop_table('تکالا')
+    op.drop_table('تپکو')
     op.drop_table('تپولا')
     op.drop_table('تپمپی')
     op.drop_table('توریل')
     op.drop_table('تنوین')
     op.drop_table('تملت')
     op.drop_table('تماوند')
+    op.drop_table('تلیسه')
+    op.drop_table('تفیرو')
     op.drop_table('تصمیم')
     op.drop_table('تشتادح')
     op.drop_table('تشتاد')
     op.drop_table('تبرک')
     op.drop_table('تایرا')
-    op.drop_table('تاپیکو دو')
     op.drop_table('تاپیکو')
     op.drop_table('تاپکیشح')
     op.drop_table('تاپکیش')
     op.drop_table('تاصیکو')
     op.drop_table('تابا')
     op.drop_table('بگیلان')
+    op.drop_table('بکهنوج')
     op.drop_table('بکام')
     op.drop_table('بکاب')
     op.drop_table('بپیوند')
     op.drop_table('بپاس')
+    op.drop_table('بوعلی')
     op.drop_table('بورس')
     op.drop_table('بهپاک')
     op.drop_table('بنیرو')
@@ -23326,6 +24648,9 @@ def downgrade():
     op.drop_table('اپرداز')
     op.drop_table('اوصتا')
     op.drop_table('اوان')
+    op.drop_table('انرژی3')
+    op.drop_table('انرژی2')
+    op.drop_table('انرژی1')
     op.drop_table('امین یکم')
     op.drop_table('امین')
     op.drop_table('امید')
@@ -23346,6 +24671,7 @@ def downgrade():
     op.drop_table('اخابر')
     op.drop_table('اتکای')
     op.drop_table('اتکام')
+    op.drop_table('آینده')
     op.drop_table('آگاس')
     op.drop_table('آکورد')
     op.drop_table('آپ')
@@ -23354,17 +24680,14 @@ def downgrade():
     op.drop_table('آسامید')
     op.drop_table('آسام')
     op.drop_table('آساس')
-    op.drop_table('آس پ')
-    op.drop_table('آریان دو')
     op.drop_table('آریان')
     op.drop_table('آریا')
     op.drop_table('آرمانی')
     op.drop_table('آرمان')
     op.drop_table('آتیمس')
-    op.drop_table('آبین دو')
     op.drop_table('آبین')
     op.drop_table('آبادا')
+    op.drop_table('آ س پ')
     op.drop_table('users')
-    op.drop_table('stocks')
     op.drop_table('blocked-tokens')
     # ### end Alembic commands ###

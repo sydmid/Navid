@@ -24,6 +24,8 @@ flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 python-dotenv = "*"
 sqlacodegen = "*"
+aiohttp = "*"
+tenacity = "*"
 
 [dev-packages]
 

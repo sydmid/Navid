@@ -8,5 +8,5 @@ class UserSchema(Schema):
         # it only dumps this field and wont load it (we don't want it from the user)
         dump_only = ('id',)
     id = fields.Int()
-    username = fields.String(required=True)
-    password = fields.String(required=True)
+    username = fields.Str(required=True)
+    password = fields.Str(required=True)

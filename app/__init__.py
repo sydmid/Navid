@@ -19,12 +19,12 @@ def create_app(config_name):
 
     load_dotenv(".env")
 
-    migrate.init_app(app, db)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
-    db.init_app(app)
+    migrate.init_app(app, db)
 
+    db.init_app(app)
 
     app.register_blueprint(main)
 
@@ -42,7 +42,6 @@ def create_app(config_name):
     @app.before_first_request
     def global_stocks_timespan_data_creator():
         config['loadTimespans']()
-
 
     return app
 

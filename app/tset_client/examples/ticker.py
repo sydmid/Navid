@@ -3,7 +3,7 @@ This example is about getting data for a ticker.
 use this example if you want to get data for one ticker
 """
 
-from .. import Ticker, download
+from app.tset_client import Ticker, download
 import pandas as pd
 
 # to be able to see whole DataFrame columns
@@ -24,3 +24,4 @@ print(ticker.last_price)  # آخرین معامله
 print(ticker.adj_close)  # قیمت پایانی
 print(ticker.shareholders)  # اطلاعات سهام داران عمده
 print(ticker.shareholders.percentage.sum())  # جمع سهام داران
+print(ticker.total_shares)

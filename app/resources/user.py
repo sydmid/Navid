@@ -38,7 +38,8 @@ class UserRegister(Resource):
     @classmethod
     def post(cls):
         try:
-            user_data = user_schema.load(request.get_json())
+            user_json = request.get_json()
+            user_data = user_schema.load(user_json)
         except ValidationError as err:
             return err.messages, 400
         if UserModel.find_by_username(user_data['username']):

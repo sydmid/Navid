@@ -1,44 +1,16 @@
 from app.db import db
 
-class آسپ(db.Model):
-    __tablename__ = 'آ س پ'
+class Stock(db.Model):
+    __tablename__ = 'stocks'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
+    name = db.Column(db.String(15), primary_key=True)
+    group = db.Column(db.String(15))
 
 class آبادا(db.Model):
     __tablename__ = 'آبادا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -66,13 +38,15 @@ class آبادا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آبین(db.Model):
     __tablename__ = 'آبین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -100,13 +74,51 @@ class آبین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class آبیندو(db.Model):
+    __tablename__ = 'آبین دو'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آتیمس(db.Model):
     __tablename__ = 'آتیمس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -134,13 +146,15 @@ class آتیمس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آرمان(db.Model):
     __tablename__ = 'آرمان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -168,13 +182,15 @@ class آرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آرمانی(db.Model):
     __tablename__ = 'آرمانی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -202,13 +218,15 @@ class آرمانی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آریا(db.Model):
     __tablename__ = 'آریا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -236,13 +254,15 @@ class آریا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آریان(db.Model):
     __tablename__ = 'آریان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -270,13 +290,87 @@ class آریان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class آریاندو(db.Model):
+    __tablename__ = 'آریان دو'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class آسپ(db.Model):
+    __tablename__ = 'آس پ'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آساس(db.Model):
     __tablename__ = 'آساس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -304,13 +398,15 @@ class آساس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آسام(db.Model):
     __tablename__ = 'آسام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -338,13 +434,15 @@ class آسام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آسامید(db.Model):
     __tablename__ = 'آسامید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -372,13 +470,15 @@ class آسامید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آسیا(db.Model):
     __tablename__ = 'آسیا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -406,13 +506,15 @@ class آسیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آوا(db.Model):
     __tablename__ = 'آوا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -440,13 +542,15 @@ class آوا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آپ(db.Model):
     __tablename__ = 'آپ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -474,13 +578,15 @@ class آپ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آکورد(db.Model):
     __tablename__ = 'آکورد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -508,13 +614,15 @@ class آکورد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class آگاس(db.Model):
     __tablename__ = 'آگاس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -543,46 +651,14 @@ class آگاس(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class آینده(db.Model):
-    __tablename__ = 'آینده'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class اتکام(db.Model):
     __tablename__ = 'اتکام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -610,13 +686,15 @@ class اتکام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اتکای(db.Model):
     __tablename__ = 'اتکای'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -644,13 +722,15 @@ class اتکای(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اخابر(db.Model):
     __tablename__ = 'اخابر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -678,13 +758,15 @@ class اخابر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ارزش(db.Model):
     __tablename__ = 'ارزش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -712,13 +794,15 @@ class ارزش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ارفع(db.Model):
     __tablename__ = 'ارفع'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -746,13 +830,15 @@ class ارفع(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ارفعح(db.Model):
     __tablename__ = 'ارفعح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -780,13 +866,15 @@ class ارفعح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ارمغان(db.Model):
     __tablename__ = 'ارمغان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -814,13 +902,15 @@ class ارمغان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اطلس(db.Model):
     __tablename__ = 'اطلس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -848,13 +938,15 @@ class اطلس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اعتلا(db.Model):
     __tablename__ = 'اعتلا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -882,13 +974,15 @@ class اعتلا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اعتلاح(db.Model):
     __tablename__ = 'اعتلاح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -916,13 +1010,15 @@ class اعتلاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اعتماد(db.Model):
     __tablename__ = 'اعتماد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -950,13 +1046,15 @@ class اعتماد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class افرا(db.Model):
     __tablename__ = 'افرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -984,13 +1082,15 @@ class افرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class افران(db.Model):
     __tablename__ = 'افران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1018,13 +1118,15 @@ class افران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class افق(db.Model):
     __tablename__ = 'افق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1052,13 +1154,15 @@ class افق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class افقملت(db.Model):
     __tablename__ = 'افق ملت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1086,13 +1190,15 @@ class افقملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class البرز(db.Model):
     __tablename__ = 'البرز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1120,13 +1226,15 @@ class البرز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class الماس(db.Model):
     __tablename__ = 'الماس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1154,13 +1262,15 @@ class الماس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class امید(db.Model):
     __tablename__ = 'امید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1188,13 +1298,15 @@ class امید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class امین(db.Model):
     __tablename__ = 'امین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1222,13 +1334,15 @@ class امین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class امینیکم(db.Model):
     __tablename__ = 'امین یکم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1257,114 +1371,14 @@ class امینیکم(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class انرژی1(db.Model):
-    __tablename__ = 'انرژی1'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class انرژی2(db.Model):
-    __tablename__ = 'انرژی2'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class انرژی3(db.Model):
-    __tablename__ = 'انرژی3'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class اوان(db.Model):
     __tablename__ = 'اوان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1392,13 +1406,15 @@ class اوان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اوصتا(db.Model):
     __tablename__ = 'اوصتا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1426,13 +1442,15 @@ class اوصتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اپرداز(db.Model):
     __tablename__ = 'اپرداز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1460,13 +1478,15 @@ class اپرداز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class اکالا(db.Model):
     __tablename__ = 'اکالا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1494,13 +1514,15 @@ class اکالا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بالاس(db.Model):
     __tablename__ = 'بالاس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1528,13 +1550,15 @@ class بالاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بالبر(db.Model):
     __tablename__ = 'بالبر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1562,13 +1586,15 @@ class بالبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بایکا(db.Model):
     __tablename__ = 'بایکا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1596,13 +1622,15 @@ class بایکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بترانس(db.Model):
     __tablename__ = 'بترانس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1630,13 +1658,15 @@ class بترانس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بتک(db.Model):
     __tablename__ = 'بتک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1664,13 +1694,15 @@ class بتک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بجهرم(db.Model):
     __tablename__ = 'بجهرم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1698,13 +1730,15 @@ class بجهرم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بخاور(db.Model):
     __tablename__ = 'بخاور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1732,13 +1766,15 @@ class بخاور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بذر(db.Model):
     __tablename__ = 'بذر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1766,13 +1802,15 @@ class بذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class برکت(db.Model):
     __tablename__ = 'برکت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1800,13 +1838,15 @@ class برکت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بزاگرس(db.Model):
     __tablename__ = 'بزاگرس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1834,13 +1874,15 @@ class بزاگرس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بزاگرسح(db.Model):
     __tablename__ = 'بزاگرسح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1868,13 +1910,15 @@ class بزاگرسح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بساما(db.Model):
     __tablename__ = 'بساما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1902,13 +1946,15 @@ class بساما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بسویچ(db.Model):
     __tablename__ = 'بسویچ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1936,13 +1982,15 @@ class بسویچ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بشهاب(db.Model):
     __tablename__ = 'بشهاب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -1970,13 +2018,15 @@ class بشهاب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بفجر(db.Model):
     __tablename__ = 'بفجر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2004,13 +2054,15 @@ class بفجر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بموتو(db.Model):
     __tablename__ = 'بموتو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2038,13 +2090,15 @@ class بموتو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بمپنا(db.Model):
     __tablename__ = 'بمپنا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2072,13 +2126,15 @@ class بمپنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بمیلا(db.Model):
     __tablename__ = 'بمیلا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2106,13 +2162,15 @@ class بمیلا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بنو(db.Model):
     __tablename__ = 'بنو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2140,13 +2198,15 @@ class بنو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بنیرو(db.Model):
     __tablename__ = 'بنیرو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2174,13 +2234,15 @@ class بنیرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بهپاک(db.Model):
     __tablename__ = 'بهپاک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2208,13 +2270,15 @@ class بهپاک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بورس(db.Model):
     __tablename__ = 'بورس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2243,46 +2307,14 @@ class بورس(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class بوعلی(db.Model):
-    __tablename__ = 'بوعلی'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class بپاس(db.Model):
     __tablename__ = 'بپاس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2310,13 +2342,15 @@ class بپاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بپیوند(db.Model):
     __tablename__ = 'بپیوند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2344,13 +2378,15 @@ class بپیوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بکاب(db.Model):
     __tablename__ = 'بکاب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2378,13 +2414,15 @@ class بکاب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class بکام(db.Model):
     __tablename__ = 'بکام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2413,46 +2451,14 @@ class بکام(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class بکهنوج(db.Model):
-    __tablename__ = 'بکهنوج'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class بگیلان(db.Model):
     __tablename__ = 'بگیلان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2480,13 +2486,15 @@ class بگیلان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تابا(db.Model):
     __tablename__ = 'تابا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2514,13 +2522,15 @@ class تابا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تاصیکو(db.Model):
     __tablename__ = 'تاصیکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2548,13 +2558,15 @@ class تاصیکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تاپکیش(db.Model):
     __tablename__ = 'تاپکیش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2582,13 +2594,15 @@ class تاپکیش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تاپکیشح(db.Model):
     __tablename__ = 'تاپکیشح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2616,13 +2630,15 @@ class تاپکیشح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تاپیکو(db.Model):
     __tablename__ = 'تاپیکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2650,13 +2666,51 @@ class تاپیکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class تاپیکودو(db.Model):
+    __tablename__ = 'تاپیکو دو'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تایرا(db.Model):
     __tablename__ = 'تایرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2684,13 +2738,15 @@ class تایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تبرک(db.Model):
     __tablename__ = 'تبرک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2718,13 +2774,15 @@ class تبرک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تشتاد(db.Model):
     __tablename__ = 'تشتاد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2752,13 +2810,15 @@ class تشتاد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تشتادح(db.Model):
     __tablename__ = 'تشتادح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2786,13 +2846,15 @@ class تشتادح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تصمیم(db.Model):
     __tablename__ = 'تصمیم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2821,80 +2883,14 @@ class تصمیم(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class تفیرو(db.Model):
-    __tablename__ = 'تفیرو'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class تلیسه(db.Model):
-    __tablename__ = 'تلیسه'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class تماوند(db.Model):
     __tablename__ = 'تماوند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2922,13 +2918,15 @@ class تماوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تملت(db.Model):
     __tablename__ = 'تملت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2956,13 +2954,15 @@ class تملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تنوین(db.Model):
     __tablename__ = 'تنوین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -2990,13 +2990,15 @@ class تنوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class توریل(db.Model):
     __tablename__ = 'توریل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3024,13 +3026,15 @@ class توریل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تپمپی(db.Model):
     __tablename__ = 'تپمپی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3058,13 +3062,15 @@ class تپمپی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تپولا(db.Model):
     __tablename__ = 'تپولا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3093,80 +3099,14 @@ class تپولا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class تپکو(db.Model):
-    __tablename__ = 'تپکو'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class تکالا(db.Model):
-    __tablename__ = 'تکالا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class تکشا(db.Model):
     __tablename__ = 'تکشا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3194,13 +3134,15 @@ class تکشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تکمبا(db.Model):
     __tablename__ = 'تکمبا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3228,13 +3170,15 @@ class تکمبا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تکنار(db.Model):
     __tablename__ = 'تکنار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3262,13 +3206,15 @@ class تکنار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تکنو(db.Model):
     __tablename__ = 'تکنو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3296,13 +3242,15 @@ class تکنو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class تیپیکو(db.Model):
     __tablename__ = 'تیپیکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3330,13 +3278,15 @@ class تیپیکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثاباد(db.Model):
     __tablename__ = 'ثاباد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3364,13 +3314,15 @@ class ثاباد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثاخت(db.Model):
     __tablename__ = 'ثاخت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3398,13 +3350,15 @@ class ثاخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثاصفا(db.Model):
     __tablename__ = 'ثاصفا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3432,13 +3386,15 @@ class ثاصفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثالوند(db.Model):
     __tablename__ = 'ثالوند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3466,13 +3422,15 @@ class ثالوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثامان(db.Model):
     __tablename__ = 'ثامان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3500,13 +3458,15 @@ class ثامان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثامید(db.Model):
     __tablename__ = 'ثامید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3534,13 +3494,15 @@ class ثامید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثاژن(db.Model):
     __tablename__ = 'ثاژن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3568,13 +3530,15 @@ class ثاژن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثباغ(db.Model):
     __tablename__ = 'ثباغ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3602,13 +3566,15 @@ class ثباغ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثبهساز(db.Model):
     __tablename__ = 'ثبهساز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3636,13 +3602,15 @@ class ثبهساز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثتران(db.Model):
     __tablename__ = 'ثتران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3670,13 +3638,15 @@ class ثتران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثترانح(db.Model):
     __tablename__ = 'ثترانح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3704,13 +3674,15 @@ class ثترانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثتوسا(db.Model):
     __tablename__ = 'ثتوسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3738,13 +3710,15 @@ class ثتوسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثجوان(db.Model):
     __tablename__ = 'ثجوان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3772,13 +3746,15 @@ class ثجوان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثروتم(db.Model):
     __tablename__ = 'ثروتم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3806,13 +3782,15 @@ class ثروتم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثرود(db.Model):
     __tablename__ = 'ثرود'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3840,13 +3818,15 @@ class ثرود(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثزاگرس(db.Model):
     __tablename__ = 'ثزاگرس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3874,13 +3854,15 @@ class ثزاگرس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثشاهد(db.Model):
     __tablename__ = 'ثشاهد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3908,13 +3890,15 @@ class ثشاهد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثشرق(db.Model):
     __tablename__ = 'ثشرق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3942,13 +3926,15 @@ class ثشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثعتما(db.Model):
     __tablename__ = 'ثعتما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -3976,13 +3962,15 @@ class ثعتما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثعمرا(db.Model):
     __tablename__ = 'ثعمرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4010,13 +3998,15 @@ class ثعمرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثغرب(db.Model):
     __tablename__ = 'ثغرب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4044,13 +4034,15 @@ class ثغرب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثفارس(db.Model):
     __tablename__ = 'ثفارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4078,13 +4070,15 @@ class ثفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثقزوی(db.Model):
     __tablename__ = 'ثقزوی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4112,13 +4106,15 @@ class ثقزوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثمسکن(db.Model):
     __tablename__ = 'ثمسکن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4146,13 +4142,15 @@ class ثمسکن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثنام(db.Model):
     __tablename__ = 'ثنام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4180,13 +4178,15 @@ class ثنام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثنظام(db.Model):
     __tablename__ = 'ثنظام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4214,13 +4214,15 @@ class ثنظام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثنور(db.Model):
     __tablename__ = 'ثنور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4248,13 +4250,15 @@ class ثنور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثنورح(db.Model):
     __tablename__ = 'ثنورح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4282,13 +4286,15 @@ class ثنورح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثنوسا(db.Model):
     __tablename__ = 'ثنوسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4316,13 +4322,15 @@ class ثنوسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثپردیس(db.Model):
     __tablename__ = 'ثپردیس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4350,13 +4358,15 @@ class ثپردیس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ثپردیسح(db.Model):
     __tablename__ = 'ثپردیسح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4384,13 +4394,15 @@ class ثپردیسح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class جم(db.Model):
     __tablename__ = 'جم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4418,13 +4430,15 @@ class جم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class جمپیلن(db.Model):
     __tablename__ = 'جم پیلن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4452,13 +4466,15 @@ class جمپیلن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class جهرم(db.Model):
     __tablename__ = 'جهرم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4486,13 +4502,15 @@ class جهرم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حآسا(db.Model):
     __tablename__ = 'حآسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4520,13 +4538,15 @@ class حآسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حاریا(db.Model):
     __tablename__ = 'حاریا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4554,13 +4574,15 @@ class حاریا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حبندر(db.Model):
     __tablename__ = 'حبندر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4588,13 +4610,15 @@ class حبندر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حتاید(db.Model):
     __tablename__ = 'حتاید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4622,13 +4646,15 @@ class حتاید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حتوکا(db.Model):
     __tablename__ = 'حتوکا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4656,13 +4682,15 @@ class حتوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حخزر(db.Model):
     __tablename__ = 'حخزر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4690,13 +4718,15 @@ class حخزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حرهشا(db.Model):
     __tablename__ = 'حرهشا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4724,13 +4754,15 @@ class حرهشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حریل(db.Model):
     __tablename__ = 'حریل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4758,13 +4790,15 @@ class حریل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حسیر(db.Model):
     __tablename__ = 'حسیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4792,13 +4826,15 @@ class حسیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حسینا(db.Model):
     __tablename__ = 'حسینا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4826,13 +4862,15 @@ class حسینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حفارس(db.Model):
     __tablename__ = 'حفارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4860,13 +4898,15 @@ class حفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حفاری(db.Model):
     __tablename__ = 'حفاری'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4894,13 +4934,15 @@ class حفاری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حپارسا(db.Model):
     __tablename__ = 'حپارسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4928,13 +4970,15 @@ class حپارسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حپترو(db.Model):
     __tablename__ = 'حپترو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4962,13 +5006,15 @@ class حپترو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class حکشتی(db.Model):
     __tablename__ = 'حکشتی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -4996,13 +5042,51 @@ class حکشتی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class حکشتیدو(db.Model):
+    __tablename__ = 'حکشتی دو'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خاذین(db.Model):
     __tablename__ = 'خاذین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5030,13 +5114,15 @@ class خاذین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خاهن(db.Model):
     __tablename__ = 'خاهن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5064,13 +5150,15 @@ class خاهن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خاور(db.Model):
     __tablename__ = 'خاور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5098,13 +5186,15 @@ class خاور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خبهمن(db.Model):
     __tablename__ = 'خبهمن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5132,13 +5222,15 @@ class خبهمن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ختراک(db.Model):
     __tablename__ = 'ختراک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5166,13 +5258,15 @@ class ختراک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ختور(db.Model):
     __tablename__ = 'ختور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5200,13 +5294,15 @@ class ختور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ختورح(db.Model):
     __tablename__ = 'ختورح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5234,13 +5330,15 @@ class ختورح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ختوقا(db.Model):
     __tablename__ = 'ختوقا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5268,13 +5366,15 @@ class ختوقا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خدیزل(db.Model):
     __tablename__ = 'خدیزل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5302,13 +5402,15 @@ class خدیزل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خراسان(db.Model):
     __tablename__ = 'خراسان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5336,13 +5438,15 @@ class خراسان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خریخت(db.Model):
     __tablename__ = 'خریخت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5370,13 +5474,15 @@ class خریخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خرینگ(db.Model):
     __tablename__ = 'خرینگ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5405,46 +5511,14 @@ class خرینگ(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class خزامیا(db.Model):
-    __tablename__ = 'خزامیا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class خزر(db.Model):
     __tablename__ = 'خزر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5472,13 +5546,15 @@ class خزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خساپا(db.Model):
     __tablename__ = 'خساپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5506,13 +5582,15 @@ class خساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خشرق(db.Model):
     __tablename__ = 'خشرق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5540,13 +5618,15 @@ class خشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خصدرا(db.Model):
     __tablename__ = 'خصدرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5574,13 +5654,15 @@ class خصدرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خعمرا(db.Model):
     __tablename__ = 'خعمرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5609,46 +5691,14 @@ class خعمرا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class خفناور(db.Model):
-    __tablename__ = 'خفناور'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class خفنر(db.Model):
     __tablename__ = 'خفنر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5676,13 +5726,15 @@ class خفنر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خفولا(db.Model):
     __tablename__ = 'خفولا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5710,13 +5762,15 @@ class خفولا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خلنت(db.Model):
     __tablename__ = 'خلنت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5744,13 +5798,15 @@ class خلنت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خلیبل(db.Model):
     __tablename__ = 'خلیبل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5778,13 +5834,15 @@ class خلیبل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خمحرکه(db.Model):
     __tablename__ = 'خمحرکه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5812,13 +5870,15 @@ class خمحرکه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خمحور(db.Model):
     __tablename__ = 'خمحور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5846,13 +5906,15 @@ class خمحور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خمهر(db.Model):
     __tablename__ = 'خمهر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5880,13 +5942,15 @@ class خمهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خموتور(db.Model):
     __tablename__ = 'خموتور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5914,13 +5978,15 @@ class خموتور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خنصیر(db.Model):
     __tablename__ = 'خنصیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5948,13 +6014,15 @@ class خنصیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خودرو(db.Model):
     __tablename__ = 'خودرو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -5983,46 +6051,14 @@ class خودرو(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class خودکفا(db.Model):
-    __tablename__ = 'خودکفا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class خوساز(db.Model):
     __tablename__ = 'خوساز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6050,13 +6086,15 @@ class خوساز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خپارس(db.Model):
     __tablename__ = 'خپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6084,13 +6122,15 @@ class خپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خپویش(db.Model):
     __tablename__ = 'خپویش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6118,13 +6158,15 @@ class خپویش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خچرخش(db.Model):
     __tablename__ = 'خچرخش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6152,13 +6194,15 @@ class خچرخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خکار(db.Model):
     __tablename__ = 'خکار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6186,13 +6230,15 @@ class خکار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خکاوه(db.Model):
     __tablename__ = 'خکاوه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6220,13 +6266,15 @@ class خکاوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خکرمان(db.Model):
     __tablename__ = 'خکرمان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6254,13 +6302,15 @@ class خکرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خکمک(db.Model):
     __tablename__ = 'خکمک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6288,13 +6338,15 @@ class خکمک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class خگستر(db.Model):
     __tablename__ = 'خگستر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6322,13 +6374,15 @@ class خگستر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دابور(db.Model):
     __tablename__ = 'دابور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6356,13 +6410,15 @@ class دابور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دارا(db.Model):
     __tablename__ = 'دارا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6390,13 +6446,15 @@ class دارا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دارایکم(db.Model):
     __tablename__ = 'دارا یکم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6424,13 +6482,15 @@ class دارایکم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class داراب(db.Model):
     __tablename__ = 'داراب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6458,13 +6518,15 @@ class داراب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دارو(db.Model):
     __tablename__ = 'دارو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6492,13 +6554,15 @@ class دارو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class داریک(db.Model):
     __tablename__ = 'داریک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6526,13 +6590,15 @@ class داریک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class داسوه(db.Model):
     __tablename__ = 'داسوه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6560,13 +6626,15 @@ class داسوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دالبر(db.Model):
     __tablename__ = 'دالبر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6594,13 +6662,15 @@ class دالبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دامین(db.Model):
     __tablename__ = 'دامین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6628,13 +6698,15 @@ class دامین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دانا(db.Model):
     __tablename__ = 'دانا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6662,13 +6734,15 @@ class دانا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class داوه(db.Model):
     __tablename__ = 'داوه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6696,13 +6770,15 @@ class داوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دبالک(db.Model):
     __tablename__ = 'دبالک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6730,13 +6806,15 @@ class دبالک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دتماد(db.Model):
     __tablename__ = 'دتماد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6764,13 +6842,15 @@ class دتماد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دتمادح(db.Model):
     __tablename__ = 'دتمادح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6798,13 +6878,15 @@ class دتمادح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دتهران(db.Model):
     __tablename__ = 'دتهران\u200c'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6832,13 +6914,15 @@ class دتهران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دتوزیع(db.Model):
     __tablename__ = 'دتوزیع'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6866,13 +6950,15 @@ class دتوزیع(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دتولید(db.Model):
     __tablename__ = 'دتولید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6900,13 +6986,15 @@ class دتولید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دجابر(db.Model):
     __tablename__ = 'دجابر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -6935,46 +7023,14 @@ class دجابر(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class دحاوی(db.Model):
-    __tablename__ = 'دحاوی'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class ددام(db.Model):
     __tablename__ = 'ددام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7002,13 +7058,15 @@ class ددام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class درازک(db.Model):
     __tablename__ = 'درازک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7036,13 +7094,15 @@ class درازک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class درهآور(db.Model):
     __tablename__ = 'درهآور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7070,13 +7130,15 @@ class درهآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دروز(db.Model):
     __tablename__ = 'دروز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7104,13 +7166,15 @@ class دروز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دزهراوی(db.Model):
     __tablename__ = 'دزهراوی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7138,13 +7202,15 @@ class دزهراوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دسانکو(db.Model):
     __tablename__ = 'دسانکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7172,13 +7238,15 @@ class دسانکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دسبحا(db.Model):
     __tablename__ = 'دسبحا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7206,13 +7274,15 @@ class دسبحا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دسبحاح(db.Model):
     __tablename__ = 'دسبحاح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7240,13 +7310,15 @@ class دسبحاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دسبحان(db.Model):
     __tablename__ = 'دسبحان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7274,13 +7346,15 @@ class دسبحان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دسبحانح(db.Model):
     __tablename__ = 'دسبحانح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7308,13 +7382,15 @@ class دسبحانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دسینا(db.Model):
     __tablename__ = 'دسینا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7342,13 +7418,15 @@ class دسینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دشیری(db.Model):
     __tablename__ = 'دشیری'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7376,13 +7454,15 @@ class دشیری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دشیمی(db.Model):
     __tablename__ = 'دشیمی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7410,13 +7490,15 @@ class دشیمی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دعبید(db.Model):
     __tablename__ = 'دعبید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7444,13 +7526,15 @@ class دعبید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دفارا(db.Model):
     __tablename__ = 'دفارا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7478,13 +7562,15 @@ class دفارا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دفرا(db.Model):
     __tablename__ = 'دفرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7512,13 +7598,15 @@ class دفرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دقاضی(db.Model):
     __tablename__ = 'دقاضی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7546,13 +7634,15 @@ class دقاضی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دلر(db.Model):
     __tablename__ = 'دلر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7580,13 +7670,15 @@ class دلر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دلقما(db.Model):
     __tablename__ = 'دلقما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7614,13 +7706,15 @@ class دلقما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دماوند(db.Model):
     __tablename__ = 'دماوند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7648,13 +7742,15 @@ class دماوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دمعیار(db.Model):
     __tablename__ = 'دمعیار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7683,46 +7779,14 @@ class دمعیار(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class دهدشت(db.Model):
-    __tablename__ = 'دهدشت'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class دپارس(db.Model):
     __tablename__ = 'دپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7750,13 +7814,15 @@ class دپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دکوثر(db.Model):
     __tablename__ = 'دکوثر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7784,13 +7850,15 @@ class دکوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دکپسول(db.Model):
     __tablename__ = 'دکپسول'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7818,13 +7886,15 @@ class دکپسول(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دکیمی(db.Model):
     __tablename__ = 'دکیمی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7852,13 +7922,15 @@ class دکیمی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دی(db.Model):
     __tablename__ = 'دی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7886,13 +7958,15 @@ class دی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دیدو(db.Model):
     __tablename__ = 'دی دو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7920,13 +7994,15 @@ class دیدو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دیران(db.Model):
     __tablename__ = 'دیران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7954,13 +8030,15 @@ class دیران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class دیرانح(db.Model):
     __tablename__ = 'دیرانح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -7988,13 +8066,15 @@ class دیرانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ذوب(db.Model):
     __tablename__ = 'ذوب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8022,13 +8102,15 @@ class ذوب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رافزا(db.Model):
     __tablename__ = 'رافزا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8056,13 +8138,15 @@ class رافزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رانفور(db.Model):
     __tablename__ = 'رانفور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8090,13 +8174,15 @@ class رانفور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رتاپ(db.Model):
     __tablename__ = 'رتاپ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8124,13 +8210,15 @@ class رتاپ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رتکو(db.Model):
     __tablename__ = 'رتکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8158,13 +8246,15 @@ class رتکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رمپنا(db.Model):
     __tablename__ = 'رمپنا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8192,13 +8282,15 @@ class رمپنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رنیک(db.Model):
     __tablename__ = 'رنیک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8226,13 +8318,15 @@ class رنیک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رویش(db.Model):
     __tablename__ = 'رویش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8260,13 +8354,15 @@ class رویش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class رکیش(db.Model):
     __tablename__ = 'رکیش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8294,13 +8390,15 @@ class رکیش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ریشمک(db.Model):
     __tablename__ = 'ریشمک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8328,13 +8426,15 @@ class ریشمک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زاگرس(db.Model):
     __tablename__ = 'زاگرس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8362,13 +8462,15 @@ class زاگرس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زبینا(db.Model):
     __tablename__ = 'زبینا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8396,13 +8498,15 @@ class زبینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زدشت(db.Model):
     __tablename__ = 'زدشت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8430,13 +8534,15 @@ class زدشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زشریف(db.Model):
     __tablename__ = 'زشریف'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8464,13 +8570,15 @@ class زشریف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زشگزا(db.Model):
     __tablename__ = 'زشگزا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8498,13 +8606,15 @@ class زشگزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زفکا(db.Model):
     __tablename__ = 'زفکا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8532,13 +8642,15 @@ class زفکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زقیام(db.Model):
     __tablename__ = 'زقیام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8566,13 +8678,15 @@ class زقیام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زقیامح(db.Model):
     __tablename__ = 'زقیامح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8600,13 +8714,15 @@ class زقیامح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زماهان(db.Model):
     __tablename__ = 'زماهان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8634,13 +8750,15 @@ class زماهان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زملارد(db.Model):
     __tablename__ = 'زملارد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8668,13 +8786,15 @@ class زملارد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زمگسا(db.Model):
     __tablename__ = 'زمگسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8702,13 +8822,15 @@ class زمگسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زنجان(db.Model):
     __tablename__ = 'زنجان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8736,13 +8858,15 @@ class زنجان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زنگان(db.Model):
     __tablename__ = 'زنگان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8770,13 +8894,15 @@ class زنگان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زپارس(db.Model):
     __tablename__ = 'زپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8804,13 +8930,15 @@ class زپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زکشت(db.Model):
     __tablename__ = 'زکشت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8838,13 +8966,15 @@ class زکشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زکوثر(db.Model):
     __tablename__ = 'زکوثر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8872,13 +9002,15 @@ class زکوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class زگلدشت(db.Model):
     __tablename__ = 'زگلدشت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8907,46 +9039,14 @@ class زگلدشت(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class ساذری(db.Model):
-    __tablename__ = 'ساذری'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class ساراب(db.Model):
     __tablename__ = 'ساراب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -8974,13 +9074,15 @@ class ساراب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ساربیل(db.Model):
     __tablename__ = 'ساربیل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9008,13 +9110,15 @@ class ساربیل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ساروج(db.Model):
     __tablename__ = 'ساروج'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9042,13 +9146,15 @@ class ساروج(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ساروم(db.Model):
     __tablename__ = 'ساروم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9076,13 +9182,15 @@ class ساروم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سامان(db.Model):
     __tablename__ = 'سامان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9110,13 +9218,15 @@ class سامان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ساوه(db.Model):
     __tablename__ = 'ساوه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9144,13 +9254,15 @@ class ساوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سایرا(db.Model):
     __tablename__ = 'سایرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9178,13 +9290,15 @@ class سایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ساینا(db.Model):
     __tablename__ = 'ساینا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9212,13 +9326,15 @@ class ساینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سباقر(db.Model):
     __tablename__ = 'سباقر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9246,13 +9362,15 @@ class سباقر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سبجنو(db.Model):
     __tablename__ = 'سبجنو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9281,46 +9399,14 @@ class سبجنو(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class سبزوا(db.Model):
-    __tablename__ = 'سبزوا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class سبهان(db.Model):
     __tablename__ = 'سبهان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9349,46 +9435,14 @@ class سبهان(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class ستران(db.Model):
-    __tablename__ = 'ستران'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class سجام(db.Model):
     __tablename__ = 'سجام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9416,13 +9470,15 @@ class سجام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سخاش(db.Model):
     __tablename__ = 'سخاش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9450,13 +9506,15 @@ class سخاش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سخزر(db.Model):
     __tablename__ = 'سخزر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9484,13 +9542,15 @@ class سخزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سخند(db.Model):
     __tablename__ = 'سخند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9518,13 +9578,15 @@ class سخند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سخواف(db.Model):
     __tablename__ = 'سخواف'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9552,13 +9614,15 @@ class سخواف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سخوز(db.Model):
     __tablename__ = 'سخوز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9586,13 +9650,15 @@ class سخوز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سدبیر(db.Model):
     __tablename__ = 'سدبیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9620,13 +9686,15 @@ class سدبیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سدشت(db.Model):
     __tablename__ = 'سدشت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9654,13 +9722,15 @@ class سدشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سدور(db.Model):
     __tablename__ = 'سدور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9688,13 +9758,15 @@ class سدور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سرو(db.Model):
     __tablename__ = 'سرو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9722,13 +9794,15 @@ class سرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سرود(db.Model):
     __tablename__ = 'سرود'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9756,13 +9830,15 @@ class سرود(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سرچشمه(db.Model):
     __tablename__ = 'سرچشمه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9790,13 +9866,15 @@ class سرچشمه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سشرق(db.Model):
     __tablename__ = 'سشرق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9824,13 +9902,15 @@ class سشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سشمال(db.Model):
     __tablename__ = 'سشمال'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9858,13 +9938,15 @@ class سشمال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سصفها(db.Model):
     __tablename__ = 'سصفها'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9892,13 +9974,15 @@ class سصفها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سصوفی(db.Model):
     __tablename__ = 'سصوفی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9926,13 +10010,15 @@ class سصوفی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سغرب(db.Model):
     __tablename__ = 'سغرب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9960,13 +10046,15 @@ class سغرب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سفار(db.Model):
     __tablename__ = 'سفار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -9994,13 +10082,15 @@ class سفار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سفارس(db.Model):
     __tablename__ = 'سفارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10028,13 +10118,15 @@ class سفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سفارود(db.Model):
     __tablename__ = 'سفارود'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10062,13 +10154,15 @@ class سفارود(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سفاسی(db.Model):
     __tablename__ = 'سفاسی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10096,13 +10190,15 @@ class سفاسی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سفانو(db.Model):
     __tablename__ = 'سفانو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10130,13 +10226,15 @@ class سفانو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سقاین(db.Model):
     __tablename__ = 'سقاین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10164,13 +10262,15 @@ class سقاین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سلار(db.Model):
     __tablename__ = 'سلار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10198,13 +10298,15 @@ class سلار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سمازن(db.Model):
     __tablename__ = 'سمازن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10233,46 +10335,14 @@ class سمازن(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class سمایه(db.Model):
-    __tablename__ = 'سمایه'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class سمتاز(db.Model):
     __tablename__ = 'سمتاز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10300,13 +10370,15 @@ class سمتاز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سمگا(db.Model):
     __tablename__ = 'سمگا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10334,13 +10406,15 @@ class سمگا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سنوین(db.Model):
     __tablename__ = 'سنوین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10368,13 +10442,15 @@ class سنوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سنیر(db.Model):
     __tablename__ = 'سنیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10402,13 +10478,15 @@ class سنیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سهرمز(db.Model):
     __tablename__ = 'سهرمز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10436,13 +10514,15 @@ class سهرمز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سهگمت(db.Model):
     __tablename__ = 'سهگمت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10470,13 +10550,15 @@ class سهگمت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سپ(db.Model):
     __tablename__ = 'سپ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10504,13 +10586,15 @@ class سپ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سپاس(db.Model):
     __tablename__ = 'سپاس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10538,13 +10622,15 @@ class سپاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سپاها(db.Model):
     __tablename__ = 'سپاها'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10572,13 +10658,15 @@ class سپاها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سپرمی(db.Model):
     __tablename__ = 'سپرمی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10607,46 +10695,14 @@ class سپرمی(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class سپیدار(db.Model):
-    __tablename__ = 'سپیدار'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class سکارون(db.Model):
     __tablename__ = 'سکارون'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10674,13 +10730,15 @@ class سکارون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سکرد(db.Model):
     __tablename__ = 'سکرد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10708,13 +10766,15 @@ class سکرد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سکرما(db.Model):
     __tablename__ = 'سکرما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10742,13 +10802,15 @@ class سکرما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سیتا(db.Model):
     __tablename__ = 'سیتا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10776,13 +10838,15 @@ class سیتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سیدکو(db.Model):
     __tablename__ = 'سیدکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10810,13 +10874,15 @@ class سیدکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سیستم(db.Model):
     __tablename__ = 'سیستم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10844,13 +10910,15 @@ class سیستم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سیلام(db.Model):
     __tablename__ = 'سیلام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10878,13 +10946,15 @@ class سیلام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class سیمرغ(db.Model):
     __tablename__ = 'سیمرغ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10912,13 +10982,15 @@ class سیمرغ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شاراک(db.Model):
     __tablename__ = 'شاراک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10946,13 +11018,15 @@ class شاراک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شاروم(db.Model):
     __tablename__ = 'شاروم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -10980,13 +11054,15 @@ class شاروم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شاملا(db.Model):
     __tablename__ = 'شاملا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11014,13 +11090,15 @@ class شاملا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شاملاح(db.Model):
     __tablename__ = 'شاملاح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11048,13 +11126,15 @@ class شاملاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شاوان(db.Model):
     __tablename__ = 'شاوان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11082,13 +11162,15 @@ class شاوان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شبریز(db.Model):
     __tablename__ = 'شبریز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11116,13 +11198,15 @@ class شبریز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شبصیر(db.Model):
     __tablename__ = 'شبصیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11150,13 +11234,15 @@ class شبصیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شبندر(db.Model):
     __tablename__ = 'شبندر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11184,13 +11270,15 @@ class شبندر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شبهرن(db.Model):
     __tablename__ = 'شبهرن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11218,13 +11306,15 @@ class شبهرن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شتران(db.Model):
     __tablename__ = 'شتران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11252,13 +11342,15 @@ class شتران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شتهران(db.Model):
     __tablename__ = 'شتهران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11286,13 +11378,15 @@ class شتهران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شتولی(db.Model):
     __tablename__ = 'شتولی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11320,13 +11414,15 @@ class شتولی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شتوکا(db.Model):
     __tablename__ = 'شتوکا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11354,13 +11450,15 @@ class شتوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شجم(db.Model):
     __tablename__ = 'شجم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11388,13 +11486,15 @@ class شجم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شخارک(db.Model):
     __tablename__ = 'شخارک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11422,13 +11522,15 @@ class شخارک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شدوص(db.Model):
     __tablename__ = 'شدوص'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11456,13 +11558,15 @@ class شدوص(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شراز(db.Model):
     __tablename__ = 'شراز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11490,13 +11594,15 @@ class شراز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شرانل(db.Model):
     __tablename__ = 'شرانل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11524,13 +11630,15 @@ class شرانل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شرنگی(db.Model):
     __tablename__ = 'شرنگی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11558,13 +11666,15 @@ class شرنگی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شزنگ(db.Model):
     __tablename__ = 'شزنگ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11593,80 +11703,14 @@ class شزنگ(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class شساخت(db.Model):
-    __tablename__ = 'شساخت'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class شستا(db.Model):
-    __tablename__ = 'شستا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class شسم(db.Model):
     __tablename__ = 'شسم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11694,13 +11738,15 @@ class شسم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شسپا(db.Model):
     __tablename__ = 'شسپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11729,46 +11775,14 @@ class شسپا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class شسینا(db.Model):
-    __tablename__ = 'شسینا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class شصدف(db.Model):
     __tablename__ = 'شصدف'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11796,13 +11810,15 @@ class شصدف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شصدفح(db.Model):
     __tablename__ = 'شصدفح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11830,13 +11846,15 @@ class شصدفح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شصفها(db.Model):
     __tablename__ = 'شصفها'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11864,13 +11882,15 @@ class شصفها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شغدیر(db.Model):
     __tablename__ = 'شغدیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11898,13 +11918,15 @@ class شغدیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شفا(db.Model):
     __tablename__ = 'شفا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11932,13 +11954,15 @@ class شفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شفارا(db.Model):
     __tablename__ = 'شفارا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -11966,13 +11990,15 @@ class شفارا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شفارس(db.Model):
     __tablename__ = 'شفارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12000,13 +12026,15 @@ class شفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شفن(db.Model):
     __tablename__ = 'شفن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12034,13 +12062,15 @@ class شفن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شلرد(db.Model):
     __tablename__ = 'شلرد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12068,13 +12098,15 @@ class شلرد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شلعاب(db.Model):
     __tablename__ = 'شلعاب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12102,13 +12134,15 @@ class شلعاب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شلعابح(db.Model):
     __tablename__ = 'شلعابح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12136,13 +12170,15 @@ class شلعابح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شمواد(db.Model):
     __tablename__ = 'شمواد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12170,13 +12206,15 @@ class شمواد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شنفت(db.Model):
     __tablename__ = 'شنفت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12204,13 +12242,15 @@ class شنفت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شوینده(db.Model):
     __tablename__ = 'شوینده'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12238,13 +12278,15 @@ class شوینده(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپارس(db.Model):
     __tablename__ = 'شپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12272,13 +12314,15 @@ class شپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپارسح(db.Model):
     __tablename__ = 'شپارسح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12306,13 +12350,15 @@ class شپارسح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپاس(db.Model):
     __tablename__ = 'شپاس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12340,13 +12386,15 @@ class شپاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپاکسا(db.Model):
     __tablename__ = 'شپاکسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12374,13 +12422,15 @@ class شپاکسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپترو(db.Model):
     __tablename__ = 'شپترو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12408,13 +12458,15 @@ class شپترو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپدیس(db.Model):
     __tablename__ = 'شپدیس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12442,13 +12494,15 @@ class شپدیس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپلی(db.Model):
     __tablename__ = 'شپلی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12476,13 +12530,15 @@ class شپلی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شپنا(db.Model):
     __tablename__ = 'شپنا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12510,13 +12566,15 @@ class شپنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شکبیر(db.Model):
     __tablename__ = 'شکبیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12544,13 +12602,15 @@ class شکبیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شکربن(db.Model):
     __tablename__ = 'شکربن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12578,13 +12638,15 @@ class شکربن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شکف(db.Model):
     __tablename__ = 'شکف'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12612,13 +12674,15 @@ class شکف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شکلر(db.Model):
     __tablename__ = 'شکلر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12647,46 +12711,14 @@ class شکلر(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class شگامرن(db.Model):
-    __tablename__ = 'شگامرن'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class شگل(db.Model):
     __tablename__ = 'شگل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12714,13 +12746,15 @@ class شگل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شگویا(db.Model):
     __tablename__ = 'شگویا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12748,13 +12782,15 @@ class شگویا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شیراز(db.Model):
     __tablename__ = 'شیراز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12782,13 +12818,15 @@ class شیراز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class شیران(db.Model):
     __tablename__ = 'شیران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12816,13 +12854,15 @@ class شیران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class صایند(db.Model):
     __tablename__ = 'صایند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12850,13 +12890,15 @@ class صایند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class صبا(db.Model):
     __tablename__ = 'صبا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12884,13 +12926,15 @@ class صبا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class صباح(db.Model):
     __tablename__ = 'صباح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12918,13 +12962,15 @@ class صباح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class صنوین(db.Model):
     __tablename__ = 'صنوین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -12953,46 +12999,14 @@ class صنوین(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class غاذر(db.Model):
-    __tablename__ = 'غاذر'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class غالبر(db.Model):
     __tablename__ = 'غالبر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13020,13 +13034,15 @@ class غالبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غبشهر(db.Model):
     __tablename__ = 'غبشهر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13054,13 +13070,15 @@ class غبشهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غبهار(db.Model):
     __tablename__ = 'غبهار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13088,13 +13106,15 @@ class غبهار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غبهنوش(db.Model):
     __tablename__ = 'غبهنوش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13122,13 +13142,15 @@ class غبهنوش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غدام(db.Model):
     __tablename__ = 'غدام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13156,13 +13178,15 @@ class غدام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غدشت(db.Model):
     __tablename__ = 'غدشت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13191,46 +13215,14 @@ class غدشت(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class غدیس(db.Model):
-    __tablename__ = 'غدیس'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class غزر(db.Model):
     __tablename__ = 'غزر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13258,13 +13250,15 @@ class غزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غسالم(db.Model):
     __tablename__ = 'غسالم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13292,13 +13286,15 @@ class غسالم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غشاذر(db.Model):
     __tablename__ = 'غشاذر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13327,46 +13323,14 @@ class غشاذر(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class غشان(db.Model):
-    __tablename__ = 'غشان'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class غشصفا(db.Model):
     __tablename__ = 'غشصفا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13394,13 +13358,15 @@ class غشصفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غشهد(db.Model):
     __tablename__ = 'غشهد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13428,13 +13394,15 @@ class غشهد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غشهداب(db.Model):
     __tablename__ = 'غشهداب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13462,13 +13430,15 @@ class غشهداب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غشوکو(db.Model):
     __tablename__ = 'غشوکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13497,46 +13467,14 @@ class غشوکو(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class غصینو(db.Model):
-    __tablename__ = 'غصینو'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class غفارس(db.Model):
     __tablename__ = 'غفارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13564,13 +13502,15 @@ class غفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غمارگ(db.Model):
     __tablename__ = 'غمارگ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13598,13 +13538,15 @@ class غمارگ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غمهرا(db.Model):
     __tablename__ = 'غمهرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13632,13 +13574,15 @@ class غمهرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غمینو(db.Model):
     __tablename__ = 'غمینو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13666,13 +13610,15 @@ class غمینو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غنوش(db.Model):
     __tablename__ = 'غنوش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13700,13 +13646,15 @@ class غنوش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غنیلی(db.Model):
     __tablename__ = 'غنیلی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13734,13 +13682,15 @@ class غنیلی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غویتا(db.Model):
     __tablename__ = 'غویتا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13768,13 +13718,15 @@ class غویتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غپآذر(db.Model):
     __tablename__ = 'غپآذر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13802,13 +13754,15 @@ class غپآذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غپاک(db.Model):
     __tablename__ = 'غپاک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13836,13 +13790,15 @@ class غپاک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غپونه(db.Model):
     __tablename__ = 'غپونه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13870,13 +13826,15 @@ class غپونه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غپینو(db.Model):
     __tablename__ = 'غپینو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13904,13 +13862,15 @@ class غپینو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غچین(db.Model):
     __tablename__ = 'غچین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13938,13 +13898,15 @@ class غچین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غگرجی(db.Model):
     __tablename__ = 'غگرجی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -13972,13 +13934,15 @@ class غگرجی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غگز(db.Model):
     __tablename__ = 'غگز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14006,13 +13970,15 @@ class غگز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غگل(db.Model):
     __tablename__ = 'غگل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14040,13 +14006,15 @@ class غگل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غگلستا(db.Model):
     __tablename__ = 'غگلستا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14074,13 +14042,15 @@ class غگلستا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غگلپا(db.Model):
     __tablename__ = 'غگلپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14108,13 +14078,15 @@ class غگلپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غگیلا(db.Model):
     __tablename__ = 'غگیلا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14142,13 +14114,15 @@ class غگیلا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class غیوان(db.Model):
     __tablename__ = 'غیوان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14177,46 +14151,14 @@ class غیوان(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class فاذر(db.Model):
-    __tablename__ = 'فاذر'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class فاراک(db.Model):
     __tablename__ = 'فاراک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14244,13 +14186,15 @@ class فاراک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فارس(db.Model):
     __tablename__ = 'فارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14279,46 +14223,14 @@ class فارس(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class فاسمین(db.Model):
-    __tablename__ = 'فاسمین'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class فافزا(db.Model):
     __tablename__ = 'فافزا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14346,13 +14258,15 @@ class فافزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فالوم(db.Model):
     __tablename__ = 'فالوم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14380,13 +14294,15 @@ class فالوم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فاما(db.Model):
     __tablename__ = 'فاما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14414,13 +14330,15 @@ class فاما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فایرا(db.Model):
     __tablename__ = 'فایرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14448,13 +14366,15 @@ class فایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فباهنر(db.Model):
     __tablename__ = 'فباهنر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14483,46 +14403,14 @@ class فباهنر(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class فبستم(db.Model):
-    __tablename__ = 'فبستم'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class فبیرا(db.Model):
     __tablename__ = 'فبیرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14550,13 +14438,15 @@ class فبیرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فجام(db.Model):
     __tablename__ = 'فجام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14584,13 +14474,15 @@ class فجام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فجر(db.Model):
     __tablename__ = 'فجر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14618,13 +14510,15 @@ class فجر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فجوش(db.Model):
     __tablename__ = 'فجوش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14652,13 +14546,15 @@ class فجوش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فخاس(db.Model):
     __tablename__ = 'فخاس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14686,13 +14582,15 @@ class فخاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فخوز(db.Model):
     __tablename__ = 'فخوز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14720,13 +14618,15 @@ class فخوز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فرآور(db.Model):
     __tablename__ = 'فرآور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14754,13 +14654,15 @@ class فرآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فرابورس(db.Model):
     __tablename__ = 'فرابورس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14788,13 +14690,15 @@ class فرابورس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فروس(db.Model):
     __tablename__ = 'فروس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14822,13 +14726,15 @@ class فروس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فروی(db.Model):
     __tablename__ = 'فروی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14856,13 +14762,15 @@ class فروی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فزرین(db.Model):
     __tablename__ = 'فزرین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14890,13 +14798,15 @@ class فزرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فسا(db.Model):
     __tablename__ = 'فسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14924,13 +14834,15 @@ class فسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فسازان(db.Model):
     __tablename__ = 'فسازان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14958,13 +14870,15 @@ class فسازان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فسدید(db.Model):
     __tablename__ = 'فسدید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -14992,13 +14906,15 @@ class فسدید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فسرب(db.Model):
     __tablename__ = 'فسرب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15026,13 +14942,15 @@ class فسرب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فسپا(db.Model):
     __tablename__ = 'فسپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15060,13 +14978,15 @@ class فسپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فلات(db.Model):
     __tablename__ = 'فلات'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15095,46 +15015,14 @@ class فلات(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class فلامی(db.Model):
-    __tablename__ = 'فلامی'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class فلوله(db.Model):
     __tablename__ = 'فلوله'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15162,13 +15050,15 @@ class فلوله(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فماک(db.Model):
     __tablename__ = 'فماک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15196,13 +15086,15 @@ class فماک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فمراد(db.Model):
     __tablename__ = 'فمراد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15230,13 +15122,15 @@ class فمراد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فملی(db.Model):
     __tablename__ = 'فملی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15264,13 +15158,15 @@ class فملی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فنآوا(db.Model):
     __tablename__ = 'فن آوا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15298,13 +15194,15 @@ class فنآوا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فنابا(db.Model):
     __tablename__ = 'فنابا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15332,13 +15230,15 @@ class فنابا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فنرژی(db.Model):
     __tablename__ = 'فنرژی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15366,13 +15266,15 @@ class فنرژی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فنفت(db.Model):
     __tablename__ = 'فنفت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15400,13 +15302,15 @@ class فنفت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فنوال(db.Model):
     __tablename__ = 'فنوال'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15434,13 +15338,15 @@ class فنوال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فنورد(db.Model):
     __tablename__ = 'فنورد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15468,13 +15374,15 @@ class فنورد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فولاد(db.Model):
     __tablename__ = 'فولاد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15502,13 +15410,15 @@ class فولاد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فولاژ(db.Model):
     __tablename__ = 'فولاژ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15536,13 +15446,15 @@ class فولاژ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فولای(db.Model):
     __tablename__ = 'فولای'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15570,13 +15482,15 @@ class فولای(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فوکا(db.Model):
     __tablename__ = 'فوکا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15604,13 +15518,15 @@ class فوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فپنتا(db.Model):
     __tablename__ = 'فپنتا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15638,13 +15554,15 @@ class فپنتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فیروزا(db.Model):
     __tablename__ = 'فیروزا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15672,13 +15590,15 @@ class فیروزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class فیروزه(db.Model):
     __tablename__ = 'فیروزه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15706,13 +15626,15 @@ class فیروزه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قاروم(db.Model):
     __tablename__ = 'قاروم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15740,13 +15662,15 @@ class قاروم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قاسم(db.Model):
     __tablename__ = 'قاسم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15774,13 +15698,15 @@ class قاسم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قثابت(db.Model):
     __tablename__ = 'قثابت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15809,46 +15735,14 @@ class قثابت(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class قجام(db.Model):
-    __tablename__ = 'قجام'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class قرن(db.Model):
     __tablename__ = 'قرن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15876,13 +15770,15 @@ class قرن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قزوین(db.Model):
     __tablename__ = 'قزوین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15910,13 +15806,15 @@ class قزوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قشرین(db.Model):
     __tablename__ = 'قشرین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15944,13 +15842,15 @@ class قشرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قشهد(db.Model):
     __tablename__ = 'قشهد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -15978,13 +15878,15 @@ class قشهد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قشکر(db.Model):
     __tablename__ = 'قشکر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16012,13 +15914,15 @@ class قشکر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قشیر(db.Model):
     __tablename__ = 'قشیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16046,13 +15950,15 @@ class قشیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قصفها(db.Model):
     __tablename__ = 'قصفها'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16080,13 +15986,15 @@ class قصفها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قلرست(db.Model):
     __tablename__ = 'قلرست'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16114,13 +16022,15 @@ class قلرست(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قمرو(db.Model):
     __tablename__ = 'قمرو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16149,46 +16059,14 @@ class قمرو(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class قنقش(db.Model):
-    __tablename__ = 'قنقش'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class قنیشا(db.Model):
     __tablename__ = 'قنیشا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16216,13 +16094,15 @@ class قنیشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قهکمت(db.Model):
     __tablename__ = 'قهکمت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16250,13 +16130,15 @@ class قهکمت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قپیرا(db.Model):
     __tablename__ = 'قپیرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16284,13 +16166,15 @@ class قپیرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class قچار(db.Model):
     __tablename__ = 'قچار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16318,13 +16202,15 @@ class قچار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لابسا(db.Model):
     __tablename__ = 'لابسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16352,13 +16238,15 @@ class لابسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لازما(db.Model):
     __tablename__ = 'لازما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16386,13 +16274,15 @@ class لازما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لبوتان(db.Model):
     __tablename__ = 'لبوتان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16420,13 +16310,15 @@ class لبوتان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لخانه(db.Model):
     __tablename__ = 'لخانه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16454,13 +16346,15 @@ class لخانه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لخزر(db.Model):
     __tablename__ = 'لخزر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16488,13 +16382,15 @@ class لخزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لسرما(db.Model):
     __tablename__ = 'لسرما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16522,13 +16418,15 @@ class لسرما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لوتوس(db.Model):
     __tablename__ = 'لوتوس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16556,13 +16454,15 @@ class لوتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لپارس(db.Model):
     __tablename__ = 'لپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16590,13 +16490,15 @@ class لپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لپیام(db.Model):
     __tablename__ = 'لپیام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16624,13 +16526,15 @@ class لپیام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class لکما(db.Model):
     __tablename__ = 'لکما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16658,13 +16562,15 @@ class لکما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ما(db.Model):
     __tablename__ = 'ما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16692,13 +16598,15 @@ class ما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class مادیرا(db.Model):
     __tablename__ = 'مادیرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16726,13 +16634,15 @@ class مادیرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class مارون(db.Model):
     __tablename__ = 'مارون'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16760,13 +16670,15 @@ class مارون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class مبین(db.Model):
     __tablename__ = 'مبین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16794,13 +16706,15 @@ class مبین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class مداران(db.Model):
     __tablename__ = 'مداران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16828,13 +16742,15 @@ class مداران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class مدیر(db.Model):
     __tablename__ = 'مدیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16862,13 +16778,15 @@ class مدیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class مرقام(db.Model):
     __tablename__ = 'مرقام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16897,46 +16815,14 @@ class مرقام(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class معیار(db.Model):
-    __tablename__ = 'معیار'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class مفاخر(db.Model):
     __tablename__ = 'مفاخر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16964,13 +16850,15 @@ class مفاخر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ملت(db.Model):
     __tablename__ = 'ملت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -16999,46 +16887,14 @@ class ملت(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class ممسنی(db.Model):
-    __tablename__ = 'ممسنی'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class میدکو(db.Model):
     __tablename__ = 'میدکو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17066,13 +16922,15 @@ class میدکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class میهن(db.Model):
     __tablename__ = 'میهن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17101,46 +16959,14 @@ class میهن(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class نبورس(db.Model):
-    __tablename__ = 'نبورس'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class نتوس(db.Model):
     __tablename__ = 'نتوس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17168,13 +16994,15 @@ class نتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class نطرین(db.Model):
     __tablename__ = 'نطرین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17202,13 +17030,15 @@ class نطرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class نمرینو(db.Model):
     __tablename__ = 'نمرینو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17236,13 +17066,15 @@ class نمرینو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class نوآور(db.Model):
     __tablename__ = 'نوآور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17270,13 +17102,15 @@ class نوآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class نوری(db.Model):
     __tablename__ = 'نوری'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17304,13 +17138,15 @@ class نوری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class نوین(db.Model):
     __tablename__ = 'نوین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17339,46 +17175,14 @@ class نوین(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class نکالا(db.Model):
-    __tablename__ = 'نکالا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class نگین(db.Model):
     __tablename__ = 'نگین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17406,13 +17210,15 @@ class نگین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class نیرو(db.Model):
     __tablename__ = 'نیرو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17441,46 +17247,14 @@ class نیرو(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class هایوب(db.Model):
-    __tablename__ = 'های وب'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class هجرت(db.Model):
     __tablename__ = 'هجرت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17508,13 +17282,15 @@ class هجرت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class هرمز(db.Model):
     __tablename__ = 'هرمز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17542,13 +17318,15 @@ class هرمز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class همراه(db.Model):
     __tablename__ = 'همراه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17576,13 +17354,15 @@ class همراه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وآتوس(db.Model):
     __tablename__ = 'وآتوس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17610,13 +17390,15 @@ class وآتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وآذر(db.Model):
     __tablename__ = 'وآذر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17644,13 +17426,15 @@ class وآذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وآرین(db.Model):
     __tablename__ = 'وآرین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17678,13 +17462,15 @@ class وآرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وآفری(db.Model):
     __tablename__ = 'وآفری'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17712,13 +17498,15 @@ class وآفری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وآوا(db.Model):
     __tablename__ = 'وآوا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17746,13 +17534,15 @@ class وآوا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وآیند(db.Model):
     __tablename__ = 'وآیند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17780,13 +17570,15 @@ class وآیند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class واتی(db.Model):
     __tablename__ = 'واتی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17814,13 +17606,15 @@ class واتی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class واحصا(db.Model):
     __tablename__ = 'واحصا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17848,13 +17642,15 @@ class واحصا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class واحیا(db.Model):
     __tablename__ = 'واحیا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17882,13 +17678,15 @@ class واحیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وارس(db.Model):
     __tablename__ = 'وارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17916,13 +17714,15 @@ class وارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class واعتبار(db.Model):
     __tablename__ = 'واعتبار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17950,13 +17750,15 @@ class واعتبار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class والبر(db.Model):
     __tablename__ = 'والبر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -17984,13 +17786,15 @@ class والبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وامید(db.Model):
     __tablename__ = 'وامید'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18018,13 +17822,15 @@ class وامید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وایرا(db.Model):
     __tablename__ = 'وایرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18052,13 +17858,15 @@ class وایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وایران(db.Model):
     __tablename__ = 'وایران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18086,13 +17894,15 @@ class وایران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبانک(db.Model):
     __tablename__ = 'وبانک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18120,13 +17930,15 @@ class وبانک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبرق(db.Model):
     __tablename__ = 'وبرق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18154,13 +17966,15 @@ class وبرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبشهر(db.Model):
     __tablename__ = 'وبشهر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18188,13 +18002,15 @@ class وبشهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبصادر(db.Model):
     __tablename__ = 'وبصادر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18222,13 +18038,15 @@ class وبصادر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبملت(db.Model):
     __tablename__ = 'وبملت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18256,13 +18074,15 @@ class وبملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبهمن(db.Model):
     __tablename__ = 'وبهمن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18290,13 +18110,15 @@ class وبهمن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبوعلی(db.Model):
     __tablename__ = 'وبوعلی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18324,13 +18146,15 @@ class وبوعلی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبیمه(db.Model):
     __tablename__ = 'وبیمه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18358,13 +18182,15 @@ class وبیمه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وبیمهح(db.Model):
     __tablename__ = 'وبیمهح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18392,13 +18218,15 @@ class وبیمهح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتجارت(db.Model):
     __tablename__ = 'وتجارت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18426,13 +18254,15 @@ class وتجارت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتعاون(db.Model):
     __tablename__ = 'وتعاون'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18460,13 +18290,15 @@ class وتعاون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتوس(db.Model):
     __tablename__ = 'وتوس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18494,13 +18326,15 @@ class وتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتوسم(db.Model):
     __tablename__ = 'وتوسم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18528,13 +18362,15 @@ class وتوسم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتوشه(db.Model):
     __tablename__ = 'وتوشه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18562,13 +18398,15 @@ class وتوشه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتوصا(db.Model):
     __tablename__ = 'وتوصا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18596,13 +18434,15 @@ class وتوصا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتوکا(db.Model):
     __tablename__ = 'وتوکا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18630,13 +18470,15 @@ class وتوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وتوکاح(db.Model):
     __tablename__ = 'وتوکاح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18664,13 +18506,15 @@ class وتوکاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وثخوز(db.Model):
     __tablename__ = 'وثخوز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18698,13 +18542,15 @@ class وثخوز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وثنو(db.Model):
     __tablename__ = 'وثنو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18732,13 +18578,15 @@ class وثنو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وثوق(db.Model):
     __tablename__ = 'وثوق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18766,13 +18614,15 @@ class وثوق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وجامی(db.Model):
     __tablename__ = 'وجامی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18800,13 +18650,15 @@ class وجامی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وحافظ(db.Model):
     __tablename__ = 'وحافظ'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18834,13 +18686,15 @@ class وحافظ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وحکمت(db.Model):
     __tablename__ = 'وحکمت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18868,13 +18722,15 @@ class وحکمت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وخارزم(db.Model):
     __tablename__ = 'وخارزم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18902,13 +18758,15 @@ class وخارزم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وخاور(db.Model):
     __tablename__ = 'وخاور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18936,13 +18794,15 @@ class وخاور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ودی(db.Model):
     __tablename__ = 'ودی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -18970,13 +18830,51 @@ class ودی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class ودیدو(db.Model):
+    __tablename__ = 'ودی دو'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ورازی(db.Model):
     __tablename__ = 'ورازی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19004,13 +18902,15 @@ class ورازی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ورنا(db.Model):
     __tablename__ = 'ورنا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19038,13 +18938,15 @@ class ورنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وزمین(db.Model):
     __tablename__ = 'وزمین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19072,13 +18974,15 @@ class وزمین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وساخت(db.Model):
     __tablename__ = 'وساخت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19106,13 +19010,15 @@ class وساخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وساربیل(db.Model):
     __tablename__ = 'وساربیل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19141,80 +19047,14 @@ class وساربیل(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وساشرقی(db.Model):
-    __tablename__ = 'وساشرقی'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وساغربی(db.Model):
-    __tablename__ = 'وساغربی'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسالت(db.Model):
     __tablename__ = 'وسالت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19242,13 +19082,15 @@ class وسالت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وساپا(db.Model):
     __tablename__ = 'وساپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19276,13 +19118,15 @@ class وساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسبحان(db.Model):
     __tablename__ = 'وسبحان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19310,13 +19154,15 @@ class وسبحان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسبوشهر(db.Model):
     __tablename__ = 'وسبوشهر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19344,13 +19190,15 @@ class وسبوشهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسخراج(db.Model):
     __tablename__ = 'وسخراج'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19378,13 +19226,15 @@ class وسخراج(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسخراش(db.Model):
     __tablename__ = 'وسخراش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19413,114 +19263,14 @@ class وسخراش(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وسخوز(db.Model):
-    __tablename__ = 'وسخوز'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وسدید(db.Model):
-    __tablename__ = 'وسدید'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وسرضوی(db.Model):
-    __tablename__ = 'وسرضوی'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسرمد(db.Model):
     __tablename__ = 'وسرمد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19548,13 +19298,15 @@ class وسرمد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسزنجان(db.Model):
     __tablename__ = 'وسزنجان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19583,80 +19335,14 @@ class وسزنجان(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وسصفا(db.Model):
-    __tablename__ = 'وسصفا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وسفارس(db.Model):
-    __tablename__ = 'وسفارس'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسقم(db.Model):
     __tablename__ = 'وسقم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19685,80 +19371,14 @@ class وسقم(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وسلرستا(db.Model):
-    __tablename__ = 'وسلرستا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وسمازن(db.Model):
-    __tablename__ = 'وسمازن'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسمرکز(db.Model):
     __tablename__ = 'وسمرکز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19786,13 +19406,15 @@ class وسمرکز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسنا(db.Model):
     __tablename__ = 'وسنا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19820,13 +19442,15 @@ class وسنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسناح(db.Model):
     __tablename__ = 'وسناح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19855,46 +19479,14 @@ class وسناح(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وسهمدا(db.Model):
-    __tablename__ = 'وسهمدا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسپه(db.Model):
     __tablename__ = 'وسپه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19922,13 +19514,15 @@ class وسپه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسپهر(db.Model):
     __tablename__ = 'وسپهر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19956,13 +19550,15 @@ class وسپهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسکاب(db.Model):
     __tablename__ = 'وسکاب'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -19991,46 +19587,14 @@ class وسکاب(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وسکرد(db.Model):
-    __tablename__ = 'وسکرد'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسکرشا(db.Model):
     __tablename__ = 'وسکرشا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20059,80 +19623,14 @@ class وسکرشا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وسکرمان(db.Model):
-    __tablename__ = 'وسکرمان'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وسکهبو(db.Model):
-    __tablename__ = 'وسکهبو'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسگلستا(db.Model):
     __tablename__ = 'وسگلستا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20161,114 +19659,14 @@ class وسگلستا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وسگیلا(db.Model):
-    __tablename__ = 'وسگیلا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وسیزد(db.Model):
-    __tablename__ = 'وسیزد'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وسیستا(db.Model):
-    __tablename__ = 'وسیستا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وسیلام(db.Model):
     __tablename__ = 'وسیلام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20296,13 +19694,15 @@ class وسیلام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسین(db.Model):
     __tablename__ = 'وسین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20330,13 +19730,15 @@ class وسین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وسینا(db.Model):
     __tablename__ = 'وسینا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20364,13 +19766,15 @@ class وسینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وشمال(db.Model):
     __tablename__ = 'وشمال'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20398,13 +19802,15 @@ class وشمال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وشهر(db.Model):
     __tablename__ = 'وشهر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20433,46 +19839,14 @@ class وشهر(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وصنا(db.Model):
-    __tablename__ = 'وصنا'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وصندوق(db.Model):
     __tablename__ = 'وصندوق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20500,13 +19874,15 @@ class وصندوق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وصنعت(db.Model):
     __tablename__ = 'وصنعت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20534,13 +19910,15 @@ class وصنعت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وغدیر(db.Model):
     __tablename__ = 'وغدیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20568,13 +19946,15 @@ class وغدیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولانا(db.Model):
     __tablename__ = 'ولانا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20602,13 +19982,15 @@ class ولانا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولبهمن(db.Model):
     __tablename__ = 'ولبهمن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20636,13 +20018,15 @@ class ولبهمن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولتجار(db.Model):
     __tablename__ = 'ولتجار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20670,13 +20054,15 @@ class ولتجار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولراز(db.Model):
     __tablename__ = 'ولراز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20704,13 +20090,15 @@ class ولراز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولساپا(db.Model):
     __tablename__ = 'ولساپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20738,13 +20126,15 @@ class ولساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولشرق(db.Model):
     __tablename__ = 'ولشرق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20772,13 +20162,15 @@ class ولشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولصنم(db.Model):
     __tablename__ = 'ولصنم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20806,13 +20198,15 @@ class ولصنم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولغدر(db.Model):
     __tablename__ = 'ولغدر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20840,13 +20234,15 @@ class ولغدر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولملت(db.Model):
     __tablename__ = 'ولملت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20874,13 +20270,15 @@ class ولملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولپارس(db.Model):
     __tablename__ = 'ولپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20908,13 +20306,15 @@ class ولپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ولیز(db.Model):
     __tablename__ = 'ولیز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20942,13 +20342,15 @@ class ولیز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ومشان(db.Model):
     __tablename__ = 'ومشان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -20977,46 +20379,14 @@ class ومشان(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class ومعادن(db.Model):
-    __tablename__ = 'ومعادن'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class ومعلم(db.Model):
     __tablename__ = 'ومعلم'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21044,13 +20414,15 @@ class ومعلم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وملت(db.Model):
     __tablename__ = 'وملت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21078,13 +20450,15 @@ class وملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وملل(db.Model):
     __tablename__ = 'وملل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21112,13 +20486,15 @@ class وملل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وملی(db.Model):
     __tablename__ = 'وملی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21146,13 +20522,15 @@ class وملی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ومهان(db.Model):
     __tablename__ = 'ومهان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21180,13 +20558,15 @@ class ومهان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ونفت(db.Model):
     __tablename__ = 'ونفت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21214,13 +20594,15 @@ class ونفت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ونوین(db.Model):
     __tablename__ = 'ونوین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21248,13 +20630,15 @@ class ونوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ونچر(db.Model):
     __tablename__ = 'ونچر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21282,13 +20666,15 @@ class ونچر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ونیرو(db.Model):
     __tablename__ = 'ونیرو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21316,13 +20702,15 @@ class ونیرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ونیروح(db.Model):
     __tablename__ = 'ونیروح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21350,13 +20738,15 @@ class ونیروح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class ونیکی(db.Model):
     __tablename__ = 'ونیکی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21384,13 +20774,51 @@ class ونیکی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class ونیکیدو(db.Model):
+    __tablename__ = 'ونیکی دو'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وهنر(db.Model):
     __tablename__ = 'وهنر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21418,13 +20846,15 @@ class وهنر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وهور(db.Model):
     __tablename__ = 'وهور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21452,13 +20882,15 @@ class وهور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وپارس(db.Model):
     __tablename__ = 'وپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21486,13 +20918,15 @@ class وپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وپاسار(db.Model):
     __tablename__ = 'وپاسار'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21520,13 +20954,15 @@ class وپاسار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وپترو(db.Model):
     __tablename__ = 'وپترو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21554,13 +20990,15 @@ class وپترو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وپخش(db.Model):
     __tablename__ = 'وپخش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21588,13 +21026,15 @@ class وپخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وپسا(db.Model):
     __tablename__ = 'وپسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21622,13 +21062,15 @@ class وپسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وپست(db.Model):
     __tablename__ = 'وپست'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21656,13 +21098,15 @@ class وپست(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وپویا(db.Model):
     __tablename__ = 'وپویا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21690,13 +21134,15 @@ class وپویا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وکادو(db.Model):
     __tablename__ = 'وکادو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21725,80 +21171,14 @@ class وکادو(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class وکار(db.Model):
-    __tablename__ = 'وکار'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
-
-
-class وکبهمن(db.Model):
-    __tablename__ = 'وکبهمن'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class وگردش(db.Model):
     __tablename__ = 'وگردش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21826,13 +21206,15 @@ class وگردش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class وگستر(db.Model):
     __tablename__ = 'وگستر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21860,13 +21242,15 @@ class وگستر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پارتا(db.Model):
     __tablename__ = 'پارتا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21894,13 +21278,15 @@ class پارتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پارتین(db.Model):
     __tablename__ = 'پارتین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21928,13 +21314,15 @@ class پارتین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پارس(db.Model):
     __tablename__ = 'پارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21962,13 +21350,15 @@ class پارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پارسان(db.Model):
     __tablename__ = 'پارسان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -21996,13 +21386,15 @@ class پارسان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پارسیان(db.Model):
     __tablename__ = 'پارسیان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22030,13 +21422,15 @@ class پارسیان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پارسیانح(db.Model):
     __tablename__ = 'پارسیانح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22064,13 +21458,15 @@ class پارسیانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پارند(db.Model):
     __tablename__ = 'پارند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22098,13 +21494,15 @@ class پارند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پاسا(db.Model):
     __tablename__ = 'پاسا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22132,13 +21530,15 @@ class پاسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پاکشو(db.Model):
     __tablename__ = 'پاکشو'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22166,13 +21566,15 @@ class پاکشو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پتایر(db.Model):
     __tablename__ = 'پتایر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22200,13 +21602,15 @@ class پتایر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پترول(db.Model):
     __tablename__ = 'پترول'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22234,13 +21638,15 @@ class پترول(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پترولح(db.Model):
     __tablename__ = 'پترولح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22268,13 +21674,15 @@ class پترولح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پخش(db.Model):
     __tablename__ = 'پخش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22302,13 +21710,15 @@ class پخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پدرخش(db.Model):
     __tablename__ = 'پدرخش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22336,13 +21746,15 @@ class پدرخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پرداخت(db.Model):
     __tablename__ = 'پرداخت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22370,13 +21782,15 @@ class پرداخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پردیس(db.Model):
     __tablename__ = 'پردیس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22404,13 +21818,15 @@ class پردیس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پسهند(db.Model):
     __tablename__ = 'پسهند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22438,13 +21854,15 @@ class پسهند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پشاهن(db.Model):
     __tablename__ = 'پشاهن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22472,13 +21890,15 @@ class پشاهن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پلاست(db.Model):
     __tablename__ = 'پلاست'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22506,13 +21926,15 @@ class پلاست(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پلاسک(db.Model):
     __tablename__ = 'پلاسک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22540,13 +21962,15 @@ class پلاسک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پلوله(db.Model):
     __tablename__ = 'پلوله'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22574,13 +21998,15 @@ class پلوله(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پکرمان(db.Model):
     __tablename__ = 'پکرمان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22608,13 +22034,15 @@ class پکرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پکویر(db.Model):
     __tablename__ = 'پکویر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22642,13 +22070,15 @@ class پکویر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پکویرح(db.Model):
     __tablename__ = 'پکویرح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22676,13 +22106,15 @@ class پکویرح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class پیزد(db.Model):
     __tablename__ = 'پیزد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22710,13 +22142,15 @@ class پیزد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class چافست(db.Model):
     __tablename__ = 'چافست'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22745,46 +22179,14 @@ class چافست(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class چخزر(db.Model):
-    __tablename__ = 'چخزر'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class چدن(db.Model):
     __tablename__ = 'چدن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22812,13 +22214,15 @@ class چدن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class چفیبر(db.Model):
     __tablename__ = 'چفیبر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22846,13 +22250,15 @@ class چفیبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class چکارن(db.Model):
     __tablename__ = 'چکارن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22880,13 +22286,15 @@ class چکارن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class چکاوه(db.Model):
     __tablename__ = 'چکاوه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22914,13 +22322,15 @@ class چکاوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class چکاپا(db.Model):
     __tablename__ = 'چکاپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22948,13 +22358,15 @@ class چکاپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کابگن(db.Model):
     __tablename__ = 'کابگن'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -22983,46 +22395,14 @@ class کابگن(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کاذر(db.Model):
-    __tablename__ = 'کاذر'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کاردان(db.Model):
     __tablename__ = 'کاردان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23050,13 +22430,15 @@ class کاردان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کاریس(db.Model):
     __tablename__ = 'کاریس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23085,46 +22467,14 @@ class کاریس(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کازرو(db.Model):
-    __tablename__ = 'کازرو'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کاسپین(db.Model):
     __tablename__ = 'کاسپین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23152,13 +22502,51 @@ class کاسپین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
+
+
+class کاسپینح(db.Model):
+    __tablename__ = 'کاسپینح'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
+    date = db.Column(db.Date, primary_key=True)
+    open = db.Column(db.Float)
+    high = db.Column(db.Float)
+    low = db.Column(db.Float)
+    adjClose = db.Column(db.Float)
+    value = db.Column(db.Integer)
+    volume = db.Column(db.Integer)
+    count = db.Column(db.Integer)
+    close = db.Column(db.Float)
+    individual_buy_count = db.Column(db.Integer)
+    individual_sell_count = db.Column(db.Integer)
+    individual_buy_vol = db.Column(db.Integer)
+    individual_sell_vol = db.Column(db.Integer)
+    individual_buy_value = db.Column(db.Integer)
+    individual_sell_value = db.Column(db.Integer)
+    corporate_buy_count = db.Column(db.Integer)
+    corporate_sell_count = db.Column(db.Integer)
+    corporate_buy_vol = db.Column(db.Integer)
+    corporate_sell_vol = db.Column(db.Integer)
+    corporate_buy_value = db.Column(db.Integer)
+    corporate_sell_value = db.Column(db.Integer)
+    individual_buy_mean_price = db.Column(db.Float)
+    individual_sell_mean_price = db.Column(db.Float)
+    corporate_buy_mean_price = db.Column(db.Float)
+    corporate_sell_mean_price = db.Column(db.Float)
+    individual_ownership_change = db.Column(db.Integer)
+    jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کالا(db.Model):
     __tablename__ = 'کالا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23186,13 +22574,15 @@ class کالا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کاما(db.Model):
     __tablename__ = 'کاما'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23220,13 +22610,15 @@ class کاما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کاوه(db.Model):
     __tablename__ = 'کاوه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23254,13 +22646,15 @@ class کاوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کایتا(db.Model):
     __tablename__ = 'کایتا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23289,12 +22683,14 @@ class کایتا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
+    stock = db.relationship('Stock')
 
-class کباده(db.Model):
-    __tablename__ = 'کباده'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+class کایتاح(db.Model):
+    __tablename__ = 'کایتاح'
+
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23322,13 +22718,15 @@ class کباده(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کبافق(db.Model):
     __tablename__ = 'کبافق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23356,13 +22754,15 @@ class کبافق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کبورس(db.Model):
     __tablename__ = 'کبورس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23390,13 +22790,15 @@ class کبورس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کترام(db.Model):
     __tablename__ = 'کترام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23424,13 +22826,15 @@ class کترام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کتوکا(db.Model):
     __tablename__ = 'کتوکا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23459,46 +22863,14 @@ class کتوکا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کحافظ(db.Model):
-    __tablename__ = 'کحافظ'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کخاک(db.Model):
     __tablename__ = 'کخاک'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23526,13 +22898,15 @@ class کخاک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کخاکح(db.Model):
     __tablename__ = 'کخاکح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23561,46 +22935,14 @@ class کخاکح(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کدما(db.Model):
-    __tablename__ = 'کدما'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کرازی(db.Model):
     __tablename__ = 'کرازی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23628,13 +22970,15 @@ class کرازی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کرماشا(db.Model):
     __tablename__ = 'کرماشا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23662,13 +23006,15 @@ class کرماشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کرمان(db.Model):
     __tablename__ = 'کرمان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23696,13 +23042,15 @@ class کرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کروی(db.Model):
     __tablename__ = 'کروی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23731,46 +23079,14 @@ class کروی(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کزغال(db.Model):
-    __tablename__ = 'کزغال'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کساوه(db.Model):
     __tablename__ = 'کساوه'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23798,13 +23114,15 @@ class کساوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کساپا(db.Model):
     __tablename__ = 'کساپا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23832,13 +23150,15 @@ class کساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کسرا(db.Model):
     __tablename__ = 'کسرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23867,46 +23187,14 @@ class کسرا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کسرام(db.Model):
-    __tablename__ = 'کسرام'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کسعدی(db.Model):
     __tablename__ = 'کسعدی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23934,13 +23222,15 @@ class کسعدی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کشرق(db.Model):
     __tablename__ = 'کشرق'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -23968,13 +23258,15 @@ class کشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کصدف(db.Model):
     __tablename__ = 'کصدف'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24002,13 +23294,15 @@ class کصدف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کطبس(db.Model):
     __tablename__ = 'کطبس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24036,13 +23330,15 @@ class کطبس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کفرآور(db.Model):
     __tablename__ = 'کفرآور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24070,13 +23366,15 @@ class کفرآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کفرا(db.Model):
     __tablename__ = 'کفرا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24105,46 +23403,14 @@ class کفرا(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کفپارس(db.Model):
-    __tablename__ = 'کفپارس'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کقزوی(db.Model):
     __tablename__ = 'کقزوی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24172,13 +23438,15 @@ class کقزوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کلر(db.Model):
     __tablename__ = 'کلر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24206,13 +23474,15 @@ class کلر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کلوند(db.Model):
     __tablename__ = 'کلوند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24241,46 +23511,14 @@ class کلوند(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
-
-class کماسه(db.Model):
-    __tablename__ = 'کماسه'
-
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
-    date = db.Column(db.Date, primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    adjClose = db.Column(db.Float)
-    value = db.Column(db.Integer)
-    volume = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    close = db.Column(db.Float)
-    individual_buy_count = db.Column(db.Integer)
-    individual_sell_count = db.Column(db.Integer)
-    individual_buy_vol = db.Column(db.Integer)
-    individual_sell_vol = db.Column(db.Integer)
-    individual_buy_value = db.Column(db.Integer)
-    individual_sell_value = db.Column(db.Integer)
-    corporate_buy_count = db.Column(db.Integer)
-    corporate_sell_count = db.Column(db.Integer)
-    corporate_buy_vol = db.Column(db.Integer)
-    corporate_sell_vol = db.Column(db.Integer)
-    corporate_buy_value = db.Column(db.Integer)
-    corporate_sell_value = db.Column(db.Integer)
-    individual_buy_mean_price = db.Column(db.Float)
-    individual_sell_mean_price = db.Column(db.Float)
-    corporate_buy_mean_price = db.Column(db.Float)
-    corporate_sell_mean_price = db.Column(db.Float)
-    individual_ownership_change = db.Column(db.Integer)
-    jdate = db.Column(db.String)
+    stock = db.relationship('Stock')
 
 
 class کمرجان(db.Model):
     __tablename__ = 'کمرجان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24308,13 +23546,15 @@ class کمرجان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کمند(db.Model):
     __tablename__ = 'کمند'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24342,13 +23582,15 @@ class کمند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کمنگنز(db.Model):
     __tablename__ = 'کمنگنز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24376,13 +23618,15 @@ class کمنگنز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کمینا(db.Model):
     __tablename__ = 'کمینا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24410,13 +23654,15 @@ class کمینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کنور(db.Model):
     __tablename__ = 'کنور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24444,13 +23690,15 @@ class کنور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کهرام(db.Model):
     __tablename__ = 'کهرام'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24478,13 +23726,15 @@ class کهرام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کهمدا(db.Model):
     __tablename__ = 'کهمدا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24512,13 +23762,15 @@ class کهمدا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کوثر(db.Model):
     __tablename__ = 'کوثر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24546,13 +23798,15 @@ class کوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کورز(db.Model):
     __tablename__ = 'کورز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24580,13 +23834,15 @@ class کورز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کویر(db.Model):
     __tablename__ = 'کویر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24614,13 +23870,15 @@ class کویر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کپارس(db.Model):
     __tablename__ = 'کپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24648,13 +23906,15 @@ class کپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کپرور(db.Model):
     __tablename__ = 'کپرور'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24682,13 +23942,15 @@ class کپرور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کپشیر(db.Model):
     __tablename__ = 'کپشیر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24716,13 +23978,15 @@ class کپشیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کپشیرح(db.Model):
     __tablename__ = 'کپشیرح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24750,13 +24014,15 @@ class کپشیرح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کچاد(db.Model):
     __tablename__ = 'کچاد'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24784,13 +24050,15 @@ class کچاد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کگاز(db.Model):
     __tablename__ = 'کگاز'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24818,13 +24086,15 @@ class کگاز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کگازح(db.Model):
     __tablename__ = 'کگازح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24852,13 +24122,15 @@ class کگازح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کگل(db.Model):
     __tablename__ = 'کگل'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24886,13 +24158,15 @@ class کگل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کگلح(db.Model):
     __tablename__ = 'کگلح'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24920,13 +24194,15 @@ class کگلح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کگهر(db.Model):
     __tablename__ = 'کگهر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24954,13 +24230,15 @@ class کگهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کیبیسی(db.Model):
     __tablename__ = 'کی بی سی'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -24988,13 +24266,15 @@ class کیبیسی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کیا(db.Model):
     __tablename__ = 'کیا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25022,13 +24302,15 @@ class کیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کیان(db.Model):
     __tablename__ = 'کیان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25056,13 +24338,15 @@ class کیان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کیسون(db.Model):
     __tablename__ = 'کیسون'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25090,13 +24374,15 @@ class کیسون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class کیمیا(db.Model):
     __tablename__ = 'کیمیا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25124,13 +24410,15 @@ class کیمیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class گدنا(db.Model):
     __tablename__ = 'گدنا'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25158,13 +24446,15 @@ class گدنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class گشان(db.Model):
     __tablename__ = 'گشان'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25192,13 +24482,15 @@ class گشان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class گنجین(db.Model):
     __tablename__ = 'گنجین'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25226,13 +24518,15 @@ class گنجین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class گوهران(db.Model):
     __tablename__ = 'گوهران'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25260,13 +24554,15 @@ class گوهران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class گپارس(db.Model):
     __tablename__ = 'گپارس'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25294,13 +24590,15 @@ class گپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class گکوثر(db.Model):
     __tablename__ = 'گکوثر'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25328,13 +24626,15 @@ class گکوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class گکیش(db.Model):
     __tablename__ = 'گکیش'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25362,13 +24662,15 @@ class گکیش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
 
 
 class یاقوت(db.Model):
     __tablename__ = 'یاقوت'
 
-    name = db.Column(db.String(15))
-    group = db.Column(db.String(30))
+    name = db.Column(db.ForeignKey('stocks.name'))
+    group = db.Column(db.String)
     date = db.Column(db.Date, primary_key=True)
     open = db.Column(db.Float)
     high = db.Column(db.Float)
@@ -25396,3 +24698,5 @@ class یاقوت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+
+    stock = db.relationship('Stock')
