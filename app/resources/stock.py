@@ -3,7 +3,7 @@ from flask_restful import Resource
 from config import _1_year_stocks, _2_year_stocks, _3_year_stocks, _5_year_stocks, _10_year_stocks, query_modes_object
 
 
-yearspans = {1: _1_year_stocks,
+yearrange = {1: _1_year_stocks,
              2: _2_year_stocks,
              3: _3_year_stocks,
              5: _5_year_stocks,
