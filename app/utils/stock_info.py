@@ -4,6 +4,10 @@ import json
 from bs4 import BeautifulSoup as soup
 import pandas as pd
 from datetime import datetime
+import os
+
+# Directories
+ALL_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__),'../data/index_all.json'))
 
 # URLs
 OVERALL_INFO = "http://www.tsetmc.com/Loader.aspx?ParTree=15"
@@ -14,10 +18,14 @@ INDEX_INFO = "http://www.fipiran.com/Symbol?symbolpara="
 INDEX_DATA = "http://www.fipiran.com/Symbol/_priceData?inscode="
 INDEX_HISTORY = "http://www.fipiran.com/DataService/Exportsymbol"
 INDEX_ALL_HISTORY = "http://www.fipiran.com/Symbol/MarketQoutes?inscode="
+INDEX_ALL_TABLO = "http://tablokhani.com/NewDash"
 
 class TSE(object):
     def __init__(self):
         self.index_list = []
+    # @classmethod
+    # def current_indexer(cls):
+    #     with open()
 
     def get_index_list(self):
         if len(self.index_list) > 1:
@@ -31,10 +39,21 @@ class TSE(object):
 
     def get_inscode(self, symbol):
         res = req.get(INDEX_INFO + symbol)
-        pattern = "'inscode': '\d+'"
-        res_pattern = re.findall(pattern,res.text)
-        inscode = re.findall("\d+", res_pattern[0])[0]
-        return inscode
+        pattern = re.compile(r"'inscode': '\d+'")
+        match = re.search(pattern, res.text)
+        inscode = re.search(r"\d+", match.group())
+        return inscode.group()
+
+    @classmethod
+    def get_index_all_tablo(cls):
+        # with open(ALL_INDEX_DIR, encoding="utf8") as reader:
+            # json_indexes = json.loads(reader.read())
+        res = req.get(INDEX_ALL_TABLO)
+        doc = soup(res.text, 'html.parser')
+        # with open(os.path.join(os.path.dirname(__file__), 'index.html'), mode='w', encoding="utf8") as f:
+        #     f.write(res.text)
+        for x in doc.find_all("tr"):
+            print(x.contents)
 
     def get_index_info(self, symbol, inscode=None):
         if inscode is None:

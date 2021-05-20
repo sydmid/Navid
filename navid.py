@@ -1,8 +1,8 @@
 import os
-import asyncio
+# import asyncio
 
 from app import create_app
-from app.create_tables import create_tset_tables
+# from app.create_tables import create_tset_tables
 
 # asyncio.run(create_tset_tables())
 

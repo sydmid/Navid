@@ -10,11 +10,11 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 loadedTables = {}
 
-_1_year_stocks = {}
-_2_year_stocks = {}
-_3_year_stocks = {}
-_5_year_stocks = {}
-_10_year_stocks = {}
+_1_year_span = {}
+_2_year_span = {}
+_3_year_span = {}
+_5_year_span = {}
+_10_year_span = {}
 
 query_modes_object = {'general_data': general_data,
                       'clients_data': clients_data,
@@ -63,29 +63,24 @@ def _load_tables():
 
 def _load_timespans():
     global loadedTables
-    global _1_year_stocks
-    global _2_year_stocks
-    global _3_year_stocks
-    global _5_year_stocks
-    global _10_year_stocks
+    global _1_year_span
+    global _2_year_span
+    global _3_year_span
+    global _5_year_span
+    global _10_year_span
 
-    stock_year_stack = [_1_year_stocks,
-                        _2_year_stocks,
-                        _3_year_stocks,
-                        _5_year_stocks,
-                        _10_year_stocks]
-
-    _1year_ago = datetime.now() - timedelta(days=365)
-    _2year_ago = datetime.now() - timedelta(days=2 * 365)
-    _3year_ago = datetime.now() - timedelta(days=3 * 365)
-    _5year_ago = datetime.now() - timedelta(days=5 * 365)
-    _10year_ago = datetime.now() - timedelta(days=10 * 365)
-
-    time_span_stack = [_1year_ago,
-                       _2year_ago,
-                       _3year_ago,
-                       _5year_ago,
-                       _10year_ago]
+    year_span_stack = [_1_year_span,
+                       _2_year_span,
+                       _3_year_span,
+                       _5_year_span,
+                       _10_year_span]
+    time_span_stack = [
+        datetime.now() - timedelta(days=365),
+        datetime.now() - timedelta(days=2 * 365),
+        datetime.now() - timedelta(days=3 * 365),
+        datetime.now() - timedelta(days=5 * 365),
+        datetime.now() - timedelta(days=10 * 365)
+    ]
 
     def _make_ready(ago):
         object_of_stocks = {}
@@ -102,7 +97,7 @@ def _load_timespans():
 
     for i in range(5):
         for key, value in _make_ready(time_span_stack[i]).items():
-            stock_year_stack[i][key] = value
+            year_span_stack[i][key] = value
 
 
 config = {
