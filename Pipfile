@@ -27,6 +27,7 @@ sqlacodegen = "*"
 aiohttp = "*"
 tenacity = "*"
 bs4 = "*"
+selenium = "*"
 
 [dev-packages]
 

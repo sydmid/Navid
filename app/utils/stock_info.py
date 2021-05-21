@@ -5,6 +5,11 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 from datetime import datetime
 import os
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # Directories
 ALL_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__),'../data/index_all.json'))
@@ -46,14 +51,37 @@ class TSE(object):
 
     @classmethod
     def get_index_all_tablo(cls):
+        opts = Options()
+        # opts.headless = True
+        # assert opts.headless
+        browser = Chrome(options=opts, executable_path=os.path.join(os.path.dirname(__file__), 'chromedriver.exe'))
+        browser.get('http://tablokhani.com/NewDash')
+        try:
+            WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, 'main_bazar_body')))
+        finally:
+            fetch_list = []
+            tr = browser.find_elements_by_xpath('//*[@id="main_bazar_body"]/*')
+            counter = 0
+            try:
+                for x in tr:
+                    counter += 1
+                    fetch_list.append(x.find_element_by_tag_name('a').text)
+            except:
+                print('bib')
+            print(str(fetch_list))
+            print(counter)
+            browser.close()
         # with open(ALL_INDEX_DIR, encoding="utf8") as reader:
             # json_indexes = json.loads(reader.read())
-        res = req.get(INDEX_ALL_TABLO)
-        doc = soup(res.text, 'html.parser')
+
+        # res = req.get(INDEX_ALL_TABLO)
+        # doc = soup(res.text, 'html.parser')
+
         # with open(os.path.join(os.path.dirname(__file__), 'index.html'), mode='w', encoding="utf8") as f:
         #     f.write(res.text)
-        for x in doc.find_all("tr"):
-            print(x.contents)
+
+        # for x in doc.find_all("tr"):
+        #     print(x.contents)
 
     def get_index_info(self, symbol, inscode=None):
         if inscode is None:
