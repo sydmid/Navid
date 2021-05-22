@@ -8,7 +8,7 @@ from app.views import main
 from app.db import db
 from app.jwt_callbacks import jwt_claim_handler
 
-from app.models.stocks import *
+from app.models.stock import *
 
 jwt = JWTManager()
 migrate = Migrate()

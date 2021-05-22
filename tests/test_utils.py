@@ -1,8 +1,6 @@
-from app.utils.stock_info import TSE
+from app.utils.stock_info import json_catalog_update
+import asyncio
 
-tse = TSE()
 
+asyncio.run(json_catalog_update())
 
-# print(tse.get_inscode('شستا'))
-# print(tse.get_index_info('شستا'))
-tse.get_index_all_tablo()
