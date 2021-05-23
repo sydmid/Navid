@@ -1,7 +1,6 @@
-from app.db import db
-
-class شستان(db.Model):
-    __tablename__ = 'شستان'
+from app.db import db 
+class نبروج(db.Model):
+    __tablename__ = 'نبروج'
 
     name = db.Column(db.String(15))
     group = db.Column(db.String(30))

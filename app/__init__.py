@@ -4,10 +4,10 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 
 from config import config
+from app.utils.table_loader import _load_tables, _load_timespans
 from app.views import main
 from app.db import db
 from app.jwt_callbacks import jwt_claim_handler
-
 from app.models.stock import *
 
 jwt = JWTManager()
@@ -20,7 +20,6 @@ def create_app(config_name):
     load_dotenv(".env")
 
     app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
 
     migrate.init_app(app, db)
 
@@ -31,17 +30,17 @@ def create_app(config_name):
     jwt.init_app(app)
     jwt_claim_handler(jwt)
 
-    @app.before_first_request
-    def global_table_object_creator():
-        db.create_all()
+    # @app.before_first_request
+    # def global_table_object_creator():
+    #     db.create_all()
 
     @app.before_first_request
     def global_loaded_tables_creator():
-        config['loadTables']()
+        _load_tables()
 
     @app.before_first_request
     def global_stocks_timespan_data_creator():
-        config['loadTimespans']()
+        _load_timespans()
 
     return app
 

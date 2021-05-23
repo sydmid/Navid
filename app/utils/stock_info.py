@@ -3,13 +3,9 @@ import time
 import re
 import json
 import requests as req
-from datetime import datetime
 from bs4 import BeautifulSoup as soup
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import StaleElementReferenceException
 
 # Directories
@@ -113,6 +109,12 @@ async def convert_json_chars():
 
 
 async def write_model_file():
+    with open(ALL_NO_INDEX_DIR, mode='r', encoding='utf8') as reader:
+        json_list = json.loads(reader.read())
+        if len(json_list) == 0:
+            print(f'something went wrong this is your index_no_all.json:\n\
+                  {reader.read()}')
+            raise
     model_file_name = time.strftime('%A%Y%m%H%M%S')
     print("writing to model files started")
     new_list = []

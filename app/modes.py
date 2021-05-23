@@ -1,4 +1,6 @@
 # TODO day step in modes
+
+
 def general_data(requested_stock):
     outputlist = []
     for x in requested_stock:
@@ -14,6 +16,7 @@ def general_data(requested_stock):
              'close': x.close}
         )
     return outputlist
+
 
 def clients_data(requested_stock):
     outputlist = []
@@ -39,6 +42,7 @@ def clients_data(requested_stock):
              'jdate': x.jdate}
         )
     return outputlist
+
 
 def test_data(requested_stock):
     outputlist = []

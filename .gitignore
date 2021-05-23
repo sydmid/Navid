@@ -30,3 +30,6 @@ dmypy.json
 Logs.txt
 Dates.txt
 /client_types_data
+index_no_all.json
+index_yes_all.json
+sample.py

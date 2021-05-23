@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlalchemy import (MetaData, Table, Column, Integer, Float, Numeric, String, DateTime, Date, ForeignKey, create_engine)
 from sqlalchemy.ext.declarative import declarative_base
-from .tset_client import Downloader
+from app.tset_client import Downloader
 from sqlalchemy.orm import relationship
 
 Base = declarative_base()

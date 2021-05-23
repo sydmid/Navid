@@ -1,6 +1,11 @@
 from flask_restful import Resource
 
-from config import _1_year_span, _2_year_span, _3_year_span, _5_year_span, _10_year_span, query_modes_object
+from app.utils.table_loader import (_1_year_span,
+                                    _2_year_span,
+                                    _3_year_span,
+                                    _5_year_span,
+                                    _10_year_span,
+                                    query_modes_object)
 
 
 yearrange = {1: _1_year_span,
