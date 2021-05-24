@@ -5,7 +5,6 @@ from datetime import timedelta
 class Config:
     toBeContinued = True
 
-    # Optional for doing config[config_name].init_app(app) in the main factory
     @staticmethod
     def init_app(app):
         pass
@@ -17,8 +16,6 @@ class PreAlpha(Config):
     DOWNLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'download')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db') + '?check_same_thread=False'
-    # 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
-
     # disables the flask_sqlachemy track modification not sqlalchemy itself
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # flask extensions like flask_jwt can raise their own exception and app will know their specific error

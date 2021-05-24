@@ -1,5 +1,4 @@
 from app.db import db
-
 class آسپ(db.Model):
     __tablename__ = 'آ س پ'
 
@@ -5950,8 +5949,8 @@ class خنصیر(db.Model):
     jdate = db.Column(db.String)
 
 
-class خودرو(db.Model):
-    __tablename__ = 'خودرو'
+class نبروج(db.Model):
+    __tablename__ = 'نبروج'
 
     name = db.Column(db.String(15))
     group = db.Column(db.String(30))

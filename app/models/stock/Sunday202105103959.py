@@ -1,6 +1,8 @@
-from app.db import db 
-class نبروج(db.Model):
-    __tablename__ = 'نبروج'
+from app.db import db
+
+
+class خودرو(db.Model):
+    __tablename__ = 'خودرو'
 
     name = db.Column(db.String(15))
     group = db.Column(db.String(30))
@@ -32,3 +34,18 @@ class نبروج(db.Model):
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
 
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def find_by_time_ago(cls, _time):
+        result = cls.query.filter(cls.date > _time).first()
+        return result
+
+    def json_payload(self):
+        return {'info': 'its ok man'}, 200

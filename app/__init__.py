@@ -20,6 +20,7 @@ def create_app(config_name):
     load_dotenv(".env")
 
     app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
     migrate.init_app(app, db)
 
@@ -30,9 +31,9 @@ def create_app(config_name):
     jwt.init_app(app)
     jwt_claim_handler(jwt)
 
-    # @app.before_first_request
-    # def global_table_object_creator():
-    #     db.create_all()
+    @app.before_first_request
+    def global_table_object_creator():
+        db.create_all()
 
     @app.before_first_request
     def global_loaded_tables_creator():
