@@ -48,7 +48,7 @@ def jwt_claim_handler(jwt):
     # this can be the identity (comes from flask_jwt
     # _extended internals) and also the date token has been created and ...
 
-    from .models.token import BlockedTokenModel
+    from app.models.token import BlockedTokenModel
 
     @jwt.token_in_blocklist_loader
     def is_token_in_blocklist(jwt_header, jwt_payload):

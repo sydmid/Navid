@@ -1,6 +1,6 @@
 import os
-from app.utils.stock_info import json_catalog_update
-from app.utils.create_tables import create_tset_tables
+from app.utils.stock_updater import json_catalog_update
+from app.utils.create_tsetmc_tables import create_tset_tables
 import asyncio
 
 

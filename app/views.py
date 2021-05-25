@@ -2,13 +2,13 @@ from flask import Blueprint
 from flask_restful import Api
 
 from app.resources.user import User, UserLogin, UserRegister, UserLogout, TokenRefresh
-from app.resources.db import DatabaseInit, DatabaseInitTest
+from app.resources.db_initializer import DatabaseInit, DatabaseInitTest
 from app.resources.in_memory_stock_dict import MemoryStock
 from app.resources.stock import Stock
 
-main = Blueprint('main', __name__)
+bp_resources = Blueprint('resources', __name__)
 
-api = Api(main)
+api = Api(bp_resources)
 
 api.add_resource(UserRegister, '/register')
 api.add_resource(User, '/user/<int:user_id>')

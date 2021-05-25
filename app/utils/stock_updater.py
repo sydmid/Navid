@@ -13,6 +13,8 @@ ALL_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data
 ALL_NO_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/index_no_all.json'))
 ALL_YES_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/index_yes_all.json'))
 MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../models/stock'))
+TSET_CLIENT_ALL_SYMBOLS = os.path.abspath(os.path.join(os.path.dirname(__file__), '../tset_client/data/symbols_name.json'))
+base_dir = os.path.abspath(os.path.dirname(__file__))
 
 # URLs
 OVERALL_INFO = "http://www.tsetmc.com/Loader.aspx?ParTree=15"
@@ -34,7 +36,7 @@ def get_inscode(symbol):
     return inscode.group()
 
 
-async def add_plus_inscode():
+async def add_new_stocks():
     print("adding namad+inscode to json bank started")
     dict_to_add = dict()
     final_dict = dict()
@@ -46,7 +48,16 @@ async def add_plus_inscode():
         json_indexes = json.loads(reader.read())
     with open(ALL_INDEX_DIR, encoding="utf8", mode="w") as writer:
         final_dict = {**dict_to_add, **json_indexes}
-        writer.write(json.dumps(final_dict, ensure_ascii=False))
+        writer.write(json.dumps(final_dict, ensure_ascii=False, sort_keys=True, indent=2, separators=(',', ': ')))
+    with open(TSET_CLIENT_ALL_SYMBOLS, encoding="utf8", mode="r") as reader:
+        current_symbols_json = json.loads(reader.read())
+        if current_symbols_json == final_dict:
+            return
+    backup_file_name = time.strftime('%A%Y%m%H%M%S')
+    os.rename(TSET_CLIENT_ALL_SYMBOLS, os.path.join(base_dir, f'../tset_client/data/{backup_file_name}.json'))
+    with open(TSET_CLIENT_ALL_SYMBOLS, encoding="utf8", mode="w") as writer:
+        final_dict = {**dict_to_add, **json_indexes}
+        writer.write(json.dumps(final_dict, ensure_ascii=False, sort_keys=True, indent=2, separators=(',', ': ')))
 
 
 def to_farsi(string: str):
@@ -55,6 +66,7 @@ def to_farsi(string: str):
 
 async def update_json_bank():
     print("updating json bank started")
+
     def _fresh_element_getter(driver):
         count = 0
         while count < 20:
@@ -95,17 +107,6 @@ async def update_json_bank():
 
         with open(ALL_YES_INDEX_DIR, mode='w', encoding="utf8") as writer:
             writer.write(json.dumps(oks, ensure_ascii=False))
-
-
-# TO DELETE SOON
-async def convert_json_chars():
-    new_list = []
-    with open(ALL_NO_INDEX_DIR, encoding="utf8", mode="r+") as reader:
-        json_data = json.loads(reader.read())
-        for x in range(len(json_data)):
-            new_list.append(to_farsi(json_data[x]))
-        reader.seek(0)
-        reader.write(json.dumps(new_list, ensure_ascii=False))
 
 
 async def write_model_file():
@@ -171,7 +172,7 @@ async def _exception_handling(backupfile):
     else:
         print("The file index_yes_all.json does not exist")
     with open(ALL_INDEX_DIR, mode='w', encoding='utf8') as writer:
-        writer.write(json.dumps(backupfile, ensure_ascii=False))
+        writer.write(json.dumps(backupfile, ensure_ascii=False, sort_keys=True, indent=2, separators=(',', ': ')))
 
 
 async def json_catalog_update():
@@ -184,7 +185,7 @@ async def json_catalog_update():
         await _exception_handling(json_backup)
         return
     try:
-        await add_plus_inscode()
+        await add_new_stocks()
     except:
         print('adding name+inscode to json bank failed')
         await _exception_handling(json_backup)
