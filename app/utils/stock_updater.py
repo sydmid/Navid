@@ -68,6 +68,7 @@ async def update_json_bank():
     print("updating json bank started")
 
     def _fresh_element_getter(driver):
+        time.sleep(10)
         count = 0
         while count < 20:
             count += 1
@@ -77,13 +78,14 @@ async def update_json_bank():
             time.sleep(.5)
             try:
                 elem = driver.find_element_by_id('main_bazar_body')
+                print("tunestam")
                 return driver.page_source
             except StaleElementReferenceException:
                 continue
     opts = Options()
     opts.headless = True
     assert opts.headless
-    chrome_driver = Chrome(options=opts, executable_path=os.path.join(os.path.dirname(__file__), 'chromedriver.exe'))
+    chrome_driver = Chrome(options=opts, executable_path=os.path.join(os.path.dirname(__file__), 'chromedriver'))
     chrome_driver.get('http://tablokhani.com/NewDash')
     index_name_list = []
     doc = soup(_fresh_element_getter(chrome_driver), 'html.parser')
@@ -101,7 +103,6 @@ async def update_json_bank():
                 oks.append(namad)
             except:
                 nos.append(namad)
-
         with open(ALL_NO_INDEX_DIR, mode='w', encoding="utf8") as writer:
             writer.write(json.dumps(nos, ensure_ascii=False))
 

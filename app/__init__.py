@@ -44,4 +44,3 @@ def create_app(config_name):
     jwt_claim_handler(jwt)
 
     return app
-
