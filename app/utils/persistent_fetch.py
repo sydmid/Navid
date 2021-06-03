@@ -86,6 +86,15 @@ def get_ticker_real_time_new(stock_id, session) -> dict:
         init_vars_dict['adj_close'] = int(response.text.split()[1].split(",")[2])
     except (ValueError, IndexError):
         init_vars_dict['adj_close'] = None
+
+    try:
+        init_vars_dict['last_price'] = int(response.text.split(",")[2])
+    except:
+        init_vars_dict['last_price'] = None
+    try:
+        init_vars_dict['adj_close'] = int(response.text.split(",")[3])
+    except:
+        init_vars_dict['adj_close'] = None
     return init_vars_dict
 
 
