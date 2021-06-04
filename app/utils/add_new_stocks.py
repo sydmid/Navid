@@ -78,7 +78,6 @@ async def update_json_bank():
             time.sleep(.5)
             try:
                 elem = driver.find_element_by_id('main_bazar_body')
-                print("tunestam")
                 return driver.page_source
             except StaleElementReferenceException:
                 continue
@@ -160,6 +159,10 @@ async def write_model_file():
     individual_ownership_change = db.Column(db.Integer)\n\
     jdate = db.Column(db.String)\n\
 \n\
+    @classmethod\n\
+    def find_last_date(cls):\n\
+        result = cls.query.order_by(cls.date.desc()).first()\n\
+        return result.date\n\
 ")
 
 
