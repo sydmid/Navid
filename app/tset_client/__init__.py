@@ -95,8 +95,17 @@ class Downloader:
     def initialize_existing_db(self):
         downloaded = dict()
         try:
-            downloaded['download-general'] = download(symbols="all", include_jdate=True)
-            downloaded['download-clients'] = download_client_types_records(symbols="all", include_jdate=True)
+            downloaded['download-general'] = download(symbols='all', include_jdate=True)
+            downloaded['download-clients'] = download_client_types_records(symbols='all', include_jdate=True)
+            return downloaded
+        except Exception as err:
+            print('some thing went wrong with downloading from tsetmc', str(err))
+
+    def update_existing_db(self):
+        downloaded = dict()
+        try:
+            downloaded['download-general'] = download(symbols='all', include_jdate=True)
+            downloaded['download-clients'] = download_client_types_records(symbols='all', include_jdate=True)
             return downloaded
         except Exception as err:
             print('some thing went wrong with downloading from tsetmc', str(err))

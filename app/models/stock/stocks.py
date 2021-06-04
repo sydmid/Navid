@@ -31,6 +31,12 @@ class آسپ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آبادا(db.Model):
@@ -65,6 +71,12 @@ class آبادا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آبین(db.Model):
@@ -99,6 +111,12 @@ class آبین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آتیمس(db.Model):
@@ -133,6 +151,12 @@ class آتیمس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آرمان(db.Model):
@@ -167,6 +191,12 @@ class آرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آرمانی(db.Model):
@@ -201,6 +231,12 @@ class آرمانی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آریا(db.Model):
@@ -235,6 +271,12 @@ class آریا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آریان(db.Model):
@@ -269,6 +311,12 @@ class آریان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آساس(db.Model):
@@ -303,6 +351,12 @@ class آساس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آسام(db.Model):
@@ -337,6 +391,12 @@ class آسام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آسامید(db.Model):
@@ -371,6 +431,12 @@ class آسامید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آسیا(db.Model):
@@ -405,6 +471,12 @@ class آسیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آوا(db.Model):
@@ -439,6 +511,12 @@ class آوا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آپ(db.Model):
@@ -473,6 +551,12 @@ class آپ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آکورد(db.Model):
@@ -507,6 +591,12 @@ class آکورد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آگاس(db.Model):
@@ -541,6 +631,12 @@ class آگاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class آینده(db.Model):
@@ -575,6 +671,12 @@ class آینده(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اتکام(db.Model):
@@ -609,6 +711,12 @@ class اتکام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اتکای(db.Model):
@@ -643,6 +751,12 @@ class اتکای(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اخابر(db.Model):
@@ -677,6 +791,12 @@ class اخابر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ارزش(db.Model):
@@ -711,6 +831,12 @@ class ارزش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ارفع(db.Model):
@@ -745,6 +871,12 @@ class ارفع(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ارفعح(db.Model):
@@ -779,6 +911,12 @@ class ارفعح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ارمغان(db.Model):
@@ -813,6 +951,12 @@ class ارمغان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اطلس(db.Model):
@@ -847,6 +991,12 @@ class اطلس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اعتلا(db.Model):
@@ -881,6 +1031,12 @@ class اعتلا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اعتلاح(db.Model):
@@ -915,6 +1071,12 @@ class اعتلاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اعتماد(db.Model):
@@ -949,6 +1111,12 @@ class اعتماد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class افرا(db.Model):
@@ -983,6 +1151,12 @@ class افرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class افران(db.Model):
@@ -1017,6 +1191,12 @@ class افران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class افق(db.Model):
@@ -1051,6 +1231,12 @@ class افق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class افقملت(db.Model):
@@ -1085,6 +1271,12 @@ class افقملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class البرز(db.Model):
@@ -1119,6 +1311,12 @@ class البرز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class الماس(db.Model):
@@ -1153,6 +1351,12 @@ class الماس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class امید(db.Model):
@@ -1187,6 +1391,12 @@ class امید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class امین(db.Model):
@@ -1221,6 +1431,12 @@ class امین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class امینیکم(db.Model):
@@ -1255,6 +1471,12 @@ class امینیکم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class انرژی1(db.Model):
@@ -1289,6 +1511,12 @@ class انرژی1(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class انرژی2(db.Model):
@@ -1323,6 +1551,12 @@ class انرژی2(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class انرژی3(db.Model):
@@ -1357,6 +1591,12 @@ class انرژی3(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اوان(db.Model):
@@ -1391,6 +1631,12 @@ class اوان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اوصتا(db.Model):
@@ -1425,6 +1671,12 @@ class اوصتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اپرداز(db.Model):
@@ -1459,6 +1711,12 @@ class اپرداز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class اکالا(db.Model):
@@ -1493,6 +1751,12 @@ class اکالا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بالاس(db.Model):
@@ -1527,6 +1791,12 @@ class بالاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بالبر(db.Model):
@@ -1561,6 +1831,12 @@ class بالبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بایکا(db.Model):
@@ -1595,6 +1871,12 @@ class بایکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بترانس(db.Model):
@@ -1629,6 +1911,12 @@ class بترانس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بتک(db.Model):
@@ -1663,6 +1951,12 @@ class بتک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بجهرم(db.Model):
@@ -1697,6 +1991,12 @@ class بجهرم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بخاور(db.Model):
@@ -1731,6 +2031,12 @@ class بخاور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بذر(db.Model):
@@ -1765,6 +2071,12 @@ class بذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class برکت(db.Model):
@@ -1799,6 +2111,12 @@ class برکت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بزاگرس(db.Model):
@@ -1833,6 +2151,12 @@ class بزاگرس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بزاگرسح(db.Model):
@@ -1867,6 +2191,12 @@ class بزاگرسح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بساما(db.Model):
@@ -1901,6 +2231,12 @@ class بساما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بسویچ(db.Model):
@@ -1935,6 +2271,12 @@ class بسویچ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بشهاب(db.Model):
@@ -1969,6 +2311,12 @@ class بشهاب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بفجر(db.Model):
@@ -2003,6 +2351,12 @@ class بفجر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بموتو(db.Model):
@@ -2037,6 +2391,12 @@ class بموتو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بمپنا(db.Model):
@@ -2071,6 +2431,12 @@ class بمپنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بمیلا(db.Model):
@@ -2105,6 +2471,12 @@ class بمیلا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بنو(db.Model):
@@ -2139,6 +2511,12 @@ class بنو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بنیرو(db.Model):
@@ -2173,6 +2551,12 @@ class بنیرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بهپاک(db.Model):
@@ -2207,6 +2591,12 @@ class بهپاک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بورس(db.Model):
@@ -2241,6 +2631,12 @@ class بورس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بوعلی(db.Model):
@@ -2275,6 +2671,12 @@ class بوعلی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بپاس(db.Model):
@@ -2309,6 +2711,12 @@ class بپاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بپیوند(db.Model):
@@ -2343,6 +2751,12 @@ class بپیوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بکاب(db.Model):
@@ -2377,6 +2791,12 @@ class بکاب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بکام(db.Model):
@@ -2411,6 +2831,12 @@ class بکام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بکهنوج(db.Model):
@@ -2445,6 +2871,12 @@ class بکهنوج(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class بگیلان(db.Model):
@@ -2479,6 +2911,12 @@ class بگیلان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تابا(db.Model):
@@ -2513,6 +2951,12 @@ class تابا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تاصیکو(db.Model):
@@ -2547,6 +2991,12 @@ class تاصیکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تاپکیش(db.Model):
@@ -2581,6 +3031,12 @@ class تاپکیش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تاپکیشح(db.Model):
@@ -2615,6 +3071,12 @@ class تاپکیشح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تاپیکو(db.Model):
@@ -2649,6 +3111,12 @@ class تاپیکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تایرا(db.Model):
@@ -2683,6 +3151,12 @@ class تایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تبرک(db.Model):
@@ -2717,6 +3191,12 @@ class تبرک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تشتاد(db.Model):
@@ -2751,6 +3231,12 @@ class تشتاد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تشتادح(db.Model):
@@ -2785,6 +3271,12 @@ class تشتادح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تصمیم(db.Model):
@@ -2819,6 +3311,12 @@ class تصمیم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تفیرو(db.Model):
@@ -2853,6 +3351,12 @@ class تفیرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تلیسه(db.Model):
@@ -2887,6 +3391,12 @@ class تلیسه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تماوند(db.Model):
@@ -2921,6 +3431,12 @@ class تماوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تملت(db.Model):
@@ -2955,6 +3471,12 @@ class تملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تنوین(db.Model):
@@ -2989,6 +3511,12 @@ class تنوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class توریل(db.Model):
@@ -3023,6 +3551,12 @@ class توریل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تپمپی(db.Model):
@@ -3057,6 +3591,12 @@ class تپمپی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تپولا(db.Model):
@@ -3091,6 +3631,12 @@ class تپولا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تپکو(db.Model):
@@ -3125,6 +3671,12 @@ class تپکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تکالا(db.Model):
@@ -3159,6 +3711,12 @@ class تکالا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تکشا(db.Model):
@@ -3193,6 +3751,12 @@ class تکشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تکمبا(db.Model):
@@ -3227,6 +3791,12 @@ class تکمبا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تکنار(db.Model):
@@ -3261,6 +3831,12 @@ class تکنار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تکنو(db.Model):
@@ -3295,6 +3871,12 @@ class تکنو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class تیپیکو(db.Model):
@@ -3329,6 +3911,12 @@ class تیپیکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثاباد(db.Model):
@@ -3363,6 +3951,12 @@ class ثاباد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثاخت(db.Model):
@@ -3397,6 +3991,12 @@ class ثاخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثاصفا(db.Model):
@@ -3431,6 +4031,12 @@ class ثاصفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثالوند(db.Model):
@@ -3465,6 +4071,12 @@ class ثالوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثامان(db.Model):
@@ -3499,6 +4111,12 @@ class ثامان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثامید(db.Model):
@@ -3533,6 +4151,12 @@ class ثامید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثاژن(db.Model):
@@ -3567,6 +4191,12 @@ class ثاژن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثباغ(db.Model):
@@ -3601,6 +4231,12 @@ class ثباغ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثبهساز(db.Model):
@@ -3635,6 +4271,12 @@ class ثبهساز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثتران(db.Model):
@@ -3669,6 +4311,12 @@ class ثتران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثترانح(db.Model):
@@ -3703,6 +4351,12 @@ class ثترانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثتوسا(db.Model):
@@ -3737,6 +4391,12 @@ class ثتوسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثجوان(db.Model):
@@ -3771,6 +4431,12 @@ class ثجوان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثروتم(db.Model):
@@ -3805,6 +4471,12 @@ class ثروتم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثرود(db.Model):
@@ -3839,6 +4511,12 @@ class ثرود(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثزاگرس(db.Model):
@@ -3873,6 +4551,12 @@ class ثزاگرس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثشاهد(db.Model):
@@ -3907,6 +4591,12 @@ class ثشاهد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثشرق(db.Model):
@@ -3941,6 +4631,12 @@ class ثشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثعتما(db.Model):
@@ -3975,6 +4671,12 @@ class ثعتما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثعمرا(db.Model):
@@ -4009,6 +4711,12 @@ class ثعمرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثغرب(db.Model):
@@ -4043,6 +4751,12 @@ class ثغرب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثفارس(db.Model):
@@ -4077,6 +4791,12 @@ class ثفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثقزوی(db.Model):
@@ -4111,6 +4831,12 @@ class ثقزوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثمسکن(db.Model):
@@ -4145,6 +4871,12 @@ class ثمسکن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثنام(db.Model):
@@ -4179,6 +4911,12 @@ class ثنام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثنظام(db.Model):
@@ -4213,6 +4951,12 @@ class ثنظام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثنور(db.Model):
@@ -4247,6 +4991,12 @@ class ثنور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثنورح(db.Model):
@@ -4281,6 +5031,12 @@ class ثنورح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثنوسا(db.Model):
@@ -4315,6 +5071,12 @@ class ثنوسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثپردیس(db.Model):
@@ -4349,6 +5111,12 @@ class ثپردیس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ثپردیسح(db.Model):
@@ -4383,6 +5151,12 @@ class ثپردیسح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class جم(db.Model):
@@ -4417,6 +5191,12 @@ class جم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class جمپیلن(db.Model):
@@ -4451,6 +5231,12 @@ class جمپیلن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class جهرم(db.Model):
@@ -4485,6 +5271,12 @@ class جهرم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حآسا(db.Model):
@@ -4519,6 +5311,12 @@ class حآسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حاریا(db.Model):
@@ -4553,6 +5351,12 @@ class حاریا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حبندر(db.Model):
@@ -4587,6 +5391,12 @@ class حبندر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حتاید(db.Model):
@@ -4621,6 +5431,12 @@ class حتاید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حتوکا(db.Model):
@@ -4655,6 +5471,12 @@ class حتوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حخزر(db.Model):
@@ -4689,6 +5511,12 @@ class حخزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حرهشا(db.Model):
@@ -4723,6 +5551,12 @@ class حرهشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حریل(db.Model):
@@ -4757,6 +5591,12 @@ class حریل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حسیر(db.Model):
@@ -4791,6 +5631,12 @@ class حسیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حسینا(db.Model):
@@ -4825,6 +5671,12 @@ class حسینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حفارس(db.Model):
@@ -4859,6 +5711,12 @@ class حفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حفاری(db.Model):
@@ -4893,6 +5751,12 @@ class حفاری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حپارسا(db.Model):
@@ -4927,6 +5791,12 @@ class حپارسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حپترو(db.Model):
@@ -4961,6 +5831,12 @@ class حپترو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class حکشتی(db.Model):
@@ -4995,6 +5871,12 @@ class حکشتی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خاذین(db.Model):
@@ -5029,6 +5911,12 @@ class خاذین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خاهن(db.Model):
@@ -5063,6 +5951,12 @@ class خاهن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خاور(db.Model):
@@ -5097,6 +5991,12 @@ class خاور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خبهمن(db.Model):
@@ -5131,6 +6031,12 @@ class خبهمن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ختراک(db.Model):
@@ -5165,6 +6071,12 @@ class ختراک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ختور(db.Model):
@@ -5199,6 +6111,12 @@ class ختور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ختورح(db.Model):
@@ -5233,6 +6151,12 @@ class ختورح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ختوقا(db.Model):
@@ -5267,6 +6191,12 @@ class ختوقا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خدیزل(db.Model):
@@ -5301,6 +6231,12 @@ class خدیزل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خراسان(db.Model):
@@ -5335,6 +6271,12 @@ class خراسان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خریخت(db.Model):
@@ -5369,6 +6311,12 @@ class خریخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خرینگ(db.Model):
@@ -5403,6 +6351,12 @@ class خرینگ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خزامیا(db.Model):
@@ -5437,6 +6391,12 @@ class خزامیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خزر(db.Model):
@@ -5471,6 +6431,12 @@ class خزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خساپا(db.Model):
@@ -5505,6 +6471,12 @@ class خساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خشرق(db.Model):
@@ -5539,6 +6511,12 @@ class خشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خصدرا(db.Model):
@@ -5573,6 +6551,12 @@ class خصدرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خعمرا(db.Model):
@@ -5607,6 +6591,12 @@ class خعمرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خفناور(db.Model):
@@ -5641,6 +6631,12 @@ class خفناور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خفنر(db.Model):
@@ -5675,6 +6671,12 @@ class خفنر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خفولا(db.Model):
@@ -5709,6 +6711,12 @@ class خفولا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خلنت(db.Model):
@@ -5743,6 +6751,12 @@ class خلنت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خلیبل(db.Model):
@@ -5777,6 +6791,12 @@ class خلیبل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خمحرکه(db.Model):
@@ -5811,6 +6831,12 @@ class خمحرکه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خمحور(db.Model):
@@ -5845,6 +6871,12 @@ class خمحور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خمهر(db.Model):
@@ -5879,6 +6911,12 @@ class خمهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خموتور(db.Model):
@@ -5913,6 +6951,12 @@ class خموتور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خنصیر(db.Model):
@@ -5947,6 +6991,12 @@ class خنصیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نبروج(db.Model):
@@ -5981,6 +7031,12 @@ class نبروج(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خودکفا(db.Model):
@@ -6015,6 +7071,12 @@ class خودکفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خوساز(db.Model):
@@ -6049,6 +7111,12 @@ class خوساز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خپارس(db.Model):
@@ -6083,6 +7151,12 @@ class خپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خپویش(db.Model):
@@ -6117,6 +7191,12 @@ class خپویش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خچرخش(db.Model):
@@ -6151,6 +7231,12 @@ class خچرخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خکار(db.Model):
@@ -6185,6 +7271,12 @@ class خکار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خکاوه(db.Model):
@@ -6219,6 +7311,12 @@ class خکاوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خکرمان(db.Model):
@@ -6253,6 +7351,12 @@ class خکرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خکمک(db.Model):
@@ -6287,6 +7391,12 @@ class خکمک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class خگستر(db.Model):
@@ -6321,6 +7431,12 @@ class خگستر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دابور(db.Model):
@@ -6355,6 +7471,12 @@ class دابور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دارا(db.Model):
@@ -6389,6 +7511,12 @@ class دارا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دارایکم(db.Model):
@@ -6423,6 +7551,12 @@ class دارایکم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class داراب(db.Model):
@@ -6457,6 +7591,12 @@ class داراب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دارو(db.Model):
@@ -6491,6 +7631,12 @@ class دارو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class داریک(db.Model):
@@ -6525,6 +7671,12 @@ class داریک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class داسوه(db.Model):
@@ -6559,6 +7711,12 @@ class داسوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دالبر(db.Model):
@@ -6593,6 +7751,12 @@ class دالبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دامین(db.Model):
@@ -6627,6 +7791,12 @@ class دامین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دانا(db.Model):
@@ -6661,6 +7831,12 @@ class دانا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class داوه(db.Model):
@@ -6695,6 +7871,12 @@ class داوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دبالک(db.Model):
@@ -6729,6 +7911,12 @@ class دبالک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دتماد(db.Model):
@@ -6763,6 +7951,12 @@ class دتماد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دتمادح(db.Model):
@@ -6797,10 +7991,16 @@ class دتمادح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دتهران(db.Model):
-    __tablename__ = 'دتهران\u200c'
+    __tablename__ = 'دتهران'
 
     name = db.Column(db.String(15))
     group = db.Column(db.String(30))
@@ -6831,6 +8031,12 @@ class دتهران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دتوزیع(db.Model):
@@ -6865,6 +8071,12 @@ class دتوزیع(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دتولید(db.Model):
@@ -6899,6 +8111,12 @@ class دتولید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دجابر(db.Model):
@@ -6933,6 +8151,12 @@ class دجابر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دحاوی(db.Model):
@@ -6967,6 +8191,12 @@ class دحاوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ددام(db.Model):
@@ -7001,6 +8231,12 @@ class ددام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class درازک(db.Model):
@@ -7035,6 +8271,12 @@ class درازک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class درهآور(db.Model):
@@ -7069,6 +8311,12 @@ class درهآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دروز(db.Model):
@@ -7103,6 +8351,12 @@ class دروز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دزهراوی(db.Model):
@@ -7137,6 +8391,12 @@ class دزهراوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دسانکو(db.Model):
@@ -7171,6 +8431,12 @@ class دسانکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دسبحا(db.Model):
@@ -7205,6 +8471,12 @@ class دسبحا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دسبحاح(db.Model):
@@ -7239,6 +8511,12 @@ class دسبحاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دسبحان(db.Model):
@@ -7273,6 +8551,12 @@ class دسبحان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دسبحانح(db.Model):
@@ -7307,6 +8591,12 @@ class دسبحانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دسینا(db.Model):
@@ -7341,6 +8631,12 @@ class دسینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دشیری(db.Model):
@@ -7375,6 +8671,12 @@ class دشیری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دشیمی(db.Model):
@@ -7409,6 +8711,12 @@ class دشیمی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دعبید(db.Model):
@@ -7443,6 +8751,12 @@ class دعبید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دفارا(db.Model):
@@ -7477,6 +8791,12 @@ class دفارا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دفرا(db.Model):
@@ -7511,6 +8831,12 @@ class دفرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دقاضی(db.Model):
@@ -7545,6 +8871,12 @@ class دقاضی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دلر(db.Model):
@@ -7579,6 +8911,12 @@ class دلر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دلقما(db.Model):
@@ -7613,6 +8951,12 @@ class دلقما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دماوند(db.Model):
@@ -7647,6 +8991,12 @@ class دماوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دمعیار(db.Model):
@@ -7681,6 +9031,12 @@ class دمعیار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دهدشت(db.Model):
@@ -7715,6 +9071,12 @@ class دهدشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دپارس(db.Model):
@@ -7749,6 +9111,12 @@ class دپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دکوثر(db.Model):
@@ -7783,6 +9151,12 @@ class دکوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دکپسول(db.Model):
@@ -7817,6 +9191,12 @@ class دکپسول(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دکیمی(db.Model):
@@ -7851,6 +9231,12 @@ class دکیمی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دی(db.Model):
@@ -7885,6 +9271,12 @@ class دی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دیدو(db.Model):
@@ -7919,6 +9311,12 @@ class دیدو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دیران(db.Model):
@@ -7953,6 +9351,12 @@ class دیران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class دیرانح(db.Model):
@@ -7987,6 +9391,12 @@ class دیرانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ذوب(db.Model):
@@ -8021,6 +9431,12 @@ class ذوب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رافزا(db.Model):
@@ -8055,6 +9471,12 @@ class رافزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رانفور(db.Model):
@@ -8089,6 +9511,12 @@ class رانفور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رتاپ(db.Model):
@@ -8123,6 +9551,12 @@ class رتاپ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رتکو(db.Model):
@@ -8157,6 +9591,12 @@ class رتکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رمپنا(db.Model):
@@ -8191,6 +9631,12 @@ class رمپنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رنیک(db.Model):
@@ -8225,6 +9671,12 @@ class رنیک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رویش(db.Model):
@@ -8259,6 +9711,12 @@ class رویش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class رکیش(db.Model):
@@ -8293,6 +9751,12 @@ class رکیش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ریشمک(db.Model):
@@ -8327,6 +9791,12 @@ class ریشمک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زاگرس(db.Model):
@@ -8361,6 +9831,12 @@ class زاگرس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زبینا(db.Model):
@@ -8395,6 +9871,12 @@ class زبینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زدشت(db.Model):
@@ -8429,6 +9911,12 @@ class زدشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زشریف(db.Model):
@@ -8463,6 +9951,12 @@ class زشریف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زشگزا(db.Model):
@@ -8497,6 +9991,12 @@ class زشگزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زفکا(db.Model):
@@ -8531,6 +10031,12 @@ class زفکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زقیام(db.Model):
@@ -8565,6 +10071,12 @@ class زقیام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زقیامح(db.Model):
@@ -8599,6 +10111,12 @@ class زقیامح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زماهان(db.Model):
@@ -8633,6 +10151,12 @@ class زماهان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زملارد(db.Model):
@@ -8667,6 +10191,12 @@ class زملارد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زمگسا(db.Model):
@@ -8701,6 +10231,12 @@ class زمگسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زنجان(db.Model):
@@ -8735,6 +10271,12 @@ class زنجان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زنگان(db.Model):
@@ -8769,6 +10311,12 @@ class زنگان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زپارس(db.Model):
@@ -8803,6 +10351,12 @@ class زپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زکشت(db.Model):
@@ -8837,6 +10391,12 @@ class زکشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زکوثر(db.Model):
@@ -8871,6 +10431,12 @@ class زکوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class زگلدشت(db.Model):
@@ -8905,6 +10471,12 @@ class زگلدشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ساذری(db.Model):
@@ -8939,6 +10511,12 @@ class ساذری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ساراب(db.Model):
@@ -8973,6 +10551,12 @@ class ساراب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ساربیل(db.Model):
@@ -9007,6 +10591,12 @@ class ساربیل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ساروج(db.Model):
@@ -9041,6 +10631,12 @@ class ساروج(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ساروم(db.Model):
@@ -9075,6 +10671,12 @@ class ساروم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سامان(db.Model):
@@ -9109,6 +10711,12 @@ class سامان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ساوه(db.Model):
@@ -9143,6 +10751,12 @@ class ساوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سایرا(db.Model):
@@ -9177,6 +10791,12 @@ class سایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ساینا(db.Model):
@@ -9211,6 +10831,12 @@ class ساینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سباقر(db.Model):
@@ -9245,6 +10871,12 @@ class سباقر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سبجنو(db.Model):
@@ -9279,6 +10911,12 @@ class سبجنو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سبزوا(db.Model):
@@ -9313,6 +10951,12 @@ class سبزوا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سبهان(db.Model):
@@ -9347,6 +10991,12 @@ class سبهان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ستران(db.Model):
@@ -9381,6 +11031,12 @@ class ستران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سجام(db.Model):
@@ -9415,6 +11071,12 @@ class سجام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سخاش(db.Model):
@@ -9449,6 +11111,12 @@ class سخاش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سخزر(db.Model):
@@ -9483,6 +11151,12 @@ class سخزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سخند(db.Model):
@@ -9517,6 +11191,12 @@ class سخند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سخواف(db.Model):
@@ -9551,6 +11231,12 @@ class سخواف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سخوز(db.Model):
@@ -9585,6 +11271,12 @@ class سخوز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سدبیر(db.Model):
@@ -9619,6 +11311,12 @@ class سدبیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سدشت(db.Model):
@@ -9653,6 +11351,12 @@ class سدشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سدور(db.Model):
@@ -9687,6 +11391,12 @@ class سدور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سرو(db.Model):
@@ -9721,6 +11431,12 @@ class سرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سرود(db.Model):
@@ -9755,6 +11471,12 @@ class سرود(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سرچشمه(db.Model):
@@ -9789,6 +11511,12 @@ class سرچشمه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سشرق(db.Model):
@@ -9823,6 +11551,12 @@ class سشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سشمال(db.Model):
@@ -9857,6 +11591,12 @@ class سشمال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سصفها(db.Model):
@@ -9891,6 +11631,12 @@ class سصفها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سصوفی(db.Model):
@@ -9925,6 +11671,12 @@ class سصوفی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سغرب(db.Model):
@@ -9959,6 +11711,12 @@ class سغرب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سفار(db.Model):
@@ -9993,6 +11751,12 @@ class سفار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سفارس(db.Model):
@@ -10027,6 +11791,12 @@ class سفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سفارود(db.Model):
@@ -10061,6 +11831,12 @@ class سفارود(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سفاسی(db.Model):
@@ -10095,6 +11871,12 @@ class سفاسی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سفانو(db.Model):
@@ -10129,6 +11911,12 @@ class سفانو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سقاین(db.Model):
@@ -10163,6 +11951,12 @@ class سقاین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سلار(db.Model):
@@ -10197,6 +11991,12 @@ class سلار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سمازن(db.Model):
@@ -10231,6 +12031,12 @@ class سمازن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سمایه(db.Model):
@@ -10265,6 +12071,12 @@ class سمایه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سمتاز(db.Model):
@@ -10299,6 +12111,12 @@ class سمتاز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سمگا(db.Model):
@@ -10333,6 +12151,12 @@ class سمگا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سنوین(db.Model):
@@ -10367,6 +12191,12 @@ class سنوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سنیر(db.Model):
@@ -10401,6 +12231,12 @@ class سنیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سهرمز(db.Model):
@@ -10435,6 +12271,12 @@ class سهرمز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سهگمت(db.Model):
@@ -10469,6 +12311,12 @@ class سهگمت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سپ(db.Model):
@@ -10503,6 +12351,12 @@ class سپ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سپاس(db.Model):
@@ -10537,6 +12391,12 @@ class سپاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سپاها(db.Model):
@@ -10571,6 +12431,12 @@ class سپاها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سپرمی(db.Model):
@@ -10605,6 +12471,12 @@ class سپرمی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سپیدار(db.Model):
@@ -10639,6 +12511,12 @@ class سپیدار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سکارون(db.Model):
@@ -10673,6 +12551,12 @@ class سکارون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سکرد(db.Model):
@@ -10707,6 +12591,12 @@ class سکرد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سکرما(db.Model):
@@ -10741,6 +12631,12 @@ class سکرما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سیتا(db.Model):
@@ -10775,6 +12671,12 @@ class سیتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سیدکو(db.Model):
@@ -10809,6 +12711,12 @@ class سیدکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سیستم(db.Model):
@@ -10843,6 +12751,12 @@ class سیستم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سیلام(db.Model):
@@ -10877,6 +12791,12 @@ class سیلام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class سیمرغ(db.Model):
@@ -10911,6 +12831,12 @@ class سیمرغ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شاراک(db.Model):
@@ -10945,6 +12871,12 @@ class شاراک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شاروم(db.Model):
@@ -10979,6 +12911,12 @@ class شاروم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شاملا(db.Model):
@@ -11013,6 +12951,12 @@ class شاملا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شاملاح(db.Model):
@@ -11047,6 +12991,12 @@ class شاملاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شاوان(db.Model):
@@ -11081,6 +13031,12 @@ class شاوان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شبریز(db.Model):
@@ -11115,6 +13071,12 @@ class شبریز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شبصیر(db.Model):
@@ -11149,6 +13111,12 @@ class شبصیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شبندر(db.Model):
@@ -11183,6 +13151,12 @@ class شبندر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شبهرن(db.Model):
@@ -11217,6 +13191,12 @@ class شبهرن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شتران(db.Model):
@@ -11251,6 +13231,12 @@ class شتران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شتهران(db.Model):
@@ -11285,6 +13271,12 @@ class شتهران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شتولی(db.Model):
@@ -11319,6 +13311,12 @@ class شتولی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شتوکا(db.Model):
@@ -11353,6 +13351,12 @@ class شتوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شجم(db.Model):
@@ -11387,6 +13391,12 @@ class شجم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شخارک(db.Model):
@@ -11421,6 +13431,12 @@ class شخارک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شدوص(db.Model):
@@ -11455,6 +13471,12 @@ class شدوص(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شراز(db.Model):
@@ -11489,6 +13511,12 @@ class شراز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شرانل(db.Model):
@@ -11523,6 +13551,12 @@ class شرانل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شرنگی(db.Model):
@@ -11557,6 +13591,12 @@ class شرنگی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شزنگ(db.Model):
@@ -11591,6 +13631,12 @@ class شزنگ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شساخت(db.Model):
@@ -11625,6 +13671,12 @@ class شساخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شستا(db.Model):
@@ -11659,6 +13711,12 @@ class شستا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شسم(db.Model):
@@ -11693,6 +13751,12 @@ class شسم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شسپا(db.Model):
@@ -11727,6 +13791,12 @@ class شسپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شسینا(db.Model):
@@ -11761,6 +13831,12 @@ class شسینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شصدف(db.Model):
@@ -11795,6 +13871,12 @@ class شصدف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شصدفح(db.Model):
@@ -11829,6 +13911,12 @@ class شصدفح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شصفها(db.Model):
@@ -11863,6 +13951,12 @@ class شصفها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شغدیر(db.Model):
@@ -11897,6 +13991,12 @@ class شغدیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شفا(db.Model):
@@ -11931,6 +14031,12 @@ class شفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شفارا(db.Model):
@@ -11965,6 +14071,12 @@ class شفارا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شفارس(db.Model):
@@ -11999,6 +14111,12 @@ class شفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شفن(db.Model):
@@ -12033,6 +14151,12 @@ class شفن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شلرد(db.Model):
@@ -12067,6 +14191,12 @@ class شلرد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شلعاب(db.Model):
@@ -12101,6 +14231,12 @@ class شلعاب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شلعابح(db.Model):
@@ -12135,6 +14271,12 @@ class شلعابح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شمواد(db.Model):
@@ -12169,6 +14311,12 @@ class شمواد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شنفت(db.Model):
@@ -12203,6 +14351,12 @@ class شنفت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شوینده(db.Model):
@@ -12237,6 +14391,12 @@ class شوینده(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپارس(db.Model):
@@ -12271,6 +14431,12 @@ class شپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپارسح(db.Model):
@@ -12305,6 +14471,12 @@ class شپارسح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپاس(db.Model):
@@ -12339,6 +14511,12 @@ class شپاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپاکسا(db.Model):
@@ -12373,6 +14551,12 @@ class شپاکسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپترو(db.Model):
@@ -12407,6 +14591,12 @@ class شپترو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپدیس(db.Model):
@@ -12441,6 +14631,12 @@ class شپدیس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپلی(db.Model):
@@ -12475,6 +14671,12 @@ class شپلی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شپنا(db.Model):
@@ -12509,6 +14711,12 @@ class شپنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شکبیر(db.Model):
@@ -12543,6 +14751,12 @@ class شکبیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شکربن(db.Model):
@@ -12577,6 +14791,12 @@ class شکربن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شکف(db.Model):
@@ -12611,6 +14831,12 @@ class شکف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شکلر(db.Model):
@@ -12645,6 +14871,12 @@ class شکلر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شگامرن(db.Model):
@@ -12679,6 +14911,12 @@ class شگامرن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شگل(db.Model):
@@ -12713,6 +14951,12 @@ class شگل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شگویا(db.Model):
@@ -12747,6 +14991,12 @@ class شگویا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شیراز(db.Model):
@@ -12781,6 +15031,12 @@ class شیراز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class شیران(db.Model):
@@ -12815,6 +15071,12 @@ class شیران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class صایند(db.Model):
@@ -12849,6 +15111,12 @@ class صایند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class صبا(db.Model):
@@ -12883,6 +15151,12 @@ class صبا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class صباح(db.Model):
@@ -12917,6 +15191,12 @@ class صباح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class صنوین(db.Model):
@@ -12951,6 +15231,12 @@ class صنوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غاذر(db.Model):
@@ -12985,6 +15271,12 @@ class غاذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غالبر(db.Model):
@@ -13019,6 +15311,12 @@ class غالبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غبشهر(db.Model):
@@ -13053,6 +15351,12 @@ class غبشهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غبهار(db.Model):
@@ -13087,6 +15391,12 @@ class غبهار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غبهنوش(db.Model):
@@ -13121,6 +15431,12 @@ class غبهنوش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غدام(db.Model):
@@ -13155,6 +15471,12 @@ class غدام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غدشت(db.Model):
@@ -13189,6 +15511,12 @@ class غدشت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غدیس(db.Model):
@@ -13223,6 +15551,12 @@ class غدیس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غزر(db.Model):
@@ -13257,6 +15591,12 @@ class غزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غسالم(db.Model):
@@ -13291,6 +15631,12 @@ class غسالم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غشاذر(db.Model):
@@ -13325,6 +15671,12 @@ class غشاذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غشان(db.Model):
@@ -13359,6 +15711,12 @@ class غشان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غشصفا(db.Model):
@@ -13393,6 +15751,12 @@ class غشصفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غشهد(db.Model):
@@ -13427,6 +15791,12 @@ class غشهد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غشهداب(db.Model):
@@ -13461,6 +15831,12 @@ class غشهداب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غشوکو(db.Model):
@@ -13495,6 +15871,12 @@ class غشوکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غصینو(db.Model):
@@ -13529,6 +15911,12 @@ class غصینو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غفارس(db.Model):
@@ -13563,6 +15951,12 @@ class غفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غمارگ(db.Model):
@@ -13597,6 +15991,12 @@ class غمارگ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غمهرا(db.Model):
@@ -13631,6 +16031,12 @@ class غمهرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غمینو(db.Model):
@@ -13665,6 +16071,12 @@ class غمینو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غنوش(db.Model):
@@ -13699,6 +16111,12 @@ class غنوش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غنیلی(db.Model):
@@ -13733,6 +16151,12 @@ class غنیلی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غویتا(db.Model):
@@ -13767,6 +16191,12 @@ class غویتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غپآذر(db.Model):
@@ -13801,6 +16231,12 @@ class غپآذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غپاک(db.Model):
@@ -13835,6 +16271,12 @@ class غپاک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غپونه(db.Model):
@@ -13869,6 +16311,12 @@ class غپونه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غپینو(db.Model):
@@ -13903,6 +16351,12 @@ class غپینو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غچین(db.Model):
@@ -13937,6 +16391,12 @@ class غچین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غگرجی(db.Model):
@@ -13971,6 +16431,12 @@ class غگرجی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غگز(db.Model):
@@ -14005,6 +16471,12 @@ class غگز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غگل(db.Model):
@@ -14039,6 +16511,12 @@ class غگل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غگلستا(db.Model):
@@ -14073,6 +16551,12 @@ class غگلستا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غگلپا(db.Model):
@@ -14107,6 +16591,12 @@ class غگلپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غگیلا(db.Model):
@@ -14141,6 +16631,12 @@ class غگیلا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class غیوان(db.Model):
@@ -14175,6 +16671,12 @@ class غیوان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فاذر(db.Model):
@@ -14209,6 +16711,12 @@ class فاذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فاراک(db.Model):
@@ -14243,6 +16751,12 @@ class فاراک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فارس(db.Model):
@@ -14277,6 +16791,12 @@ class فارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فاسمین(db.Model):
@@ -14311,6 +16831,12 @@ class فاسمین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فافزا(db.Model):
@@ -14345,6 +16871,12 @@ class فافزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فالوم(db.Model):
@@ -14379,6 +16911,12 @@ class فالوم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فاما(db.Model):
@@ -14413,6 +16951,12 @@ class فاما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فایرا(db.Model):
@@ -14447,6 +16991,12 @@ class فایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فباهنر(db.Model):
@@ -14481,6 +17031,12 @@ class فباهنر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فبستم(db.Model):
@@ -14515,6 +17071,12 @@ class فبستم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فبیرا(db.Model):
@@ -14549,6 +17111,12 @@ class فبیرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فجام(db.Model):
@@ -14583,6 +17151,12 @@ class فجام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فجر(db.Model):
@@ -14617,6 +17191,12 @@ class فجر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فجوش(db.Model):
@@ -14651,6 +17231,12 @@ class فجوش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فخاس(db.Model):
@@ -14685,6 +17271,12 @@ class فخاس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فخوز(db.Model):
@@ -14719,6 +17311,12 @@ class فخوز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فرآور(db.Model):
@@ -14753,6 +17351,12 @@ class فرآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فرابورس(db.Model):
@@ -14787,6 +17391,12 @@ class فرابورس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فروس(db.Model):
@@ -14821,6 +17431,12 @@ class فروس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فروی(db.Model):
@@ -14855,6 +17471,12 @@ class فروی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فزرین(db.Model):
@@ -14889,6 +17511,12 @@ class فزرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فسا(db.Model):
@@ -14923,6 +17551,12 @@ class فسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فسازان(db.Model):
@@ -14957,6 +17591,12 @@ class فسازان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فسدید(db.Model):
@@ -14991,6 +17631,12 @@ class فسدید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فسرب(db.Model):
@@ -15025,6 +17671,12 @@ class فسرب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فسپا(db.Model):
@@ -15059,6 +17711,12 @@ class فسپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فلات(db.Model):
@@ -15093,6 +17751,12 @@ class فلات(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فلامی(db.Model):
@@ -15127,6 +17791,12 @@ class فلامی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فلوله(db.Model):
@@ -15161,6 +17831,12 @@ class فلوله(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فماک(db.Model):
@@ -15195,6 +17871,12 @@ class فماک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فمراد(db.Model):
@@ -15229,6 +17911,12 @@ class فمراد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فملی(db.Model):
@@ -15263,6 +17951,12 @@ class فملی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فنآوا(db.Model):
@@ -15297,6 +17991,12 @@ class فنآوا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فنابا(db.Model):
@@ -15331,6 +18031,12 @@ class فنابا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فنرژی(db.Model):
@@ -15365,6 +18071,12 @@ class فنرژی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فنفت(db.Model):
@@ -15399,6 +18111,12 @@ class فنفت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فنوال(db.Model):
@@ -15433,6 +18151,12 @@ class فنوال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فنورد(db.Model):
@@ -15467,6 +18191,12 @@ class فنورد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فولاد(db.Model):
@@ -15501,6 +18231,12 @@ class فولاد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فولاژ(db.Model):
@@ -15535,6 +18271,12 @@ class فولاژ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فولای(db.Model):
@@ -15569,6 +18311,12 @@ class فولای(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فوکا(db.Model):
@@ -15603,6 +18351,12 @@ class فوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فپنتا(db.Model):
@@ -15637,6 +18391,12 @@ class فپنتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فیروزا(db.Model):
@@ -15671,6 +18431,12 @@ class فیروزا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class فیروزه(db.Model):
@@ -15705,6 +18471,12 @@ class فیروزه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قاروم(db.Model):
@@ -15739,6 +18511,12 @@ class قاروم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قاسم(db.Model):
@@ -15773,6 +18551,12 @@ class قاسم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قثابت(db.Model):
@@ -15807,6 +18591,12 @@ class قثابت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قجام(db.Model):
@@ -15841,6 +18631,12 @@ class قجام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قرن(db.Model):
@@ -15875,6 +18671,12 @@ class قرن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قزوین(db.Model):
@@ -15909,6 +18711,12 @@ class قزوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قشرین(db.Model):
@@ -15943,6 +18751,12 @@ class قشرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قشهد(db.Model):
@@ -15977,6 +18791,12 @@ class قشهد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قشکر(db.Model):
@@ -16011,6 +18831,12 @@ class قشکر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قشیر(db.Model):
@@ -16045,6 +18871,12 @@ class قشیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قصفها(db.Model):
@@ -16079,6 +18911,12 @@ class قصفها(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قلرست(db.Model):
@@ -16113,6 +18951,12 @@ class قلرست(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قمرو(db.Model):
@@ -16147,6 +18991,12 @@ class قمرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قنقش(db.Model):
@@ -16181,6 +19031,12 @@ class قنقش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قنیشا(db.Model):
@@ -16215,6 +19071,12 @@ class قنیشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قهکمت(db.Model):
@@ -16249,6 +19111,12 @@ class قهکمت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قپیرا(db.Model):
@@ -16283,6 +19151,12 @@ class قپیرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class قچار(db.Model):
@@ -16317,6 +19191,12 @@ class قچار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لابسا(db.Model):
@@ -16351,6 +19231,12 @@ class لابسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لازما(db.Model):
@@ -16385,6 +19271,12 @@ class لازما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لبوتان(db.Model):
@@ -16419,6 +19311,12 @@ class لبوتان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لخانه(db.Model):
@@ -16453,6 +19351,12 @@ class لخانه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لخزر(db.Model):
@@ -16487,6 +19391,12 @@ class لخزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لسرما(db.Model):
@@ -16521,6 +19431,12 @@ class لسرما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لوتوس(db.Model):
@@ -16555,6 +19471,12 @@ class لوتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لپارس(db.Model):
@@ -16589,6 +19511,12 @@ class لپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لپیام(db.Model):
@@ -16623,6 +19551,12 @@ class لپیام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class لکما(db.Model):
@@ -16657,6 +19591,12 @@ class لکما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ما(db.Model):
@@ -16691,6 +19631,12 @@ class ما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class مادیرا(db.Model):
@@ -16725,6 +19671,12 @@ class مادیرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class مارون(db.Model):
@@ -16759,6 +19711,12 @@ class مارون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class مبین(db.Model):
@@ -16793,6 +19751,12 @@ class مبین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class مداران(db.Model):
@@ -16827,6 +19791,12 @@ class مداران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class مدیر(db.Model):
@@ -16861,6 +19831,12 @@ class مدیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class مرقام(db.Model):
@@ -16895,6 +19871,12 @@ class مرقام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class معیار(db.Model):
@@ -16929,6 +19911,12 @@ class معیار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class مفاخر(db.Model):
@@ -16963,6 +19951,12 @@ class مفاخر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ملت(db.Model):
@@ -16997,6 +19991,12 @@ class ملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ممسنی(db.Model):
@@ -17031,6 +20031,12 @@ class ممسنی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class میدکو(db.Model):
@@ -17065,6 +20071,12 @@ class میدکو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class میهن(db.Model):
@@ -17099,6 +20111,12 @@ class میهن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نبورس(db.Model):
@@ -17133,6 +20151,12 @@ class نبورس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نتوس(db.Model):
@@ -17167,6 +20191,12 @@ class نتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نطرین(db.Model):
@@ -17201,6 +20231,12 @@ class نطرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نمرینو(db.Model):
@@ -17235,6 +20271,12 @@ class نمرینو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نوآور(db.Model):
@@ -17269,6 +20311,12 @@ class نوآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نوری(db.Model):
@@ -17303,6 +20351,12 @@ class نوری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نوین(db.Model):
@@ -17337,6 +20391,12 @@ class نوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نکالا(db.Model):
@@ -17371,6 +20431,12 @@ class نکالا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نگین(db.Model):
@@ -17405,6 +20471,12 @@ class نگین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class نیرو(db.Model):
@@ -17439,6 +20511,12 @@ class نیرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class هایوب(db.Model):
@@ -17473,6 +20551,12 @@ class هایوب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class هجرت(db.Model):
@@ -17507,6 +20591,12 @@ class هجرت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class هرمز(db.Model):
@@ -17541,6 +20631,12 @@ class هرمز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class همراه(db.Model):
@@ -17575,6 +20671,12 @@ class همراه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وآتوس(db.Model):
@@ -17609,6 +20711,12 @@ class وآتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وآذر(db.Model):
@@ -17643,6 +20751,12 @@ class وآذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وآرین(db.Model):
@@ -17677,6 +20791,12 @@ class وآرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وآفری(db.Model):
@@ -17711,6 +20831,12 @@ class وآفری(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وآوا(db.Model):
@@ -17745,6 +20871,12 @@ class وآوا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وآیند(db.Model):
@@ -17779,6 +20911,12 @@ class وآیند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class واتی(db.Model):
@@ -17813,6 +20951,12 @@ class واتی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class واحصا(db.Model):
@@ -17847,6 +20991,12 @@ class واحصا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class واحیا(db.Model):
@@ -17881,6 +21031,12 @@ class واحیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وارس(db.Model):
@@ -17915,6 +21071,12 @@ class وارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class واعتبار(db.Model):
@@ -17949,6 +21111,12 @@ class واعتبار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class والبر(db.Model):
@@ -17983,6 +21151,12 @@ class والبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وامید(db.Model):
@@ -18017,6 +21191,12 @@ class وامید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وایرا(db.Model):
@@ -18051,6 +21231,12 @@ class وایرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وایران(db.Model):
@@ -18085,6 +21271,12 @@ class وایران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبانک(db.Model):
@@ -18119,6 +21311,12 @@ class وبانک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبرق(db.Model):
@@ -18153,6 +21351,12 @@ class وبرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبشهر(db.Model):
@@ -18187,6 +21391,12 @@ class وبشهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبصادر(db.Model):
@@ -18221,6 +21431,12 @@ class وبصادر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبملت(db.Model):
@@ -18255,6 +21471,12 @@ class وبملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبهمن(db.Model):
@@ -18289,6 +21511,12 @@ class وبهمن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبوعلی(db.Model):
@@ -18323,6 +21551,12 @@ class وبوعلی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبیمه(db.Model):
@@ -18357,6 +21591,12 @@ class وبیمه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وبیمهح(db.Model):
@@ -18391,6 +21631,12 @@ class وبیمهح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتجارت(db.Model):
@@ -18425,6 +21671,12 @@ class وتجارت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتعاون(db.Model):
@@ -18459,6 +21711,12 @@ class وتعاون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتوس(db.Model):
@@ -18493,6 +21751,12 @@ class وتوس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتوسم(db.Model):
@@ -18527,6 +21791,12 @@ class وتوسم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتوشه(db.Model):
@@ -18561,6 +21831,12 @@ class وتوشه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتوصا(db.Model):
@@ -18595,6 +21871,12 @@ class وتوصا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتوکا(db.Model):
@@ -18629,6 +21911,12 @@ class وتوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وتوکاح(db.Model):
@@ -18663,6 +21951,12 @@ class وتوکاح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وثخوز(db.Model):
@@ -18697,6 +21991,12 @@ class وثخوز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وثنو(db.Model):
@@ -18731,6 +22031,12 @@ class وثنو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وثوق(db.Model):
@@ -18765,6 +22071,12 @@ class وثوق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وجامی(db.Model):
@@ -18799,6 +22111,12 @@ class وجامی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وحافظ(db.Model):
@@ -18833,6 +22151,12 @@ class وحافظ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وحکمت(db.Model):
@@ -18867,6 +22191,12 @@ class وحکمت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وخارزم(db.Model):
@@ -18901,6 +22231,12 @@ class وخارزم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وخاور(db.Model):
@@ -18935,6 +22271,12 @@ class وخاور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ودی(db.Model):
@@ -18969,6 +22311,12 @@ class ودی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ورازی(db.Model):
@@ -19003,6 +22351,12 @@ class ورازی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ورنا(db.Model):
@@ -19037,6 +22391,12 @@ class ورنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وزمین(db.Model):
@@ -19071,6 +22431,12 @@ class وزمین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وساخت(db.Model):
@@ -19105,6 +22471,12 @@ class وساخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وساربیل(db.Model):
@@ -19139,6 +22511,12 @@ class وساربیل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وساشرقی(db.Model):
@@ -19173,6 +22551,12 @@ class وساشرقی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وساغربی(db.Model):
@@ -19207,6 +22591,12 @@ class وساغربی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسالت(db.Model):
@@ -19241,6 +22631,12 @@ class وسالت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وساپا(db.Model):
@@ -19275,6 +22671,12 @@ class وساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسبحان(db.Model):
@@ -19309,6 +22711,12 @@ class وسبحان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسبوشهر(db.Model):
@@ -19343,6 +22751,12 @@ class وسبوشهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسخراج(db.Model):
@@ -19377,6 +22791,12 @@ class وسخراج(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسخراش(db.Model):
@@ -19411,6 +22831,12 @@ class وسخراش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسخوز(db.Model):
@@ -19445,6 +22871,12 @@ class وسخوز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسدید(db.Model):
@@ -19479,6 +22911,12 @@ class وسدید(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسرضوی(db.Model):
@@ -19513,6 +22951,12 @@ class وسرضوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسرمد(db.Model):
@@ -19547,6 +22991,12 @@ class وسرمد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسزنجان(db.Model):
@@ -19581,6 +23031,12 @@ class وسزنجان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسصفا(db.Model):
@@ -19615,6 +23071,12 @@ class وسصفا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسفارس(db.Model):
@@ -19649,6 +23111,12 @@ class وسفارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسقم(db.Model):
@@ -19683,6 +23151,12 @@ class وسقم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسلرستا(db.Model):
@@ -19717,6 +23191,12 @@ class وسلرستا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسمازن(db.Model):
@@ -19751,6 +23231,12 @@ class وسمازن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسمرکز(db.Model):
@@ -19785,6 +23271,12 @@ class وسمرکز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسنا(db.Model):
@@ -19819,6 +23311,12 @@ class وسنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسناح(db.Model):
@@ -19853,6 +23351,12 @@ class وسناح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسهمدا(db.Model):
@@ -19887,6 +23391,12 @@ class وسهمدا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسپه(db.Model):
@@ -19921,6 +23431,12 @@ class وسپه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسپهر(db.Model):
@@ -19955,6 +23471,12 @@ class وسپهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسکاب(db.Model):
@@ -19989,6 +23511,12 @@ class وسکاب(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسکرد(db.Model):
@@ -20023,6 +23551,12 @@ class وسکرد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسکرشا(db.Model):
@@ -20057,6 +23591,12 @@ class وسکرشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسکرمان(db.Model):
@@ -20091,6 +23631,12 @@ class وسکرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسکهبو(db.Model):
@@ -20125,6 +23671,12 @@ class وسکهبو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسگلستا(db.Model):
@@ -20159,6 +23711,12 @@ class وسگلستا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسگیلا(db.Model):
@@ -20193,6 +23751,12 @@ class وسگیلا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسیزد(db.Model):
@@ -20227,6 +23791,12 @@ class وسیزد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسیستا(db.Model):
@@ -20261,6 +23831,12 @@ class وسیستا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسیلام(db.Model):
@@ -20295,6 +23871,12 @@ class وسیلام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسین(db.Model):
@@ -20329,6 +23911,12 @@ class وسین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وسینا(db.Model):
@@ -20363,6 +23951,12 @@ class وسینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وشمال(db.Model):
@@ -20397,6 +23991,12 @@ class وشمال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وشهر(db.Model):
@@ -20431,6 +24031,12 @@ class وشهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وصنا(db.Model):
@@ -20465,6 +24071,12 @@ class وصنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وصندوق(db.Model):
@@ -20499,6 +24111,12 @@ class وصندوق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وصنعت(db.Model):
@@ -20533,6 +24151,12 @@ class وصنعت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وغدیر(db.Model):
@@ -20567,6 +24191,12 @@ class وغدیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولانا(db.Model):
@@ -20601,6 +24231,12 @@ class ولانا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولبهمن(db.Model):
@@ -20635,6 +24271,12 @@ class ولبهمن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولتجار(db.Model):
@@ -20669,6 +24311,12 @@ class ولتجار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولراز(db.Model):
@@ -20703,6 +24351,12 @@ class ولراز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولساپا(db.Model):
@@ -20737,6 +24391,12 @@ class ولساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولشرق(db.Model):
@@ -20771,6 +24431,12 @@ class ولشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولصنم(db.Model):
@@ -20805,6 +24471,12 @@ class ولصنم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولغدر(db.Model):
@@ -20839,6 +24511,12 @@ class ولغدر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولملت(db.Model):
@@ -20873,6 +24551,12 @@ class ولملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولپارس(db.Model):
@@ -20907,6 +24591,12 @@ class ولپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ولیز(db.Model):
@@ -20941,6 +24631,12 @@ class ولیز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ومشان(db.Model):
@@ -20975,6 +24671,12 @@ class ومشان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ومعادن(db.Model):
@@ -21009,6 +24711,12 @@ class ومعادن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ومعلم(db.Model):
@@ -21043,6 +24751,12 @@ class ومعلم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وملت(db.Model):
@@ -21077,6 +24791,12 @@ class وملت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وملل(db.Model):
@@ -21111,6 +24831,12 @@ class وملل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وملی(db.Model):
@@ -21145,6 +24871,12 @@ class وملی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ومهان(db.Model):
@@ -21179,6 +24911,12 @@ class ومهان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ونفت(db.Model):
@@ -21213,6 +24951,12 @@ class ونفت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ونوین(db.Model):
@@ -21247,6 +24991,12 @@ class ونوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ونچر(db.Model):
@@ -21281,6 +25031,12 @@ class ونچر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ونیرو(db.Model):
@@ -21315,6 +25071,12 @@ class ونیرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ونیروح(db.Model):
@@ -21349,6 +25111,12 @@ class ونیروح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class ونیکی(db.Model):
@@ -21383,6 +25151,12 @@ class ونیکی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وهنر(db.Model):
@@ -21417,6 +25191,12 @@ class وهنر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وهور(db.Model):
@@ -21451,6 +25231,12 @@ class وهور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وپارس(db.Model):
@@ -21485,6 +25271,12 @@ class وپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وپاسار(db.Model):
@@ -21519,6 +25311,12 @@ class وپاسار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وپترو(db.Model):
@@ -21553,6 +25351,12 @@ class وپترو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وپخش(db.Model):
@@ -21587,6 +25391,12 @@ class وپخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وپسا(db.Model):
@@ -21621,6 +25431,12 @@ class وپسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وپست(db.Model):
@@ -21655,6 +25471,12 @@ class وپست(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وپویا(db.Model):
@@ -21689,6 +25511,12 @@ class وپویا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وکادو(db.Model):
@@ -21723,6 +25551,12 @@ class وکادو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وکار(db.Model):
@@ -21757,6 +25591,12 @@ class وکار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وکبهمن(db.Model):
@@ -21791,6 +25631,12 @@ class وکبهمن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وگردش(db.Model):
@@ -21825,6 +25671,12 @@ class وگردش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class وگستر(db.Model):
@@ -21859,6 +25711,12 @@ class وگستر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پارتا(db.Model):
@@ -21893,6 +25751,12 @@ class پارتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پارتین(db.Model):
@@ -21927,6 +25791,12 @@ class پارتین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پارس(db.Model):
@@ -21961,6 +25831,12 @@ class پارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پارسان(db.Model):
@@ -21995,6 +25871,12 @@ class پارسان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پارسیان(db.Model):
@@ -22029,6 +25911,12 @@ class پارسیان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پارسیانح(db.Model):
@@ -22063,6 +25951,12 @@ class پارسیانح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پارند(db.Model):
@@ -22097,6 +25991,12 @@ class پارند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پاسا(db.Model):
@@ -22131,6 +26031,12 @@ class پاسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پاکشو(db.Model):
@@ -22165,6 +26071,12 @@ class پاکشو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پتایر(db.Model):
@@ -22199,6 +26111,12 @@ class پتایر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پترول(db.Model):
@@ -22233,6 +26151,12 @@ class پترول(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پترولح(db.Model):
@@ -22267,6 +26191,12 @@ class پترولح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پخش(db.Model):
@@ -22301,6 +26231,12 @@ class پخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پدرخش(db.Model):
@@ -22335,6 +26271,12 @@ class پدرخش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پرداخت(db.Model):
@@ -22369,6 +26311,12 @@ class پرداخت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پردیس(db.Model):
@@ -22403,6 +26351,12 @@ class پردیس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پسهند(db.Model):
@@ -22437,6 +26391,12 @@ class پسهند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پشاهن(db.Model):
@@ -22471,6 +26431,12 @@ class پشاهن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پلاست(db.Model):
@@ -22505,6 +26471,12 @@ class پلاست(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پلاسک(db.Model):
@@ -22539,6 +26511,12 @@ class پلاسک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پلوله(db.Model):
@@ -22573,6 +26551,12 @@ class پلوله(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پکرمان(db.Model):
@@ -22607,6 +26591,12 @@ class پکرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پکویر(db.Model):
@@ -22641,6 +26631,12 @@ class پکویر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پکویرح(db.Model):
@@ -22675,6 +26671,12 @@ class پکویرح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class پیزد(db.Model):
@@ -22709,6 +26711,12 @@ class پیزد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class چافست(db.Model):
@@ -22743,6 +26751,12 @@ class چافست(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class چخزر(db.Model):
@@ -22777,6 +26791,12 @@ class چخزر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class چدن(db.Model):
@@ -22811,6 +26831,12 @@ class چدن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class چفیبر(db.Model):
@@ -22845,6 +26871,12 @@ class چفیبر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class چکارن(db.Model):
@@ -22879,6 +26911,12 @@ class چکارن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class چکاوه(db.Model):
@@ -22913,6 +26951,12 @@ class چکاوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class چکاپا(db.Model):
@@ -22947,6 +26991,12 @@ class چکاپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کابگن(db.Model):
@@ -22981,6 +27031,12 @@ class کابگن(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کاذر(db.Model):
@@ -23015,6 +27071,12 @@ class کاذر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کاردان(db.Model):
@@ -23049,6 +27111,12 @@ class کاردان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کاریس(db.Model):
@@ -23083,6 +27151,12 @@ class کاریس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کازرو(db.Model):
@@ -23117,6 +27191,12 @@ class کازرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کاسپین(db.Model):
@@ -23151,6 +27231,12 @@ class کاسپین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کالا(db.Model):
@@ -23185,6 +27271,12 @@ class کالا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کاما(db.Model):
@@ -23219,6 +27311,12 @@ class کاما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کاوه(db.Model):
@@ -23253,6 +27351,12 @@ class کاوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کایتا(db.Model):
@@ -23287,6 +27391,12 @@ class کایتا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کباده(db.Model):
@@ -23321,6 +27431,12 @@ class کباده(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کبافق(db.Model):
@@ -23355,6 +27471,12 @@ class کبافق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کبورس(db.Model):
@@ -23389,6 +27511,12 @@ class کبورس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کترام(db.Model):
@@ -23423,6 +27551,12 @@ class کترام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کتوکا(db.Model):
@@ -23457,6 +27591,12 @@ class کتوکا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کحافظ(db.Model):
@@ -23491,6 +27631,12 @@ class کحافظ(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کخاک(db.Model):
@@ -23525,6 +27671,12 @@ class کخاک(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کخاکح(db.Model):
@@ -23559,6 +27711,12 @@ class کخاکح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کدما(db.Model):
@@ -23593,6 +27751,12 @@ class کدما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کرازی(db.Model):
@@ -23627,6 +27791,12 @@ class کرازی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کرماشا(db.Model):
@@ -23661,6 +27831,12 @@ class کرماشا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کرمان(db.Model):
@@ -23695,6 +27871,12 @@ class کرمان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کروی(db.Model):
@@ -23729,6 +27911,12 @@ class کروی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کزغال(db.Model):
@@ -23763,6 +27951,12 @@ class کزغال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کساوه(db.Model):
@@ -23797,6 +27991,12 @@ class کساوه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کساپا(db.Model):
@@ -23831,6 +28031,12 @@ class کساپا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کسرا(db.Model):
@@ -23865,6 +28071,12 @@ class کسرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کسرام(db.Model):
@@ -23899,6 +28111,12 @@ class کسرام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کسعدی(db.Model):
@@ -23933,6 +28151,12 @@ class کسعدی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کشرق(db.Model):
@@ -23967,6 +28191,12 @@ class کشرق(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کصدف(db.Model):
@@ -24001,6 +28231,12 @@ class کصدف(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کطبس(db.Model):
@@ -24035,6 +28271,12 @@ class کطبس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کفرآور(db.Model):
@@ -24069,6 +28311,12 @@ class کفرآور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کفرا(db.Model):
@@ -24103,6 +28351,12 @@ class کفرا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کفپارس(db.Model):
@@ -24137,6 +28391,12 @@ class کفپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کقزوی(db.Model):
@@ -24171,6 +28431,12 @@ class کقزوی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کلر(db.Model):
@@ -24205,6 +28471,12 @@ class کلر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کلوند(db.Model):
@@ -24239,6 +28511,12 @@ class کلوند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کماسه(db.Model):
@@ -24273,6 +28551,12 @@ class کماسه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کمرجان(db.Model):
@@ -24307,6 +28591,12 @@ class کمرجان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کمند(db.Model):
@@ -24341,6 +28631,12 @@ class کمند(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کمنگنز(db.Model):
@@ -24375,6 +28671,12 @@ class کمنگنز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کمینا(db.Model):
@@ -24409,6 +28711,12 @@ class کمینا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کنور(db.Model):
@@ -24443,6 +28751,12 @@ class کنور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کهرام(db.Model):
@@ -24477,6 +28791,12 @@ class کهرام(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کهمدا(db.Model):
@@ -24511,6 +28831,12 @@ class کهمدا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کوثر(db.Model):
@@ -24545,6 +28871,12 @@ class کوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کورز(db.Model):
@@ -24579,6 +28911,12 @@ class کورز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کویر(db.Model):
@@ -24613,6 +28951,12 @@ class کویر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کپارس(db.Model):
@@ -24647,6 +28991,12 @@ class کپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کپرور(db.Model):
@@ -24681,6 +29031,12 @@ class کپرور(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کپشیر(db.Model):
@@ -24715,6 +29071,12 @@ class کپشیر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کپشیرح(db.Model):
@@ -24749,6 +29111,12 @@ class کپشیرح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کچاد(db.Model):
@@ -24783,6 +29151,12 @@ class کچاد(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کگاز(db.Model):
@@ -24817,6 +29191,12 @@ class کگاز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کگازح(db.Model):
@@ -24851,6 +29231,12 @@ class کگازح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کگل(db.Model):
@@ -24885,6 +29271,12 @@ class کگل(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کگلح(db.Model):
@@ -24919,6 +29311,12 @@ class کگلح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کگهر(db.Model):
@@ -24953,6 +29351,12 @@ class کگهر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کیبیسی(db.Model):
@@ -24987,6 +29391,12 @@ class کیبیسی(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کیا(db.Model):
@@ -25021,6 +29431,12 @@ class کیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کیان(db.Model):
@@ -25055,6 +29471,12 @@ class کیان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کیسون(db.Model):
@@ -25089,6 +29511,12 @@ class کیسون(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class کیمیا(db.Model):
@@ -25123,6 +29551,12 @@ class کیمیا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class گدنا(db.Model):
@@ -25157,6 +29591,12 @@ class گدنا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class گشان(db.Model):
@@ -25191,6 +29631,12 @@ class گشان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class گنجین(db.Model):
@@ -25225,6 +29671,12 @@ class گنجین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class گوهران(db.Model):
@@ -25259,6 +29711,12 @@ class گوهران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class گپارس(db.Model):
@@ -25293,6 +29751,12 @@ class گپارس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class گکوثر(db.Model):
@@ -25327,6 +29791,12 @@ class گکوثر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class گکیش(db.Model):
@@ -25361,6 +29831,12 @@ class گکیش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
 
 
 class یاقوت(db.Model):
@@ -25395,3 +29871,9 @@ class یاقوت(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+

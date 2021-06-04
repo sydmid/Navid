@@ -47,5 +47,10 @@ class خودرو(db.Model):
         result = cls.query.filter(cls.date > _time).first()
         return result
 
+    @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
     def json_payload(self):
         return {'info': 'its ok man'}, 200
