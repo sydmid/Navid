@@ -4,10 +4,10 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 
 from config import config
-from app.utils.inmemory_object_loader import _load_tables, _load_timespans
-from app.views import bp_resources
+from app.utils import _load_tables, _load_timespans
+from app.routes import bp_resources
 from app.db import db
-from app.utils.jwt_decorators import jwt_claim_handler
+from app.utils import jwt_claim_handler
 from app.models.stock import *
 
 jwt = JWTManager()
@@ -29,7 +29,7 @@ def create_app(config_name):
     app.register_blueprint(bp_resources)
 
     @app.before_first_request
-    def global_table_object_creator():
+    def create_all_tables():
         db.create_all()
 
     # @app.before_first_request

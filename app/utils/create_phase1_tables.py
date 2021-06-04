@@ -10,7 +10,7 @@ metadata = MetaData()
 downloader = Downloader(mode='production')
 
 
-async def create_tset_tables():
+async def create_phase1_tables():
     downloaded = await downloader.download()
     classes = {}
     for key in downloaded.keys():
@@ -52,12 +52,6 @@ async def create_tset_tables():
             'jdate': Column(String),
 
         })
-    # classes['stocks'] = type("Stock", (Base,), {
-    #     '__tablename__': "stocks",
-    #     'name': Column(String(15), primary_key=True),
-    #     'group': Column(String(15)),
-    #     'records': relationship("Record")
-    # })
     Base.metadata.create_all(engine)
 
 

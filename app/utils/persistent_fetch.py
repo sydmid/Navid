@@ -114,7 +114,3 @@ def live_stock_fetcher():
         for stock in stock_to_future.keys():
             print(stock)
             print(f'{stock}: gheimate 4 omin best demand = {stock_to_future[stock].items()}')
-
-
-live_stock_fetcher()
-

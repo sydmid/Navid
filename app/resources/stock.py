@@ -4,11 +4,22 @@ from datetime import datetime, timedelta
 from app.models.stock import *
 
 
-class Stock(Resource):
+class StockYear(Resource):
     @classmethod
     # @jwt_required()
-    def get(cls, year_ago: int, name: str):
+    def get(cls, name: str, year_ago: int):
         time_span_ago = datetime.now() - timedelta(days=year_ago * 365)
+        record = globals()[name].find_by_time_ago(time_span_ago)
+        if not record:
+            print("please check your Input Date")
+        return {'thetyoe': f'{record}'}, 200
+
+
+class StockMonth(Resource):
+    @classmethod
+    # @jwt_required()
+    def get(cls, name: str, month_ago: int):
+        time_span_ago = datetime.now() - timedelta(days=month_ago * 30)
         record = globals()[name].find_by_time_ago(time_span_ago)
         if not record:
             print("please check your Input Date")
