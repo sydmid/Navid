@@ -1,5 +1,5 @@
 from app.db import db
-from sqlalchemy import cast, String
+from app.utils.stock_queries import date_functions
 
 class خودرو(db.Model):
     __tablename__ = 'خودرو'
@@ -33,6 +33,10 @@ class خودرو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
 
     def save_to_db(self) -> None:
         db.session.add(self)
@@ -43,51 +47,10 @@ class خودرو(db.Model):
         db.session.commit()
 
     @classmethod
+    def find_last_date(cls):
+        result = cls.query.order_by(cls.date.desc()).first()
+        return result.date
+
+    @classmethod
     def stock_from_date(cls, date, mode):
-        lambda_functions = {
-            'chart-full': lambda x: x.query.filter(x.date > date).with_entities(x.date.cast(String), x.open, x.adjClose,
-                                                                                x.volume).all(),
-            'general-all': lambda x: x.query.filter(x.date > date).with_entities(x.date.cast(String), x.open, x.adjClose,
-                                                                                 x.volume, x.high, x.low, x.count,
-                                                                                 x.value, x.close).all(),
-            'clients-all': lambda x: x.query.filter(x.date > date).with_entities(x.date.cast(String),
-                                                                                 x.individual_buy_count,
-                                                                                 x.individual_sell_count,
-                                                                                 x.individual_buy_vol,
-                                                                                 x.individual_sell_vol,
-                                                                                 x.individual_buy_value,
-                                                                                 x.individual_sell_value,
-                                                                                 x.corporate_buy_count,
-                                                                                 x.corporate_sell_count,
-                                                                                 x.corporate_buy_vol ,
-                                                                                 x.corporate_sell_vol,
-                                                                                 x.corporate_buy_value,
-                                                                                 x.corporate_sell_value,
-                                                                                 x.individual_buy_mean_price,
-                                                                                 x.individual_sell_mean_price,
-                                                                                 x.corporate_buy_mean_price,
-                                                                                 x.corporate_sell_mean_price,
-                                                                                 x.individual_ownership_change,).all(),
-            'all': lambda x: x.query.filter(x.date > date).with_entities(x.date.cast(String),
-                                                                         x.open, x.adjClose,
-                                                                         x.volume, x.high, x.low, x.count,
-                                                                         x.value, x.close,
-                                                                         x.individual_buy_count,
-                                                                         x.individual_sell_count,
-                                                                         x.individual_buy_vol,
-                                                                         x.individual_sell_vol,
-                                                                         x.individual_buy_value,
-                                                                         x.individual_sell_value,
-                                                                         x.corporate_buy_count,
-                                                                         x.corporate_sell_count,
-                                                                         x.corporate_buy_vol ,
-                                                                         x.corporate_sell_vol,
-                                                                         x.corporate_buy_value,
-                                                                         x.corporate_sell_value,
-                                                                         x.individual_buy_mean_price,
-                                                                         x.individual_sell_mean_price,
-                                                                         x.corporate_buy_mean_price,
-                                                                         x.corporate_sell_mean_price,
-                                                                         x.individual_ownership_change,).all(),
-        }
-        return lambda_functions[mode](cls)
+        return date_functions[mode](cls, date)

@@ -124,7 +124,8 @@ async def write_model_file():
         for x in range(len(json_data)):
             new_list.append(to_farsi(json_data[x]))
     with open(os.path.join(MODELS_DIR, f"{model_file_name}.py"), mode='w', encoding='utf8') as f:
-        f.write("from app.db import db \n")
+        f.write("from app.db import db \n\
+from app.utils.stock_queries import date_functions \n")
         for x in range(len(new_list)):
             f.write(f"class {new_list[x]}(db.Model):\n\
     __tablename__ = '{new_list[x]}'\n\
@@ -158,11 +159,27 @@ async def write_model_file():
     corporate_sell_mean_price = db.Column(db.Float)\n\
     individual_ownership_change = db.Column(db.Integer)\n\
     jdate = db.Column(db.String)\n\
+    latin_name = db.Column(db.String)\n\
+    individual_buy_power = db.Column(db.Float)\n\
+    individual_sell_power = db.Column(db.Float)\n\
+    individual_buy_sell_ratio = db.Column(db.Float)\n\
+\n\
+    def save_to_db(self) -> None:\n\
+        db.session.add(self)\n\
+        db.session.commit()\n\
+\n\
+    def delete_from_db(self) -> None:\n\
+        db.session.delete(self)\n\
+        db.session.commit()\n\
 \n\
     @classmethod\n\
     def find_last_date(cls):\n\
         result = cls.query.order_by(cls.date.desc()).first()\n\
         return result.date\n\
+\n\
+    @classmethod\n\
+    def stock_from_date(cls, date, mode):\n\
+        return date_functions[mode](cls, date)\n\
 ")
 
 

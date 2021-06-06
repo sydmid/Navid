@@ -16,7 +16,7 @@ class StockYear(Resource):
         record = globals()[name].stock_from_date(date, mode)
         if not record:
             print("please check your Input Date")
-        return {'thetyoe': f'{record}'}, 200
+        return {name: f'{record}'}, 200
 
 
 class StockMonth(Resource):
@@ -27,7 +27,7 @@ class StockMonth(Resource):
         records = globals()[name].stock_from_date(date, mode)
         if not records:
             print("We Cant Find The Time-Span you are requesting")
-        return {'thetyoe': f'{records}'}, 200
+        return {name: f'{records}'}, 200
 
 
 class StockUtils(Resource):

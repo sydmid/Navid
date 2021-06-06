@@ -1,4 +1,6 @@
-from app.db import db 
+from app.db import db
+from app.utils.stock_queries import date_functions
+
 class کارین(db.Model):
     __tablename__ = 'کارین'
 
@@ -31,11 +33,27 @@ class کارین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class جوین(db.Model):
@@ -70,11 +88,27 @@ class جوین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class پالایش(db.Model):
@@ -109,11 +143,27 @@ class پالایش(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class فردا(db.Model):
@@ -148,11 +198,27 @@ class فردا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class ومعادنح(db.Model):
@@ -187,11 +253,27 @@ class ومعادنح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class وخارزمح(db.Model):
@@ -226,17 +308,49 @@ class وخارزمح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
 
-    
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
+
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class اپال(db.Model):
@@ -271,11 +385,27 @@ class اپال(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class فباهنرح(db.Model):
@@ -310,11 +440,27 @@ class فباهنرح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class وسهرمز(db.Model):
@@ -349,11 +495,27 @@ class وسهرمز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class امینح(db.Model):
@@ -388,11 +550,27 @@ class امینح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class سپیدما(db.Model):
@@ -427,11 +605,27 @@ class سپیدما(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class تماوندح(db.Model):
@@ -466,11 +660,27 @@ class تماوندح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class خاتم(db.Model):
@@ -505,11 +715,27 @@ class خاتم(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class فتوسا(db.Model):
@@ -544,11 +770,27 @@ class فتوسا(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class زگلدشتح(db.Model):
@@ -583,11 +825,27 @@ class زگلدشتح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class فگستر(db.Model):
@@ -622,11 +880,27 @@ class فگستر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class سپر(db.Model):
@@ -661,11 +935,27 @@ class سپر(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class وبازار(db.Model):
@@ -700,11 +990,27 @@ class وبازار(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class باران(db.Model):
@@ -739,11 +1045,27 @@ class باران(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class زرین(db.Model):
@@ -778,11 +1100,27 @@ class زرین(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class خبازرس(db.Model):
@@ -817,11 +1155,27 @@ class خبازرس(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class فراز(db.Model):
@@ -856,11 +1210,27 @@ class فراز(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class دتوزیعح(db.Model):
@@ -895,11 +1265,27 @@ class دتوزیعح(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class تمحرکه(db.Model):
@@ -934,11 +1320,27 @@ class تمحرکه(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class قیستو(db.Model):
@@ -973,11 +1375,27 @@ class قیستو(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
 
 class شستان(db.Model):
@@ -1012,9 +1430,25 @@ class شستان(db.Model):
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
     jdate = db.Column(db.String)
-    
+    latin_name = db.Column(db.String)
+    individual_buy_power = db.Column(db.Float)
+    individual_sell_power = db.Column(db.Float)
+    individual_buy_sell_ratio = db.Column(db.Float)
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
+
+    @classmethod
+    def stock_from_date(cls, date, mode):
+        return date_functions[mode](cls, date)
 
