@@ -8,7 +8,6 @@ from app.utils import _load_tables, _load_timespans
 from app.routes import bp_resources
 from app.db import db
 from app.utils import jwt_claim_handler
-from app.models.stock import *
 
 jwt = JWTManager()
 migrate = Migrate()

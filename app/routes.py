@@ -3,6 +3,7 @@ from flask_restful import Api
 
 from app.resources.user import User, UserLogin, UserRegister, UserLogout, TokenRefresh
 from app.resources.stock import StockYear, StockMonth, StockUtils
+from app.resources.stocks import StocksList
 from app.resources.alternatives.db_initializer import DatabaseInit, DatabaseInitTest
 from app.resources.alternatives.in_memory_stock_dict import MemoryStock
 
@@ -18,6 +19,7 @@ api.add_resource(User, '/user/<int:user_id>')
 # s = span, y = year, m = month
 api.add_resource(StockYear, '/stock-t-span/<string:name>/y/<int:year_ago>/<string:mode>')
 api.add_resource(StockMonth, '/stock-t-span/<string:name>/m/<int:month_ago>/<string:mode>')
+api.add_resource(StocksList, '/stocks-list')
 api.add_resource(StockUtils, '/stock-utils')
 
 # Alternatives

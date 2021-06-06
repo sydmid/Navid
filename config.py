@@ -15,7 +15,14 @@ class PreAlpha(Config):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'javad'
     DOWNLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'download')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-        'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db') + '?check_same_thread=False'
+        'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
+        # 'sqlite:///'
+
+    SQLALCHEMY_BINDS = {
+        'stocks_dict': f"sqlite:///{os.path.join(os.path.abspath(os.path.dirname(__file__)), 'sdict.db')}",
+        # 'stocks_dict': "sqlite:///",
+
+    }
     # disables the flask_sqlachemy track modification not sqlalchemy itself
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # flask extensions like flask_jwt can raise their own exception and app will know their specific error
