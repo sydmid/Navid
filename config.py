@@ -10,7 +10,7 @@ class Config:
         pass
 
 
-class PreAlpha(Config):
+class Development(Config):
     DEBUG = True
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'javad'
     DOWNLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'download')
@@ -20,8 +20,9 @@ class PreAlpha(Config):
 
     SQLALCHEMY_BINDS = {
         'stocks_dict': f"sqlite:///{os.path.join(os.path.abspath(os.path.dirname(__file__)), 'sdict.db')}",
+        'today_chart': f"sqlite:///{os.path.join(os.path.abspath(os.path.dirname(__file__)), 'today.db')}",
         # 'stocks_dict': "sqlite:///",
-
+        # 'today_chart': "sqlite:///",
     }
     # disables the flask_sqlachemy track modification not sqlalchemy itself
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -34,8 +35,8 @@ class PreAlpha(Config):
 
 
 config = {
-    'development': PreAlpha,
-    'testing': PreAlpha,
-    'production': PreAlpha,
-    'default': PreAlpha,
+    'development': Development,
+    'testing': Development,
+    'production': Development,
+    'default': Development,
 }

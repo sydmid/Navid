@@ -33,7 +33,15 @@ class Stocks(db.Model):
     corporate_buy_mean_price = db.Column(db.Float)
     corporate_sell_mean_price = db.Column(db.Float)
     individual_ownership_change = db.Column(db.Integer)
-
+    pe = db.Column(db.Float)
+    gpe = db.Column(db.Float)
+    eps = db.Column(db.Integer)
+    floating_shares = db.Column(db.Integer)
+    base_volume = db.Column(db.Integer)
+    total_shares = db.Column(db.Integer)
+    market_cap = db.Column(db.Integer)
+    status = db.Column(db.String)
+    latest_data_time = db.Column(db.DateTime)
 
     @classmethod
     def query_all_names(cls):

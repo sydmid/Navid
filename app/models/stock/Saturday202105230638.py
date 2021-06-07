@@ -330,28 +330,6 @@ class وخارزمح(db.Model):
     def stock_from_date(cls, date, mode):
         return date_functions[mode](cls, date)
 
-    latin_name = db.Column(db.String)
-    individual_buy_power = db.Column(db.Float)
-    individual_sell_power = db.Column(db.Float)
-    individual_buy_sell_ratio = db.Column(db.Float)
-
-    def save_to_db(self) -> None:
-        db.session.add(self)
-        db.session.commit()
-
-    def delete_from_db(self) -> None:
-        db.session.delete(self)
-        db.session.commit()
-
-    @classmethod
-    def find_last_date(cls):
-        result = cls.query.order_by(cls.date.desc()).first()
-        return result.date
-
-    @classmethod
-    def stock_from_date(cls, date, mode):
-        return date_functions[mode](cls, date)
-
 
 class اپال(db.Model):
     __tablename__ = 'اپال'
