@@ -52,8 +52,13 @@ class آسپ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -108,8 +113,13 @@ class آبادا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -164,8 +174,13 @@ class آبین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -220,8 +235,13 @@ class آتیمس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -276,8 +296,13 @@ class آرمان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -332,8 +357,13 @@ class آرمانی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -388,8 +418,13 @@ class آریا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -444,8 +479,13 @@ class آریان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -500,8 +540,13 @@ class آساس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -556,8 +601,13 @@ class آسام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -612,8 +662,13 @@ class آسامید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -668,8 +723,13 @@ class آسیا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -724,8 +784,13 @@ class آوا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -780,8 +845,13 @@ class آپ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -836,8 +906,13 @@ class آکورد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -892,8 +967,13 @@ class آگاس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -948,8 +1028,13 @@ class آینده(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1004,8 +1089,13 @@ class اتکام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1060,8 +1150,13 @@ class اتکای(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1116,8 +1211,13 @@ class اخابر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1172,8 +1272,13 @@ class ارزش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1228,8 +1333,13 @@ class ارفع(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1284,8 +1394,13 @@ class ارفعح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1340,8 +1455,13 @@ class ارمغان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1396,8 +1516,13 @@ class اطلس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1452,8 +1577,13 @@ class اعتلا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1508,8 +1638,13 @@ class اعتلاح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1564,8 +1699,13 @@ class اعتماد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1620,8 +1760,13 @@ class افرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1676,8 +1821,13 @@ class افران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1732,8 +1882,13 @@ class افق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1788,8 +1943,13 @@ class افقملت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1844,8 +2004,13 @@ class البرز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1900,8 +2065,13 @@ class الماس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -1956,8 +2126,13 @@ class امید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2012,8 +2187,13 @@ class امین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2068,8 +2248,13 @@ class امینیکم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2124,8 +2309,13 @@ class انرژی1(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2180,8 +2370,13 @@ class انرژی2(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2236,8 +2431,13 @@ class انرژی3(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2292,8 +2492,13 @@ class اوان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2348,8 +2553,13 @@ class اوصتا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2404,8 +2614,13 @@ class اپرداز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2460,8 +2675,13 @@ class اکالا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2516,8 +2736,13 @@ class بالاس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2572,8 +2797,13 @@ class بالبر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2628,8 +2858,13 @@ class بایکا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2684,8 +2919,13 @@ class بترانس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2740,8 +2980,13 @@ class بتک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2796,8 +3041,13 @@ class بجهرم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2852,8 +3102,13 @@ class بخاور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2908,8 +3163,13 @@ class بذر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -2964,8 +3224,13 @@ class برکت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3020,8 +3285,13 @@ class بزاگرس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3076,8 +3346,13 @@ class بزاگرسح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3132,8 +3407,13 @@ class بساما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3188,8 +3468,13 @@ class بسویچ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3244,8 +3529,13 @@ class بشهاب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3300,8 +3590,13 @@ class بفجر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3356,8 +3651,13 @@ class بموتو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3412,8 +3712,13 @@ class بمپنا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3468,8 +3773,13 @@ class بمیلا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3524,8 +3834,13 @@ class بنو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3580,8 +3895,13 @@ class بنیرو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3636,8 +3956,13 @@ class بهپاک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3692,8 +4017,13 @@ class بورس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3748,8 +4078,13 @@ class بوعلی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3804,8 +4139,13 @@ class بپاس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3860,8 +4200,13 @@ class بپیوند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3916,8 +4261,13 @@ class بکاب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -3972,8 +4322,13 @@ class بکام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4028,8 +4383,13 @@ class بکهنوج(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4084,8 +4444,13 @@ class بگیلان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4140,8 +4505,13 @@ class تابا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4196,8 +4566,13 @@ class تاصیکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4252,8 +4627,13 @@ class تاپکیش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4308,8 +4688,13 @@ class تاپکیشح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4364,8 +4749,13 @@ class تاپیکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4420,8 +4810,13 @@ class تایرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4476,8 +4871,13 @@ class تبرک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4532,8 +4932,13 @@ class تشتاد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4588,8 +4993,13 @@ class تشتادح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4644,8 +5054,13 @@ class تصمیم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4700,8 +5115,13 @@ class تفیرو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4756,8 +5176,13 @@ class تلیسه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4812,8 +5237,13 @@ class تماوند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4868,8 +5298,13 @@ class تملت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4924,8 +5359,13 @@ class تنوین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -4980,8 +5420,13 @@ class توریل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5036,8 +5481,13 @@ class تپمپی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5092,8 +5542,13 @@ class تپولا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5148,8 +5603,13 @@ class تپکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5204,8 +5664,13 @@ class تکالا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5260,8 +5725,13 @@ class تکشا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5316,8 +5786,13 @@ class تکمبا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5372,8 +5847,13 @@ class تکنار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5428,8 +5908,13 @@ class تکنو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5484,8 +5969,13 @@ class تیپیکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5540,8 +6030,13 @@ class ثاباد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5596,8 +6091,13 @@ class ثاخت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5652,8 +6152,13 @@ class ثاصفا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5708,8 +6213,13 @@ class ثالوند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5764,8 +6274,13 @@ class ثامان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5820,8 +6335,13 @@ class ثامید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5876,8 +6396,13 @@ class ثاژن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5932,8 +6457,13 @@ class ثباغ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -5988,8 +6518,13 @@ class ثبهساز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6044,8 +6579,13 @@ class ثتران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6100,8 +6640,13 @@ class ثترانح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6156,8 +6701,13 @@ class ثتوسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6212,8 +6762,13 @@ class ثجوان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6268,8 +6823,13 @@ class ثروتم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6324,8 +6884,13 @@ class ثرود(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6380,8 +6945,13 @@ class ثزاگرس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6436,8 +7006,13 @@ class ثشاهد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6492,8 +7067,13 @@ class ثشرق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6548,8 +7128,13 @@ class ثعتما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6604,8 +7189,13 @@ class ثعمرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6660,8 +7250,13 @@ class ثغرب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6716,8 +7311,13 @@ class ثفارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6772,8 +7372,13 @@ class ثقزوی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6828,8 +7433,13 @@ class ثمسکن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6884,8 +7494,13 @@ class ثنام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6940,8 +7555,13 @@ class ثنظام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -6996,8 +7616,13 @@ class ثنور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7052,8 +7677,13 @@ class ثنورح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7108,8 +7738,13 @@ class ثنوسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7164,8 +7799,13 @@ class ثپردیس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7220,8 +7860,13 @@ class ثپردیسح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7276,8 +7921,13 @@ class جم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7332,8 +7982,13 @@ class جمپیلن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7388,8 +8043,13 @@ class جهرم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7444,8 +8104,13 @@ class حآسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7500,8 +8165,13 @@ class حاریا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7556,8 +8226,13 @@ class حبندر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7612,8 +8287,13 @@ class حتاید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7668,8 +8348,13 @@ class حتوکا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7724,8 +8409,13 @@ class حخزر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7780,8 +8470,13 @@ class حرهشا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7836,8 +8531,13 @@ class حریل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7892,8 +8592,13 @@ class حسیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -7948,8 +8653,13 @@ class حسینا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8004,8 +8714,13 @@ class حفارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8060,8 +8775,13 @@ class حفاری(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8116,8 +8836,13 @@ class حپارسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8172,8 +8897,13 @@ class حپترو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8228,8 +8958,13 @@ class حکشتی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8284,8 +9019,13 @@ class خاذین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8340,8 +9080,13 @@ class خاهن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8396,8 +9141,13 @@ class خاور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8452,8 +9202,13 @@ class خبهمن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8508,8 +9263,13 @@ class ختراک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8564,8 +9324,13 @@ class ختور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8620,8 +9385,13 @@ class ختورح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8676,8 +9446,13 @@ class ختوقا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8732,8 +9507,13 @@ class خدیزل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8788,8 +9568,13 @@ class خراسان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8844,8 +9629,13 @@ class خریخت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8900,8 +9690,13 @@ class خرینگ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -8956,8 +9751,13 @@ class خزامیا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9012,8 +9812,13 @@ class خزر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9068,8 +9873,13 @@ class خساپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9124,8 +9934,13 @@ class خشرق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9180,8 +9995,13 @@ class خصدرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9236,8 +10056,13 @@ class خعمرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9292,8 +10117,13 @@ class خفناور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9348,8 +10178,13 @@ class خفنر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9404,8 +10239,13 @@ class خفولا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9460,8 +10300,13 @@ class خلنت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9516,8 +10361,13 @@ class خلیبل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9572,8 +10422,13 @@ class خمحرکه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9628,8 +10483,13 @@ class خمحور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9684,8 +10544,13 @@ class خمهر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9740,8 +10605,13 @@ class خموتور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9796,8 +10666,13 @@ class خنصیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9852,8 +10727,13 @@ class نبروج(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9908,8 +10788,13 @@ class خودکفا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -9964,8 +10849,13 @@ class خوساز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10020,8 +10910,13 @@ class خپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10076,8 +10971,13 @@ class خپویش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10132,8 +11032,13 @@ class خچرخش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10188,8 +11093,13 @@ class خکار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10244,8 +11154,13 @@ class خکاوه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10300,8 +11215,13 @@ class خکرمان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10356,8 +11276,13 @@ class خکمک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10412,8 +11337,13 @@ class خگستر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10468,8 +11398,13 @@ class دابور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10524,8 +11459,13 @@ class دارا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10580,8 +11520,13 @@ class دارایکم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10636,8 +11581,13 @@ class داراب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10692,8 +11642,13 @@ class دارو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10748,8 +11703,13 @@ class داریک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10804,8 +11764,13 @@ class داسوه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10860,8 +11825,13 @@ class دالبر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10916,8 +11886,13 @@ class دامین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -10972,8 +11947,13 @@ class دانا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11028,8 +12008,13 @@ class داوه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11084,8 +12069,13 @@ class دبالک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11140,8 +12130,13 @@ class دتماد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11196,8 +12191,13 @@ class دتمادح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11252,8 +12252,13 @@ class دتهران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11308,8 +12313,13 @@ class دتوزیع(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11364,8 +12374,13 @@ class دتولید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11420,8 +12435,13 @@ class دجابر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11476,8 +12496,13 @@ class دحاوی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11532,8 +12557,13 @@ class ددام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11588,8 +12618,13 @@ class درازک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11644,8 +12679,13 @@ class درهآور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11700,8 +12740,13 @@ class دروز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11756,8 +12801,13 @@ class دزهراوی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11812,8 +12862,13 @@ class دسانکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11868,8 +12923,13 @@ class دسبحا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11924,8 +12984,13 @@ class دسبحاح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -11980,8 +13045,13 @@ class دسبحان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12036,8 +13106,13 @@ class دسبحانح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12092,8 +13167,13 @@ class دسینا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12148,8 +13228,13 @@ class دشیری(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12204,8 +13289,13 @@ class دشیمی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12260,8 +13350,13 @@ class دعبید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12316,8 +13411,13 @@ class دفارا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12372,8 +13472,13 @@ class دفرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12428,8 +13533,13 @@ class دقاضی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12484,8 +13594,13 @@ class دلر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12540,8 +13655,13 @@ class دلقما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12596,8 +13716,13 @@ class دماوند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12652,8 +13777,13 @@ class دمعیار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12708,8 +13838,13 @@ class دهدشت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12764,8 +13899,13 @@ class دپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12820,8 +13960,13 @@ class دکوثر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12876,8 +14021,13 @@ class دکپسول(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12932,8 +14082,13 @@ class دکیمی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -12988,8 +14143,13 @@ class دی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13044,8 +14204,13 @@ class دیران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13100,8 +14265,13 @@ class دیرانح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13156,8 +14326,13 @@ class ذوب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13212,8 +14387,13 @@ class رافزا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13268,8 +14448,13 @@ class رانفور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13324,8 +14509,13 @@ class رتاپ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13380,8 +14570,13 @@ class رتکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13436,8 +14631,13 @@ class رمپنا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13492,8 +14692,13 @@ class رنیک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13548,8 +14753,13 @@ class رویش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13604,8 +14814,13 @@ class رکیش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13660,8 +14875,13 @@ class ریشمک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13716,8 +14936,13 @@ class زاگرس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13772,8 +14997,13 @@ class زبینا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13828,8 +15058,13 @@ class زدشت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13884,8 +15119,13 @@ class زشریف(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13940,8 +15180,13 @@ class زشگزا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -13996,8 +15241,13 @@ class زفکا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14052,8 +15302,13 @@ class زقیام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14108,8 +15363,13 @@ class زقیامح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14164,8 +15424,13 @@ class زماهان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14220,8 +15485,13 @@ class زملارد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14276,8 +15546,13 @@ class زمگسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14332,8 +15607,13 @@ class زنجان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14388,8 +15668,13 @@ class زنگان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14444,8 +15729,13 @@ class زپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14500,8 +15790,13 @@ class زکشت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14556,8 +15851,13 @@ class زکوثر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14612,8 +15912,13 @@ class زگلدشت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14668,8 +15973,13 @@ class ساذری(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14724,8 +16034,13 @@ class ساراب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14780,8 +16095,13 @@ class ساربیل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14836,8 +16156,13 @@ class ساروج(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14892,8 +16217,13 @@ class ساروم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -14948,8 +16278,13 @@ class سامان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15004,8 +16339,13 @@ class ساوه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15060,8 +16400,13 @@ class سایرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15116,8 +16461,13 @@ class ساینا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15172,8 +16522,13 @@ class سباقر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15228,8 +16583,13 @@ class سبجنو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15284,8 +16644,13 @@ class سبزوا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15340,8 +16705,13 @@ class سبهان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15396,8 +16766,13 @@ class ستران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15452,8 +16827,13 @@ class سجام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15508,8 +16888,13 @@ class سخاش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15564,8 +16949,13 @@ class سخزر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15620,8 +17010,13 @@ class سخند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15676,8 +17071,13 @@ class سخواف(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15732,8 +17132,13 @@ class سخوز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15788,8 +17193,13 @@ class سدبیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15844,8 +17254,13 @@ class سدشت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15900,8 +17315,13 @@ class سدور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -15956,8 +17376,13 @@ class سرو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16012,8 +17437,13 @@ class سرود(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16068,8 +17498,13 @@ class سرچشمه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16124,8 +17559,13 @@ class سشرق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16180,8 +17620,13 @@ class سشمال(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16236,8 +17681,13 @@ class سصفها(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16292,8 +17742,13 @@ class سصوفی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16348,8 +17803,13 @@ class سغرب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16404,8 +17864,13 @@ class سفار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16460,8 +17925,13 @@ class سفارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16516,8 +17986,13 @@ class سفارود(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16572,8 +18047,13 @@ class سفاسی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16628,8 +18108,13 @@ class سفانو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16684,8 +18169,13 @@ class سقاین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16740,8 +18230,13 @@ class سلار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16796,8 +18291,13 @@ class سمازن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16852,8 +18352,13 @@ class سمایه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16908,8 +18413,13 @@ class سمتاز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -16964,8 +18474,13 @@ class سمگا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17020,8 +18535,13 @@ class سنوین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17076,8 +18596,13 @@ class سنیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17132,8 +18657,13 @@ class سهرمز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17188,8 +18718,13 @@ class سهگمت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17244,8 +18779,13 @@ class سپ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17300,8 +18840,13 @@ class سپاس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17356,8 +18901,13 @@ class سپاها(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17412,8 +18962,13 @@ class سپرمی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17468,8 +19023,13 @@ class سپیدار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17524,8 +19084,13 @@ class سکارون(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17580,8 +19145,13 @@ class سکرد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17636,8 +19206,13 @@ class سکرما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17692,8 +19267,13 @@ class سیتا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17748,8 +19328,13 @@ class سیدکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17804,8 +19389,13 @@ class سیستم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17860,8 +19450,13 @@ class سیلام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17916,8 +19511,13 @@ class سیمرغ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -17972,8 +19572,13 @@ class شاراک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18028,8 +19633,13 @@ class شاروم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18084,8 +19694,13 @@ class شاملا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18140,8 +19755,13 @@ class شاملاح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18196,8 +19816,13 @@ class شاوان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18252,8 +19877,13 @@ class شبریز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18308,8 +19938,13 @@ class شبصیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18364,8 +19999,13 @@ class شبندر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18420,8 +20060,13 @@ class شبهرن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18476,8 +20121,13 @@ class شتران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18532,8 +20182,13 @@ class شتهران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18588,8 +20243,13 @@ class شتولی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18644,8 +20304,13 @@ class شتوکا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18700,8 +20365,13 @@ class شجم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18756,8 +20426,13 @@ class شخارک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18812,8 +20487,13 @@ class شدوص(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18868,8 +20548,13 @@ class شراز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18924,8 +20609,13 @@ class شرانل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -18980,8 +20670,13 @@ class شرنگی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19036,8 +20731,13 @@ class شزنگ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19092,8 +20792,13 @@ class شساخت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19148,8 +20853,13 @@ class شستا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19204,8 +20914,13 @@ class شسم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19260,8 +20975,13 @@ class شسپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19316,8 +21036,13 @@ class شسینا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19372,8 +21097,13 @@ class شصدف(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19428,8 +21158,13 @@ class شصدفح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19484,8 +21219,13 @@ class شصفها(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19540,8 +21280,13 @@ class شغدیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19596,8 +21341,13 @@ class شفا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19652,8 +21402,13 @@ class شفارا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19708,8 +21463,13 @@ class شفارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19764,8 +21524,13 @@ class شفن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19820,8 +21585,13 @@ class شلرد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19876,8 +21646,13 @@ class شلعاب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19932,8 +21707,13 @@ class شلعابح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -19988,8 +21768,13 @@ class شمواد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20044,8 +21829,13 @@ class شنفت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20100,8 +21890,13 @@ class شوینده(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20156,8 +21951,13 @@ class شپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20212,8 +22012,13 @@ class شپارسح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20268,8 +22073,13 @@ class شپاس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20324,8 +22134,13 @@ class شپاکسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20380,8 +22195,13 @@ class شپترو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20436,8 +22256,13 @@ class شپدیس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20492,8 +22317,13 @@ class شپلی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20548,8 +22378,13 @@ class شپنا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20604,8 +22439,13 @@ class شکبیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20660,8 +22500,13 @@ class شکربن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20716,8 +22561,13 @@ class شکف(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20772,8 +22622,13 @@ class شکلر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20828,8 +22683,13 @@ class شگامرن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20884,8 +22744,13 @@ class شگل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20940,8 +22805,13 @@ class شگویا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -20996,8 +22866,13 @@ class شیراز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21052,8 +22927,13 @@ class شیران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21108,8 +22988,13 @@ class صایند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21164,8 +23049,13 @@ class صبا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21220,8 +23110,13 @@ class صباح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21276,8 +23171,13 @@ class صنوین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21332,8 +23232,13 @@ class غاذر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21388,8 +23293,13 @@ class غالبر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21444,8 +23354,13 @@ class غبشهر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21500,8 +23415,13 @@ class غبهار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21556,8 +23476,13 @@ class غبهنوش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21612,8 +23537,13 @@ class غدام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21668,8 +23598,13 @@ class غدشت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21724,8 +23659,13 @@ class غدیس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21780,8 +23720,13 @@ class غزر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21836,8 +23781,13 @@ class غسالم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21892,8 +23842,13 @@ class غشاذر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -21948,8 +23903,13 @@ class غشان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22004,8 +23964,13 @@ class غشصفا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22060,8 +24025,13 @@ class غشهد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22116,8 +24086,13 @@ class غشهداب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22172,8 +24147,13 @@ class غشوکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22228,8 +24208,13 @@ class غصینو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22284,8 +24269,13 @@ class غفارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22340,8 +24330,13 @@ class غمارگ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22396,8 +24391,13 @@ class غمهرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22452,8 +24452,13 @@ class غمینو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22508,8 +24513,13 @@ class غنوش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22564,8 +24574,13 @@ class غنیلی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22620,8 +24635,13 @@ class غویتا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22676,8 +24696,13 @@ class غپآذر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22732,8 +24757,13 @@ class غپاک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22788,8 +24818,13 @@ class غپونه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22844,8 +24879,13 @@ class غپینو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22900,8 +24940,13 @@ class غچین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -22956,8 +25001,13 @@ class غگرجی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23012,8 +25062,13 @@ class غگز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23068,8 +25123,13 @@ class غگل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23124,8 +25184,13 @@ class غگلستا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23180,8 +25245,13 @@ class غگلپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23236,8 +25306,13 @@ class غگیلا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23292,8 +25367,13 @@ class غیوان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23348,8 +25428,13 @@ class فاذر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23404,8 +25489,13 @@ class فاراک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23460,8 +25550,13 @@ class فارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23516,8 +25611,13 @@ class فاسمین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23572,8 +25672,13 @@ class فافزا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23628,8 +25733,13 @@ class فالوم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23684,8 +25794,13 @@ class فاما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23740,8 +25855,13 @@ class فایرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23796,8 +25916,13 @@ class فباهنر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23852,8 +25977,13 @@ class فبستم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23908,8 +26038,13 @@ class فبیرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -23964,8 +26099,13 @@ class فجام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24020,8 +26160,13 @@ class فجر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24076,8 +26221,13 @@ class فجوش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24132,8 +26282,13 @@ class فخاس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24188,8 +26343,13 @@ class فخوز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24244,8 +26404,13 @@ class فرآور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24300,8 +26465,13 @@ class فرابورس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24356,8 +26526,13 @@ class فروس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24412,8 +26587,13 @@ class فروی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24468,8 +26648,13 @@ class فزرین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24524,8 +26709,13 @@ class فسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24580,8 +26770,13 @@ class فسازان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24636,8 +26831,13 @@ class فسدید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24692,8 +26892,13 @@ class فسرب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24748,8 +26953,13 @@ class فسپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24804,8 +27014,13 @@ class فلات(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24860,8 +27075,13 @@ class فلامی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24916,8 +27136,13 @@ class فلوله(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -24972,8 +27197,13 @@ class فماک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25028,8 +27258,13 @@ class فمراد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25084,8 +27319,13 @@ class فملی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25140,8 +27380,13 @@ class فنآوا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25196,8 +27441,13 @@ class فنابا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25252,8 +27502,13 @@ class فنرژی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25308,8 +27563,13 @@ class فنفت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25364,8 +27624,13 @@ class فنوال(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25420,8 +27685,13 @@ class فنورد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25476,8 +27746,13 @@ class فولاد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25532,8 +27807,13 @@ class فولاژ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25588,8 +27868,13 @@ class فولای(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25644,8 +27929,13 @@ class فوکا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25700,8 +27990,13 @@ class فپنتا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25756,8 +28051,13 @@ class فیروزا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25812,8 +28112,13 @@ class فیروزه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25868,8 +28173,13 @@ class قاروم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25924,8 +28234,13 @@ class قاسم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -25980,8 +28295,13 @@ class قثابت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26036,8 +28356,13 @@ class قجام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26092,8 +28417,13 @@ class قرن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26148,8 +28478,13 @@ class قزوین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26204,8 +28539,13 @@ class قشرین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26260,8 +28600,13 @@ class قشهد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26316,8 +28661,13 @@ class قشکر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26372,8 +28722,13 @@ class قشیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26428,8 +28783,13 @@ class قصفها(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26484,8 +28844,13 @@ class قلرست(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26540,8 +28905,13 @@ class قمرو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26596,8 +28966,13 @@ class قنقش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26652,8 +29027,13 @@ class قنیشا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26708,8 +29088,13 @@ class قهکمت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26764,8 +29149,13 @@ class قپیرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26820,8 +29210,13 @@ class قچار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26876,8 +29271,13 @@ class لابسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26932,8 +29332,13 @@ class لازما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -26988,8 +29393,13 @@ class لبوتان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27044,8 +29454,13 @@ class لخانه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27100,8 +29515,13 @@ class لخزر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27156,8 +29576,13 @@ class لسرما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27212,8 +29637,13 @@ class لوتوس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27268,8 +29698,13 @@ class لپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27324,8 +29759,13 @@ class لپیام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27380,8 +29820,13 @@ class لکما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27436,8 +29881,13 @@ class ما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27492,8 +29942,13 @@ class مادیرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27548,8 +30003,13 @@ class مارون(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27604,8 +30064,13 @@ class مبین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27660,8 +30125,13 @@ class مداران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27716,8 +30186,13 @@ class مدیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27772,8 +30247,13 @@ class مرقام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27828,8 +30308,13 @@ class معیار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27884,8 +30369,13 @@ class مفاخر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27940,8 +30430,13 @@ class ملت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -27996,8 +30491,13 @@ class ممسنی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28052,8 +30552,13 @@ class میدکو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28108,8 +30613,13 @@ class میهن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28164,8 +30674,13 @@ class نبورس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28220,8 +30735,13 @@ class نتوس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28276,8 +30796,13 @@ class نطرین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28332,8 +30857,13 @@ class نمرینو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28388,8 +30918,13 @@ class نوآور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28444,8 +30979,13 @@ class نوری(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28500,8 +31040,13 @@ class نوین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28556,8 +31101,13 @@ class نکالا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28612,8 +31162,13 @@ class نگین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28668,8 +31223,13 @@ class نیرو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28724,8 +31284,13 @@ class هایوب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28780,8 +31345,13 @@ class هجرت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28836,8 +31406,13 @@ class هرمز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28892,8 +31467,13 @@ class همراه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -28948,8 +31528,13 @@ class وآتوس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29004,8 +31589,13 @@ class وآذر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29060,8 +31650,13 @@ class وآرین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29116,8 +31711,13 @@ class وآفری(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29172,8 +31772,13 @@ class وآوا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29228,8 +31833,13 @@ class وآیند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29284,8 +31894,13 @@ class واتی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29340,8 +31955,13 @@ class واحصا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29396,8 +32016,13 @@ class واحیا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29452,8 +32077,13 @@ class وارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29508,8 +32138,13 @@ class واعتبار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29564,8 +32199,13 @@ class والبر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29620,8 +32260,13 @@ class وامید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29676,8 +32321,13 @@ class وایرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29732,8 +32382,13 @@ class وایران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29788,8 +32443,13 @@ class وبانک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29844,8 +32504,13 @@ class وبرق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29900,8 +32565,13 @@ class وبشهر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -29956,8 +32626,13 @@ class وبصادر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30012,8 +32687,13 @@ class وبملت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30068,8 +32748,13 @@ class وبهمن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30124,8 +32809,13 @@ class وبوعلی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30180,8 +32870,13 @@ class وبیمه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30236,8 +32931,13 @@ class وبیمهح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30292,8 +32992,13 @@ class وتجارت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30348,8 +33053,13 @@ class وتعاون(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30404,8 +33114,13 @@ class وتوس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30460,8 +33175,13 @@ class وتوسم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30516,8 +33236,13 @@ class وتوشه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30572,8 +33297,13 @@ class وتوصا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30628,8 +33358,13 @@ class وتوکا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30684,8 +33419,13 @@ class وتوکاح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30740,8 +33480,13 @@ class وثخوز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30796,8 +33541,13 @@ class وثنو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30852,8 +33602,13 @@ class وثوق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30908,8 +33663,13 @@ class وجامی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -30964,8 +33724,13 @@ class وحافظ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31020,8 +33785,13 @@ class وحکمت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31076,8 +33846,13 @@ class وخارزم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31132,8 +33907,13 @@ class وخاور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31188,8 +33968,13 @@ class ودی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31244,8 +34029,13 @@ class ورازی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31300,8 +34090,13 @@ class ورنا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31356,8 +34151,13 @@ class وزمین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31412,8 +34212,13 @@ class وساخت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31468,8 +34273,13 @@ class وساربیل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31524,8 +34334,13 @@ class وساشرقی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31580,8 +34395,13 @@ class وساغربی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31636,8 +34456,13 @@ class وسالت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31692,8 +34517,13 @@ class وساپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31748,8 +34578,13 @@ class وسبحان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31804,8 +34639,13 @@ class وسبوشهر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31860,8 +34700,13 @@ class وسخراج(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31916,8 +34761,13 @@ class وسخراش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -31972,8 +34822,13 @@ class وسخوز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32028,8 +34883,13 @@ class وسدید(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32084,8 +34944,13 @@ class وسرضوی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32140,8 +35005,13 @@ class وسرمد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32196,8 +35066,13 @@ class وسزنجان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32252,8 +35127,13 @@ class وسصفا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32308,8 +35188,13 @@ class وسفارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32364,8 +35249,13 @@ class وسقم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32420,8 +35310,13 @@ class وسلرستا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32476,8 +35371,13 @@ class وسمازن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32532,8 +35432,13 @@ class وسمرکز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32588,8 +35493,13 @@ class وسنا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32644,8 +35554,13 @@ class وسناح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32700,8 +35615,13 @@ class وسهمدا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32756,8 +35676,13 @@ class وسپه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32812,8 +35737,13 @@ class وسپهر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32868,8 +35798,13 @@ class وسکاب(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32924,8 +35859,13 @@ class وسکرد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -32980,8 +35920,13 @@ class وسکرشا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33036,8 +35981,13 @@ class وسکرمان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33092,8 +36042,13 @@ class وسکهبو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33148,8 +36103,13 @@ class وسگلستا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33204,8 +36164,13 @@ class وسگیلا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33260,8 +36225,13 @@ class وسیزد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33316,8 +36286,13 @@ class وسیستا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33372,8 +36347,13 @@ class وسیلام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33428,8 +36408,13 @@ class وسین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33484,8 +36469,13 @@ class وسینا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33540,8 +36530,13 @@ class وشمال(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33596,8 +36591,13 @@ class وشهر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33652,8 +36652,13 @@ class وصنا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33708,8 +36713,13 @@ class وصندوق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33764,8 +36774,13 @@ class وصنعت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33820,8 +36835,13 @@ class وغدیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33876,8 +36896,13 @@ class ولانا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33932,8 +36957,13 @@ class ولبهمن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -33988,8 +37018,13 @@ class ولتجار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34044,8 +37079,13 @@ class ولراز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34100,8 +37140,13 @@ class ولساپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34156,8 +37201,13 @@ class ولشرق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34212,8 +37262,13 @@ class ولصنم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34268,8 +37323,13 @@ class ولغدر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34324,8 +37384,13 @@ class ولملت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34380,8 +37445,13 @@ class ولپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34436,8 +37506,13 @@ class ولیز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34492,8 +37567,13 @@ class ومشان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34548,8 +37628,13 @@ class ومعادن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34604,8 +37689,13 @@ class ومعلم(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34660,8 +37750,13 @@ class وملت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34716,8 +37811,13 @@ class وملل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34772,8 +37872,13 @@ class وملی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34828,8 +37933,13 @@ class ومهان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34884,8 +37994,13 @@ class ونفت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34940,8 +38055,13 @@ class ونوین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -34996,8 +38116,13 @@ class ونچر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35052,8 +38177,13 @@ class ونیرو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35108,8 +38238,13 @@ class ونیروح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35164,8 +38299,13 @@ class ونیکی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35220,8 +38360,13 @@ class وهنر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35276,8 +38421,13 @@ class وهور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35332,8 +38482,13 @@ class وپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35388,8 +38543,13 @@ class وپاسار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35444,8 +38604,13 @@ class وپترو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35500,8 +38665,13 @@ class وپخش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35556,8 +38726,13 @@ class وپسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35612,8 +38787,13 @@ class وپست(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35668,8 +38848,13 @@ class وپویا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35724,8 +38909,13 @@ class وکادو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35780,8 +38970,13 @@ class وکار(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35836,8 +39031,13 @@ class وکبهمن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35892,8 +39092,13 @@ class وگردش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -35948,8 +39153,13 @@ class وگستر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36004,8 +39214,13 @@ class پارتا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36060,8 +39275,13 @@ class پارتین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36116,8 +39336,13 @@ class پارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36172,8 +39397,13 @@ class پارسان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36228,8 +39458,13 @@ class پارسیان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36284,8 +39519,13 @@ class پارسیانح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36340,8 +39580,13 @@ class پارند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36396,8 +39641,13 @@ class پاسا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36452,8 +39702,13 @@ class پاکشو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36508,8 +39763,13 @@ class پتایر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36564,8 +39824,13 @@ class پترول(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36620,8 +39885,13 @@ class پترولح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36676,8 +39946,13 @@ class پخش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36732,8 +40007,13 @@ class پدرخش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36788,8 +40068,13 @@ class پرداخت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36844,8 +40129,13 @@ class پردیس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36900,8 +40190,13 @@ class پسهند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -36956,8 +40251,13 @@ class پشاهن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37012,8 +40312,13 @@ class پلاست(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37068,8 +40373,13 @@ class پلاسک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37124,8 +40434,13 @@ class پلوله(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37180,8 +40495,13 @@ class پکرمان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37236,8 +40556,13 @@ class پکویر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37292,8 +40617,13 @@ class پکویرح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37348,8 +40678,13 @@ class پیزد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37404,8 +40739,13 @@ class چافست(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37460,8 +40800,13 @@ class چخزر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37516,8 +40861,13 @@ class چدن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37572,8 +40922,13 @@ class چفیبر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37628,8 +40983,13 @@ class چکارن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37684,8 +41044,13 @@ class چکاوه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37740,8 +41105,13 @@ class چکاپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37796,8 +41166,13 @@ class کابگن(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37852,8 +41227,13 @@ class کاذر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37908,8 +41288,13 @@ class کاردان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -37964,8 +41349,13 @@ class کاریس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38020,8 +41410,13 @@ class کازرو(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38076,8 +41471,13 @@ class کاسپین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38132,8 +41532,13 @@ class کالا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38188,8 +41593,13 @@ class کاما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38244,8 +41654,13 @@ class کاوه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38300,8 +41715,13 @@ class کایتا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38356,8 +41776,13 @@ class کباده(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38412,8 +41837,13 @@ class کبافق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38468,8 +41898,13 @@ class کبورس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38524,8 +41959,13 @@ class کترام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38580,8 +42020,13 @@ class کتوکا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38636,8 +42081,13 @@ class کحافظ(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38692,8 +42142,13 @@ class کخاک(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38748,8 +42203,13 @@ class کخاکح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38804,8 +42264,13 @@ class کدما(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38860,8 +42325,13 @@ class کرازی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38916,8 +42386,13 @@ class کرماشا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -38972,8 +42447,13 @@ class کرمان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39028,8 +42508,13 @@ class کروی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39084,8 +42569,13 @@ class کزغال(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39140,8 +42630,13 @@ class کساوه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39196,8 +42691,13 @@ class کساپا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39252,8 +42752,13 @@ class کسرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39308,8 +42813,13 @@ class کسرام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39364,8 +42874,13 @@ class کسعدی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39420,8 +42935,13 @@ class کشرق(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39476,8 +42996,13 @@ class کصدف(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39532,8 +43057,13 @@ class کطبس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39588,8 +43118,13 @@ class کفرآور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39644,8 +43179,13 @@ class کفرا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39700,8 +43240,13 @@ class کفپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39756,8 +43301,13 @@ class کقزوی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39812,8 +43362,13 @@ class کلر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39868,8 +43423,13 @@ class کلوند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39924,8 +43484,13 @@ class کماسه(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -39980,8 +43545,13 @@ class کمرجان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40036,8 +43606,13 @@ class کمند(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40092,8 +43667,13 @@ class کمنگنز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40148,8 +43728,13 @@ class کمینا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40204,8 +43789,13 @@ class کنور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40260,8 +43850,13 @@ class کهرام(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40316,8 +43911,13 @@ class کهمدا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40372,8 +43972,13 @@ class کوثر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40428,8 +44033,13 @@ class کورز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40484,8 +44094,13 @@ class کویر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40540,8 +44155,13 @@ class کپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40596,8 +44216,13 @@ class کپرور(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40652,8 +44277,13 @@ class کپشیر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40708,8 +44338,13 @@ class کپشیرح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40764,8 +44399,13 @@ class کچاد(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40820,8 +44460,13 @@ class کگاز(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40876,8 +44521,13 @@ class کگازح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40932,8 +44582,13 @@ class کگل(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -40988,8 +44643,13 @@ class کگلح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41044,8 +44704,13 @@ class کگهر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41100,8 +44765,13 @@ class کیبیسی(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41156,8 +44826,13 @@ class کیا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41212,8 +44887,13 @@ class کیان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41268,8 +44948,13 @@ class کیسون(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41324,8 +45009,13 @@ class کیمیا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41380,8 +45070,13 @@ class گدنا(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41436,8 +45131,13 @@ class گشان(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41492,8 +45192,13 @@ class گنجین(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41548,8 +45253,13 @@ class گوهران(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41604,8 +45314,13 @@ class گپارس(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41660,8 +45375,13 @@ class گکوثر(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41716,8 +45436,13 @@ class گکیش(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 
 
@@ -41772,6 +45497,11 @@ class یاقوت(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 

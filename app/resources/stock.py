@@ -1,11 +1,27 @@
 import pandas as pd
-from flask import request
+from flask import request, jsonify
 from flask_restful import Resource, reqparse
 from datetime import datetime, timedelta
 
 from app.models.stock import *
 from app.tset_client import Downloader
 from app.db import db
+from app.schemas.stock import (StockChartSchema,
+                               StockClientsSchema,
+                               StockAllSchema,
+                               StockGeneralSchema)
+
+chart_schema = StockChartSchema(many=True)
+general_schema = StockGeneralSchema(many=True)
+clients_schema = StockClientsSchema(many=True)
+all_schema = StockAllSchema(many=True)
+
+marshmallows_dict = {
+            'chart': chart_schema,
+            'general-all': general_schema,
+            'clients-all': clients_schema,
+            'all': all_schema
+        }
 
 
 class StockYear(Resource):
@@ -13,10 +29,10 @@ class StockYear(Resource):
     # @jwt_required()
     def get(cls, name: str, year_ago: int, mode: str):
         date = datetime.now() - timedelta(days=year_ago * 365)
-        record = globals()[name].stock_from_date(date, mode)
-        if not record:
-            print("please check your Input Date")
-        return {name: f'{record}'}, 200
+        records = globals()[name].get_records_with_date(date, mode)
+        if not records:
+            print("We Cant Find The Time-Span you are requesting")
+        return {name: f'{records}'}, 200
 
 
 class StockMonth(Resource):
@@ -24,10 +40,32 @@ class StockMonth(Resource):
     # @jwt_required()
     def get(cls, name: str, month_ago: int, mode: str):
         date = datetime.now() - timedelta(days=month_ago * 30)
-        records = globals()[name].stock_from_date(date, mode)
+        records = globals()[name].get_records_with_date(date, mode)
         if not records:
             print("We Cant Find The Time-Span you are requesting")
         return {name: f'{records}'}, 200
+
+
+class StockYearApi(Resource):
+    @classmethod
+    # @jwt_required()
+    def get(cls, name: str, year_ago: int, mode: str):
+        date = datetime.now() - timedelta(days=year_ago * 365)
+        records = globals()[name].get_records_with_date_api(date)
+        if not records:
+            print("We Cant Find The Time-Span you are requesting")
+        return marshmallows_dict[mode].dumps(records), 200
+
+
+class StockMonthApi(Resource):
+    @classmethod
+    # @jwt_required()
+    def get(cls, name: str, month_ago: int, mode: str):
+        date = datetime.now() - timedelta(days=month_ago * 30)
+        records = globals()[name].get_records_with_date_api(date)
+        if not records:
+            print("We Cant Find The Time-Span you are requesting")
+        return marshmallows_dict[mode].dumps(records), 200
 
 
 class StockUtils(Resource):

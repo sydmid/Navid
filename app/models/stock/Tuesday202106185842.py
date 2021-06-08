@@ -1,8 +1,7 @@
-from app.db import db
-from app.utils.stock_queries import date_functions
-
-class خودرو(db.Model):
-    __tablename__ = 'خودرو'
+from app.db import db 
+from app.utils.stock_queries import date_functions 
+class کتوکاح(db.Model):
+    __tablename__ = 'کتوکاح'
 
     name = db.Column(db.String(15))
     group = db.Column(db.String(30))

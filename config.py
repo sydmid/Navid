@@ -24,9 +24,7 @@ class Development(Config):
         # 'stocks_dict': "sqlite:///",
         # 'today_chart': "sqlite:///",
     }
-    # disables the flask_sqlachemy track modification not sqlalchemy itself
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # flask extensions like flask_jwt can raise their own exception and app will know their specific error
     PROPAGATE_EXCEPTIONS = True
     # We choose it to be different than app.secret_key (Optional)
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or \

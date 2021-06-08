@@ -47,12 +47,17 @@ class غکورش(db.Model):
         db.session.commit()
 
     @classmethod
+    def get_record_with_date(cls, date):
+        result = cls.query.get(date)
+        return result
+
+    @classmethod
     def find_last_date(cls):
         result = cls.query.order_by(cls.date.desc()).first()
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
 
 
@@ -107,7 +112,12 @@ class وامیدح(db.Model):
         return result.date
 
     @classmethod
-    def stock_from_date(cls, date, mode):
+    def get_records_with_date(cls, date, mode):
         return date_functions[mode](cls, date)
+
+    @classmethod
+    def get_records_with_date_api(cls, date):
+        return cls.query.filter(cls.date > date).all()
+
 
 

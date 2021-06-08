@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 
 from config import config
 from app.utils import _load_tables, _load_timespans
-from app.routes import bp_resources
+from app.routes import bp_rest
+from app.commands import bp_commands
 from app.db import db
 from app.utils import jwt_claim_handler
 
@@ -24,8 +25,8 @@ def create_app(config_name):
     migrate.init_app(app, db)
 
     db.init_app(app)
-
-    app.register_blueprint(bp_resources)
+    app.register_blueprint(bp_commands)
+    app.register_blueprint(bp_rest)
 
     @app.before_first_request
     def create_all_tables():

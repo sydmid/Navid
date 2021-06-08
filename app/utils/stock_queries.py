@@ -2,20 +2,22 @@ from sqlalchemy import cast, String
 
 date_functions = {
             'chart': lambda stock, date: stock.query.filter(stock.date > date).with_entities(
-                                                                                                stock.date.cast(String),
-                                                                                                stock.open,
-                                                                                                stock.adjClose,
-                                                                                                stock.volume).all(),
+                                                                                stock.date.cast(String),
+                                                                                stock.open,
+                                                                                stock.close,
+                                                                                stock.volume,
+                                                                                stock.high,
+                                                                                stock.low).all(),
             'general-all': lambda stock, date: stock.query.filter(stock.date > date).with_entities(
                                                                                  stock.date.cast(String),
                                                                                  stock.open,
-                                                                                 stock.adjClose,
+                                                                                 stock.close,
                                                                                  stock.volume,
                                                                                  stock.high,
                                                                                  stock.low,
+                                                                                 stock.adjClose,
                                                                                  stock.count,
-                                                                                 stock.value,
-                                                                                 stock.close).all(),
+                                                                                 stock.value).all(),
             'clients-all': lambda stock, date: stock.query.filter(stock.date > date).with_entities(
                                                                                  stock.date.cast(String),
                                                                                  stock.individual_buy_count,
@@ -38,13 +40,13 @@ date_functions = {
             'all': lambda stock, date: stock.query.filter(stock.date > date).with_entities(
                                                                          stock.date.cast(String),
                                                                          stock.open,
-                                                                         stock.adjClose,
+                                                                         stock.close,
                                                                          stock.volume,
                                                                          stock.high,
                                                                          stock.low,
+                                                                         stock.adjClose,
                                                                          stock.count,
                                                                          stock.value,
-                                                                         stock.close,
                                                                          stock.individual_buy_count,
                                                                          stock.individual_sell_count,
                                                                          stock.individual_buy_vol,
@@ -61,5 +63,4 @@ date_functions = {
                                                                          stock.individual_sell_mean_price,
                                                                          stock.corporate_buy_mean_price,
                                                                          stock.corporate_sell_mean_price,
-                                                                         stock.individual_ownership_change,).all(),
-        }
+                                                                         stock.individual_ownership_change,).all()}

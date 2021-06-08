@@ -12,7 +12,8 @@ from selenium.common.exceptions import StaleElementReferenceException
 ALL_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/index_all.json'))
 ALL_NO_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/index_no_all.json'))
 ALL_YES_INDEX_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/index_yes_all.json'))
-MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../models/stock'))
+STOCK_MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../models/stock'))
+TODAY_MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../models/today'))
 TSET_CLIENT_ALL_SYMBOLS = os.path.abspath(os.path.join(os.path.dirname(__file__), '../tset_client/data/symbols_name.json'))
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
@@ -123,7 +124,7 @@ async def write_model_file():
         json_data = json.loads(reader.read())
         for x in range(len(json_data)):
             new_list.append(to_farsi(json_data[x]))
-    with open(os.path.join(MODELS_DIR, f"{model_file_name}.py"), mode='w', encoding='utf8') as f:
+    with open(os.path.join(STOCK_MODELS_DIR, f"{model_file_name}.py"), mode='w', encoding='utf8') as f:
         f.write("from app.db import db \n\
 from app.utils.stock_queries import date_functions \n")
         for x in range(len(new_list)):
@@ -178,8 +179,83 @@ from app.utils.stock_queries import date_functions \n")
         return result.date\n\
 \n\
     @classmethod\n\
-    def stock_from_date(cls, date, mode):\n\
+    def get_records_with_date(cls, date, mode):\n\
         return date_functions[mode](cls, date)\n\
+\n\
+    @classmethod\n\
+    def get_records_with_date_api(cls, date):\n\
+        return cls.query.filter(cls.date > date).all()\n\
+")
+    with open(os.path.join(TODAY_MODELS_DIR, f"{model_file_name}.py"), mode='w', encoding='utf8') as f:
+        f.write(f"from app.db import db\n\
+from app.utils.stock_queries import date_functions\n\
+\n\
+class {new_list[x]}(db.Model):\n\
+    __tablename__ = 'امروز{new_list[x]}'\n\
+    __bind_key__ = 'today_chart'\n\
+\n\
+    time = db.Column(db.DateTime, primary_key=True)\n\
+    name = db.Column(db.String(15))\n\
+    url = db.Column(db.String)\n\
+    open = db.Column(db.Float)\n\
+    close = db.Column(db.Float)\n\
+    adjClose = db.Column(db.Float)\n\
+    count = db.Column(db.Integer)\n\
+    value = db.Column(db.Integer)\n\
+    volume = db.Column(db.Integer)\n\
+    individual_buy_count = db.Column(db.Integer)\n\
+    individual_sell_count = db.Column(db.Integer)\n\
+    individual_buy_vol = db.Column(db.Integer)\n\
+    individual_sell_vol = db.Column(db.Integer)\n\
+    individual_buy_value = db.Column(db.Integer)\n\
+    individual_sell_value = db.Column(db.Integer)\n\
+    corporate_buy_count = db.Column(db.Integer)\n\
+    corporate_sell_count = db.Column(db.Integer)\n\
+    corporate_buy_vol = db.Column(db.Integer)\n\
+    corporate_sell_vol = db.Column(db.Integer)\n\
+    corporate_buy_value = db.Column(db.Integer)\n\
+    corporate_sell_value = db.Column(db.Integer)\n\
+    individual_buy_mean_price = db.Column(db.Float)\n\
+    individual_sell_mean_price = db.Column(db.Float)\n\
+    corporate_buy_mean_price = db.Column(db.Float)\n\
+    corporate_sell_mean_price = db.Column(db.Float)\n\
+    individual_ownership_change = db.Column(db.Integer)\n\
+    status = db.Column(db.String)\n\
+    latest_data_time = db.Column(db.String)\n\
+    best_demand_count_1 = db.Column(db.Integer)\n\
+    best_demand_vol_1 = db.Column(db.Integer)\n\
+    best_demand_val_1 = db.Column(db.Integer)\n\
+    best_demand_count_2 = db.Column(db.Integer)\n\
+    best_demand_vol_2 = db.Column(db.Integer)\n\
+    best_demand_val_2 = db.Column(db.Integer)\n\
+    best_demand_count_3 = db.Column(db.Integer)\n\
+    best_demand_vol_3 = db.Column(db.Integer)\n\
+    best_demand_val_3 = db.Column(db.Integer)\n\
+    best_demand_count_4 = db.Column(db.Integer)\n\
+    best_demand_vol_4 = db.Column(db.Integer)\n\
+    best_demand_val_4 = db.Column(db.Integer)\n\
+    best_demand_count_5 = db.Column(db.Integer)\n\
+    best_demand_vol_5 = db.Column(db.Integer)\n\
+    best_demand_val_5 = db.Column(db.Integer)\n\
+    best_supply_count_1 = db.Column(db.Integer)\n\
+    best_supply_vol_1 = db.Column(db.Integer)\n\
+    best_supply_val_1 = db.Column(db.Integer)\n\
+    best_supply_count_2 = db.Column(db.Integer)\n\
+    best_supply_vol_2 = db.Column(db.Integer)\n\
+    best_supply_val_2 = db.Column(db.Integer)\n\
+    best_supply_count_3 = db.Column(db.Integer)\n\
+    best_supply_vol_3 = db.Column(db.Integer)\n\
+    best_supply_val_3 = db.Column(db.Integer)\n\
+    best_supply_count_4 = db.Column(db.Integer)\n\
+    best_supply_vol_4 = db.Column(db.Integer)\n\
+    best_supply_val_4 = db.Column(db.Integer)\n\
+    best_supply_count_5 = db.Column(db.Integer)\n\
+    best_supply_vol_5 = db.Column(db.Integer)\n\
+    best_supply_val_5 = db.Column(db.Integer)\n\
+\n\
+    @classmethod\n\
+    def query_all(cls):\n\
+        return cls.query.all()\n\
 ")
 
 
