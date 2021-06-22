@@ -155,7 +155,8 @@ class StockUtils(Resource):
                                 row_counter -= 1
             tables = []
             for stockname, stockrecords in merged_stocks_object.items():
-                stockname = str.replace(stockname,' ','')
+                stockname = str.replace(stockname,'\u200c', '')
+                stockname = str.replace(stockname,' ', '')
                 record_class = globals()[stockname]
                 try:
                     date = globals()[stockname].find_last_date()
