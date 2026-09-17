@@ -1,12 +1,18 @@
-from marshmallow import Schema, fields
+from pydantic import BaseModel, Field
+from typing import Optional
 
+class UserBase(BaseModel):
+    username: str
 
-class UserSchema(Schema):
-    class Meta:
-        # it only loads this field and wont dump it (for get for example for request)
-        load_only = ('password',)
-        # it only dumps this field and wont load it (we don't want it from the user)
-        dump_only = ('id',)
-    id = fields.Int()
-    username = fields.Str(required=True)
-    password = fields.Str(required=True)
+class UserCreate(UserBase):
+    password: str
+
+class UserResponse(UserBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+class TokenResponse(BaseModel):
+    access_token: str
+    refresh_token: Optional[str] = None

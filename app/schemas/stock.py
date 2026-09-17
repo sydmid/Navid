@@ -1,84 +1,82 @@
-from marshmallow import Schema, fields
+from pydantic import BaseModel
+from datetime import date
+from typing import Optional
 
+class StockChartSchema(BaseModel):
+    date: date
+    open: float
+    close: float
+    high: float
+    low: float
+    volume: int
 
-class StockAllSchema(Schema):
-    # class Meta:
-    #     load_only = ('password',)
-    #     dump_only = ('id',)
-    date = fields.Date()
-    open = fields.Float()
-    adjClose = fields.Float()
-    volume = fields.Int()
-    high = fields.Float()
-    low = fields.Float()
-    count = fields.Int()
-    value = fields.Int()
-    close = fields.Float()
-    individual_buy_count = fields.Int()
-    individual_sell_count = fields.Int()
-    individual_buy_vol = fields.Int()
-    individual_sell_vol = fields.Int()
-    individual_buy_value = fields.Int()
-    individual_sell_value = fields.Int()
-    corporate_buy_count = fields.Int()
-    corporate_sell_count = fields.Int()
-    corporate_buy_vol = fields.Int()
-    corporate_sell_vol = fields.Int()
-    corporate_buy_value = fields.Int()
-    corporate_sell_value = fields.Int()
-    individual_buy_mean_price = fields.Float()
-    individual_sell_mean_price = fields.Float()
-    corporate_buy_mean_price = fields.Float()
-    corporate_sell_mean_price = fields.Float()
-    individual_ownership_change = fields.Int()
+    class Config:
+        from_attributes = True
 
+class StockGeneralSchema(BaseModel):
+    date: date
+    open: float
+    adjClose: float
+    volume: int
+    high: float
+    low: float
+    count: int
+    value: int
+    close: float
 
-class StockChartSchema(Schema):
-    # class Meta:
-    #     load_only = ('password',)
-    #     dump_only = ('id',)
-    date = fields.Date()
-    open = fields.Float()
-    close = fields.Float()
-    high = fields.Float()
-    low = fields.Float()
-    volume = fields.Int()
+    class Config:
+        from_attributes = True
 
+class StockClientsSchema(BaseModel):
+    date: date
+    individual_buy_count: Optional[int] = None
+    individual_sell_count: Optional[int] = None
+    individual_buy_vol: Optional[int] = None
+    individual_sell_vol: Optional[int] = None
+    individual_buy_value: Optional[int] = None
+    individual_sell_value: Optional[int] = None
+    corporate_buy_count: Optional[int] = None
+    corporate_sell_count: Optional[int] = None
+    corporate_buy_vol: Optional[int] = None
+    corporate_sell_vol: Optional[int] = None
+    corporate_buy_value: Optional[int] = None
+    corporate_sell_value: Optional[int] = None
+    individual_buy_mean_price: Optional[float] = None
+    individual_sell_mean_price: Optional[float] = None
+    corporate_buy_mean_price: Optional[float] = None
+    corporate_sell_mean_price: Optional[float] = None
+    individual_ownership_change: Optional[int] = None
 
-class StockGeneralSchema(Schema):
-    # class Meta:
-    #     load_only = ('password',)
-    #     dump_only = ('id',)
-    date = fields.Date()
-    open = fields.Float()
-    adjClose = fields.Float()
-    volume = fields.Int()
-    high = fields.Float()
-    low = fields.Float()
-    count = fields.Int()
-    value = fields.Int()
-    close = fields.Float()
+    class Config:
+        from_attributes = True
 
+class StockAllSchema(BaseModel):
+    date: date
+    open: float
+    adjClose: float
+    volume: int
+    high: float
+    low: float
+    count: int
+    value: int
+    close: float
+    individual_buy_count: Optional[int] = None
+    individual_sell_count: Optional[int] = None
+    individual_buy_vol: Optional[int] = None
+    individual_sell_vol: Optional[int] = None
+    individual_buy_value: Optional[int] = None
+    individual_sell_value: Optional[int] = None
+    corporate_buy_count: Optional[int] = None
+    corporate_sell_count: Optional[int] = None
+    corporate_buy_vol: Optional[int] = None
+    corporate_sell_vol: Optional[int] = None
+    corporate_buy_value: Optional[int] = None
+    corporate_sell_value: Optional[int] = None
+    individual_buy_mean_price: Optional[float] = None
+    individual_sell_mean_price: Optional[float] = None
+    corporate_buy_mean_price: Optional[float] = None
+    corporate_sell_mean_price: Optional[float] = None
+    individual_ownership_change: Optional[int] = None
 
-class StockClientsSchema(Schema):
-    # class Meta:
-    #     load_only = ('password',)
-    #     dump_only = ('id',)
-    date = fields.Date()
-    individual_buy_count = fields.Int()
-    individual_sell_count = fields.Int()
-    individual_buy_vol = fields.Int()
-    individual_sell_vol = fields.Int()
-    individual_buy_value = fields.Int()
-    individual_sell_value = fields.Int()
-    corporate_buy_count = fields.Int()
-    corporate_sell_count = fields.Int()
-    corporate_buy_vol = fields.Int()
-    corporate_sell_vol = fields.Int()
-    corporate_buy_value = fields.Int()
-    corporate_sell_value = fields.Int()
-    individual_buy_mean_price = fields.Float()
-    individual_sell_mean_price = fields.Float()
-    corporate_buy_mean_price = fields.Float()
-    corporate_sell_mean_price = fields.Float()
-    individual_ownership_change = fields.Int()
+    class Config:
+        from_attributes = True

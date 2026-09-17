@@ -1,16 +1,15 @@
-from app.db import db
-from werkzeug.security import generate_password_hash, check_password_hash
+from app.db import Base
+from sqlalchemy import Column, Integer, String
+from passlib.context import CryptContext
 
-# no longer needed because of marshmallow (we don't want anything from typing lib)
-# UserJSON = Dict[str, Union[int, str]]
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-
-class UserModel(db.Model):
+class UserModel(Base):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    password_hash = db.Column(db.String(128))
+    id = Column(Integer, primary_key=True)
+    username = Column(String(80), unique=True)
+    password_hash = Column(String(128))
 
     @property
     def password(self):
@@ -18,27 +17,11 @@ class UserModel(db.Model):
 
     @password.setter
     def password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.password_hash = pwd_context.hash(password)
 
     def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return pwd_context.verify(password, self.password_hash)
 
     def __init__(self, username: str, password: str):
         self.username = username
         self.password = password
-
-    def save_to_db(self) -> None:
-        db.session.add(self)
-        db.session.commit()
-
-    def delete_from_db(self) -> None:
-        db.session.delete(self)
-        db.session.commit()
-
-    @classmethod
-    def find_by_username(cls, username: str) -> "UserModel":
-        return cls.query.filter_by(username=username).first()
-
-    @classmethod
-    def find_by_id(cls, _id: int) -> "UserModel":
-        return cls.query.filter_by(id=_id).first()
