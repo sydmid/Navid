@@ -4,6 +4,7 @@ import os
 from typing import Dict
 
 class Settings(BaseSettings):
+    ARCTICDB_URI: str = Field(default='lmdb://./arctic_db', env='ARCTICDB_URI')
     DEBUG: bool = True
     SECRET_KEY: str = Field(default='javad', env='SECRET_KEY')
     JWT_SECRET_KEY: str = Field(default='mysecret1', env='JWT_SECRET_KEY')
