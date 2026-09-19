@@ -19,10 +19,7 @@ def create_app() -> FastAPI:
 
     app.include_router(api_router)
 
-    # Create tables on startup, binding correctly to their respective bases
-    @app.on_event("startup")
-    def on_startup():
-        Base.metadata.create_all(bind=engine)
+
 
     return app
 
