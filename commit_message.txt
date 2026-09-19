@@ -1,0 +1,8 @@
+refactor: Phase 4 Cleanup - Deprecate dynamic SQLAlchemy tables
+
+This commit finalizes the transition to the new Gateway, ArcticDB, and WebSocket architecture by removing the legacy dynamic SQLAlchemy table bindings and initialization logic from the application core configuration.
+
+- Removed `SQLALCHEMY_BINDS` from `app/core/config.py` which utilized `stocks_dict_engine` and `today_chart_engine`.
+- Removed `Base.metadata.create_all(bind=engine)` from `app/main.py` startup event, as the legacy approach of dynamically creating tables per symbol is fully deprecated.
+
+This represents Task 10 of the architectural pivot roadmap, ensuring the codebase is free of `stocks_dict` and `today_chart` legacy database dependencies.

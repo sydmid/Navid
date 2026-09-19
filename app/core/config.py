@@ -15,10 +15,7 @@ class Settings(BaseSettings):
         env='DEV_DATABASE_URL'
     )
 
-    SQLALCHEMY_BINDS: Dict[str, str] = {
-        'stocks_dict': f"sqlite:///{os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), 'sdict.db')}",
-        'today_chart': f"sqlite:///{os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), 'today.db')}",
-    }
+
 
     model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8', extra='ignore')
 
