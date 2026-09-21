@@ -27,8 +27,9 @@ What can you build with Navid? The architecture empowers you to create:
 
 ## 🛠 Tech Stack
 
-- **Framework:** FastAPI (Asynchronous, Type-safe)
-- **ORM:** SQLAlchemy 2.0 (Dynamic models, Multiple database binds)
+- **Framework:** FastAPI (Asynchronous, Type-safe, Modular Gateway)
+- **Time-Series Datastore:** ArcticDB (Ultra-fast tick data storage)
+- **Event-Driven Architecture:** asyncio Event Bus with WebSockets for real-time push updates
 - **Environment:** Poetry (Deterministic dependency management)
 
 ## 🏁 Quickstart
@@ -47,7 +48,7 @@ poetry install
 poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-> **Note:** Navid uses dynamic database querying and multiple binds (`stocks_dict`, `today_chart`). Ensure your database configuration is set up before starting the server.
+> **Note:** Ensure your ArcticDB datastore (or local LMDB path) and other configurations in `.env` are set up correctly before starting the server.
 
 ---
 <div align="center">
