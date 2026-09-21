@@ -31,21 +31,31 @@ class GatewayProvider(ProviderInterface):
         import pandas as pd
         df = read_stock_data(symbol)
 
+        is_stale = True
+
         # If cache hit and data seems fresh enough
         if df is not None and not df.empty:
-            records = []
-            for row in df.itertuples():
-                record_dict = row._asdict()
-                clean_dict = {k: (v if pd.notna(v) else None) for k, v in record_dict.items() if k != 'Index'}
-                if 'date' in clean_dict and isinstance(clean_dict['date'], pd.Timestamp):
-                    clean_dict['date'] = clean_dict['date'].date()
-                if 'jdate' in clean_dict:
-                    clean_dict.pop('jdate')
-                try:
-                    records.append(StockAllSchema(**clean_dict))
-                except Exception:
-                    pass
-            return records
+            # Let's add basic stale checking logic: if the most recent date is older than today minus 1 day (weekend logic simplified)
+            # This makes our stale check testable
+            if 'date' in df.columns:
+                last_date = pd.to_datetime(df['date']).max().date()
+                if last_date >= (datetime.now() - timedelta(days=2)).date():
+                    is_stale = False
+
+            if not is_stale:
+                records = []
+                for row in df.itertuples():
+                    record_dict = row._asdict()
+                    clean_dict = {k: (v if pd.notna(v) else None) for k, v in record_dict.items() if k != 'Index'}
+                    if 'date' in clean_dict and isinstance(clean_dict['date'], pd.Timestamp):
+                        clean_dict['date'] = clean_dict['date'].date()
+                    if 'jdate' in clean_dict:
+                        clean_dict.pop('jdate')
+                    try:
+                        records.append(StockAllSchema(**clean_dict))
+                    except Exception:
+                        pass
+                return records
 
         # Fallback to fetching new data
         records = self.provider.get_historical_data(symbol)

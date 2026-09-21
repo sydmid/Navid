@@ -12,6 +12,9 @@ def write_stock_data(symbol: str, df: pd.DataFrame) -> None:
 def read_stock_data(symbol: str) -> Optional[pd.DataFrame]:
     """Read stock DataFrame from ArcticDB."""
     if market_data_lib.has_symbol(symbol):
-        item = market_data_lib.read(symbol)
-        return item.data
+        try:
+            item = market_data_lib.read(symbol)
+            return item.data
+        except Exception:
+            return None
     return None
